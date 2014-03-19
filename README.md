@@ -36,7 +36,7 @@ tree/		# Tree Data Structure
 	rbt/	# Red Black Tree
 	bt/		# B-Tree
 
-example/		# Example Code
+example/	# Example Code
 
 viz/		# Tree Visualization (Graphviz)
 	dot/	# Convert JSON tree data to DOT
