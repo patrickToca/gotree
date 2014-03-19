@@ -1,7 +1,7 @@
 gotree [![Build Status](https://travis-ci.org/gyuho/gotree.png?branch=master)](https://travis-ci.org/gyuho/gotree) [![GoDoc](https://godoc.org/github.com/gyuho/gotree?status.png)](http://godoc.org/github.com/gyuho/gotree) [![Project Stats](http://www.ohloh.net/p/714469/widgets/project_thin_badge.gif)](http://www.ohloh.net/p/714469)
 ==========
 
-gotree provides tree visualizing tools and tree algorithm implementations.
+gotree provides tree visualizing tools and algorithm implementations.
 
 Getting Started
 ==========
