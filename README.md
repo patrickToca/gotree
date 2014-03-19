@@ -33,7 +33,7 @@ Package Hierarchy
 tree/		# Tree Data Structure
 	bi/		# Binary Tree (Simplified)
 	bst/	# Binary Search Tree
-	red/	# Red Black Tree
+	rbtree/	# Red Black Tree
 	btree/	# B-Tree
 
 example/		# Example Code
