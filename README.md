@@ -30,15 +30,15 @@ go build
 Package Hierarchy
 ==========
 ```go
-algorithm/		# Tree Algorithms
-	bst/		# Binary Search Tree
-	red/		# Red Black Tree
+algorithm/	# Tree Algorithms
+	bst/	# Binary Search Tree
+	red/	# Red Black Tree
 	btree/	# B-Tree
 
-tree/			# Tree Data Structure
+tree/		# Tree Data Structure
 
-viz/			# Tree Visualization (Graphviz)
-	dot/		# Convert JSON tree data to DOT
+viz/		# Tree Visualization (Graphviz)
+	dot/	# Convert JSON tree data to DOT
 ```
 
 Example
