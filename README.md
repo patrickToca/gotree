@@ -30,12 +30,10 @@ go build
 Package Hierarchy
 ==========
 ```go
-algorithm/	# Tree Algorithms
+tree/		# Tree Data Structure
 	bst/	# Binary Search Tree
 	red/	# Red Black Tree
 	btree/	# B-Tree
-
-tree/		# Tree Data Structure
 
 viz/		# Tree Visualization (Graphviz)
 	dot/	# Convert JSON tree data to DOT
@@ -49,4 +47,6 @@ Example
 
 To-Do-List
 ==========
-- ...
+**Non-Committal on a Timeline**
+
+- More Tree Data Structures
