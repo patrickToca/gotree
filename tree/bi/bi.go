@@ -1,4 +1,4 @@
-// Package bi is for binary tree implementation.
+// Package bi implements binary tree.
 package bi
 
 import (
