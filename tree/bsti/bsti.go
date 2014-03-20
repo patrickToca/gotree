@@ -1,5 +1,5 @@
-// Package simple implements simple binary search tree.
-package simple
+// Package bsti implements simple binary search tree.
+package bsti
 
 import (
 	"container/list"
