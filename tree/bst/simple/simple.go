@@ -1,5 +1,5 @@
-// Package bi implements binary tree.
-package bi
+// Package simple implements simple binary search tree.
+package simple
 
 import (
 	"container/list"
@@ -24,19 +24,34 @@ func NewTree(val int64) *Tree {
 
 // Insert inserts a new value(node) to the tree.
 func (T *Tree) Insert(val int64) *Tree {
+	// To end recursion
+	// set terminal node's left and right to nil
 	if T == nil {
 		return &Tree{nil, val, nil}
-		// by doing this
-		// the terminal node's left and right
-		// are automatically set to nil
 	}
-
 	if val < T.Value {
 		T.Left = T.Left.Insert(val)
 	} else {
 		T.Right = T.Right.Insert(val)
 	}
+	return T
+}
 
+// Find does Binary Search to find the value
+// and returns true if the value exists in the Tree.
+func (T *Tree) Find(val int64) *Tree {
+	// To end recursion
+	// set terminal node's left and right to nil
+	if T.Value == val {
+		return T
+	}
+	if val < T.Value {
+		// Not working if we only have
+		// T.Left.Find(val)
+		return T.Left.Find(val)
+	} else {
+		return T.Right.Find(val)
+	}
 	return T
 }
 

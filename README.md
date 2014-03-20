@@ -31,7 +31,6 @@ Package Hierarchy
 ==========
 ```go
 tree/		# Tree Data Structure
-	bi/		# Binary Tree (Simplified)
 	bst/	# Binary Search Tree
 	rbt/	# Red Black Tree
 	bt/		# B-Tree

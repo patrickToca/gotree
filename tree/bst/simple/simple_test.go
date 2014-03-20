@@ -1,4 +1,4 @@
-package bi
+package simple
 
 import (
 	"fmt"
@@ -11,6 +11,17 @@ func Test_NewTree(test *testing.T) {
 	vc1 := fmt.Sprintf("%v", 10)
 	if v1 != vc1 {
 		test.Errorf("Should be same but %v, %v", v1, vc1)
+	}
+}
+
+func Test_Find(test *testing.T) {
+	t1 := NewTree(5)
+	for i := 0; i < 10; i++ {
+		t1 = t1.Insert(int64(i))
+	}
+	tr := t1.Find(7)
+	if tr.Value != 7 {
+		test.Errorf("Should be true but %+v", tr)
 	}
 }
 
