@@ -35,6 +35,7 @@ tree/		# Tree Data Structure
 	bst/	# Binary Search Tree
 	rbt/	# Red Black Tree
 	bt/		# B-Tree
+	avl/	# AVL Tree
 
 example/	# Example Code
 
