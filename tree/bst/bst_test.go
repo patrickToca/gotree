@@ -1,4 +1,4 @@
-package bsti
+package bst
 
 import (
 	"fmt"
@@ -14,14 +14,23 @@ func Test_NewTree(test *testing.T) {
 	}
 }
 
+func Test_Insert(test *testing.T) {
+	t1 := NewTree(5)
+	for i := 0; i < 10; i++ {
+		t1 = t1.Insert(int64(i))
+	}
+	if t1.Size != 11 {
+		test.Errorf("Should be size of 11 but %+v", t1.Size)
+	}
+}
+
 func Test_Find(test *testing.T) {
 	t1 := NewTree(5)
 	for i := 0; i < 10; i++ {
 		t1 = t1.Insert(int64(i))
 	}
-	tr := t1.Find(7)
-	if tr.Value != 7 {
-		test.Errorf("Should be true but %+v", tr)
+	if t1.Find(7) == nil {
+		test.Errorf("Should exist but %+v", t1.Find(7))
 	}
 }
 

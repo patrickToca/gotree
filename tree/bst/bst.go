@@ -1,5 +1,5 @@
-// Package bsti implements simple binary search tree.
-package bsti
+// Package bst implements binary search tree.
+package bst
 
 import (
 	"container/list"
@@ -11,6 +11,7 @@ type Tree struct {
 	Left  *Tree
 	Value int64
 	Right *Tree
+	Size  int64
 }
 
 // NewTree returns a new tree of input Value.
@@ -19,20 +20,26 @@ func NewTree(val int64) *Tree {
 		Left:  new(Tree),
 		Value: val,
 		Right: new(Tree),
+		Size:  1,
 	}
 }
 
-// Insert inserts a new value(node) to the tree.
+// insert inserts a new value(node) to the tree.
 func (T *Tree) Insert(val int64) *Tree {
+	T.Size += 1
+	return T.insert(val)
+}
+
+func (T *Tree) insert(val int64) *Tree {
 	// To end recursion
 	// set terminal node's left and right to nil
 	if T == nil {
-		return &Tree{nil, val, nil}
+		return &Tree{nil, val, nil, int64(1)}
 	}
 	if val < T.Value {
-		T.Left = T.Left.Insert(val)
+		T.Left = T.Left.insert(val)
 	} else {
-		T.Right = T.Right.Insert(val)
+		T.Right = T.Right.insert(val)
 	}
 	return T
 }
@@ -243,7 +250,7 @@ func WalkLevelOrder(T *Tree) *list.List {
 // StringLevelOrder traverses the tree from the top.
 func StringLevelOrder(T *Tree) string {
 	list := WalkLevelOrder(T)
-	fmt.Println(list.Len())
+	// fmt.Println(list.Len())
 	s := ""
 	for elem := list.Front(); elem != nil; elem = elem.Next() {
 		s += fmt.Sprintf("%v ", elem.Value.(*Tree).Value)
