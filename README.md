@@ -40,7 +40,6 @@ tree/		# Tree Data Structure
 example/	# Example Code
 
 viz/		# Tree Visualization (Graphviz)
-	dot/	# Convert JSON tree data to DOT
 ```
 
 Example
