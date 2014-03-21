@@ -51,9 +51,6 @@ func Test_Show1(test *testing.T) {
 			tr = tr.Insert(int64(i))
 		}
 	}
-	slice := []string{}
-	Scan(tr, &slice)
-	fmt.Println(slice)
 	Show(tr, "tree1.dot")
 }
 ```
@@ -65,22 +62,26 @@ func Test_Show1(test *testing.T) {
 ```go
 func Test_Show2(test *testing.T) {
 	tr := bst.NewTree(5)
-	tr.Insert(int64(7))
-	tr.Insert(int64(8))
-	tr.Insert(int64(5))
-	tr.Insert(int64(4))
-	tr.Insert(int64(2))
-	tr.Insert(int64(1))
-	tr.Insert(int64(6))
-	tr.Insert(int64(3))
-	slice := []string{}
-	Scan(tr, &slice)
-	fmt.Println(slice)
+	tr.Inserts(7, 8, 5, 4, 2, 1, 6, 3)
 	Show(tr, "tree2.dot")
 }
+
 ```
 
 <img src="./files/tree02.png" alt="tree02" width="250px" height="320px"/>
+
+<hr>
+
+```go
+func Test_Show3(test *testing.T) {
+	tr := bst.NewTree(5)
+	tr.Inserts(7, 8, 5, 4, 2, 1, 6, 3)
+	tr.Delete(int64(6))
+	Show(tr, "tree3.dot")
+}
+```
+
+<img src="./files/tree03.png" alt="tree03" width="250px" height="320px"/>
 
 
 To-Do-List
