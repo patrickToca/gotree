@@ -48,6 +48,9 @@ func (T *Tree) insert(val int64) *Tree {
 // Find does Binary Search to find the value
 // and returns true if the value exists in the Tree.
 func (T *Tree) Find(val int64) *Tree {
+	if T == nil {
+		return &Tree{nil, val, nil, int64(1)}
+	}
 	// To end recursion
 	// set terminal node's left and right to nil
 	if T.Value == val {
@@ -59,6 +62,33 @@ func (T *Tree) Find(val int64) *Tree {
 		return T.Left.Find(val)
 	} else {
 		return T.Right.Find(val)
+	}
+	return T
+}
+
+// Parent returns the parental Tree(node) of input value.
+func (T *Tree) Parent(val int64) *Tree {
+	if T == nil {
+		return &Tree{nil, val, nil, int64(1)}
+	}
+	// we need to check if T.Left is nil or not
+	// otherwise, it panics with the message:
+	// panic: runtime error: invalid memory address
+	// or nil pointer dereference [recovered]
+	if T.Left != nil {
+		if T.Left.Value == val {
+			return T
+		}
+	}
+	if T.Right != nil {
+		if T.Right.Value == val {
+			return T
+		}
+	}
+	if val < T.Value {
+		return T.Left.Parent(val)
+	} else {
+		return T.Right.Parent(val)
 	}
 	return T
 }
