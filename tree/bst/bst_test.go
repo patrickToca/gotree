@@ -44,14 +44,7 @@ func Test_Find(test *testing.T) {
 		}
 	}
 	tt := NewTree(5)
-	tt.Insert(int64(7))
-	tt.Insert(int64(8))
-	tt.Insert(int64(5))
-	tt.Insert(int64(4))
-	tt.Insert(int64(2))
-	tt.Insert(int64(1))
-	tt.Insert(int64(6))
-	tt.Insert(int64(3))
+	tt.Inserts(7, 8, 5, 4, 2, 1, 6, 3)
 	fr := tt.Find(4)
 	if fr.Left.Value != int64(2) {
 		test.Errorf("Should exist but %+v", tt.Find(int64(4)))
@@ -60,14 +53,7 @@ func Test_Find(test *testing.T) {
 
 func Test_Parent(test *testing.T) {
 	tr := NewTree(5)
-	tr.Insert(int64(7))
-	tr.Insert(int64(8))
-	tr.Insert(int64(5))
-	tr.Insert(int64(4))
-	tr.Insert(int64(2))
-	tr.Insert(int64(1))
-	tr.Insert(int64(6))
-	tr.Insert(int64(3))
+	tr.Inserts(7, 8, 5, 4, 2, 1, 6, 3)
 	if tr.Parent(int64(6)).Value != 7 {
 		test.Errorf("Parent should be 7 but\n%v", tr.Parent(int64(6)).Value)
 	}
@@ -87,14 +73,7 @@ func Test_Parent(test *testing.T) {
 
 func Test_Delete(test *testing.T) {
 	tr := NewTree(5)
-	tr.Insert(int64(7))
-	tr.Insert(int64(8))
-	tr.Insert(int64(5))
-	tr.Insert(int64(4))
-	tr.Insert(int64(2))
-	tr.Insert(int64(1))
-	tr.Insert(int64(6))
-	tr.Insert(int64(3))
+	tr.Inserts(7, 8, 5, 4, 2, 1, 6, 3)
 
 	tr.Delete(int64(6))
 	st := tr.Find(int64(7))
@@ -108,14 +87,7 @@ func Test_Delete(test *testing.T) {
 
 func Test_FindMinMax(test *testing.T) {
 	tr := NewTree(5)
-	tr.Insert(int64(7))
-	tr.Insert(int64(8))
-	tr.Insert(int64(5))
-	tr.Insert(int64(4))
-	tr.Insert(int64(2))
-	tr.Insert(int64(1))
-	tr.Insert(int64(6))
-	tr.Insert(int64(3))
+	tr.Inserts(7, 8, 5, 4, 2, 1, 6, 3)
 	if tr.FindMin() != 1 {
 		test.Errorf("Should be 1 but\n%v", tr.FindMin())
 	}
@@ -126,14 +98,7 @@ func Test_FindMinMax(test *testing.T) {
 
 func Test_IsLeaf(test *testing.T) {
 	tr := NewTree(5)
-	tr.Insert(int64(7))
-	tr.Insert(int64(8))
-	tr.Insert(int64(5))
-	tr.Insert(int64(4))
-	tr.Insert(int64(2))
-	tr.Insert(int64(1))
-	tr.Insert(int64(6))
-	tr.Insert(int64(3))
+	tr.Inserts(7, 8, 5, 4, 2, 1, 6, 3)
 	if tr.IsLeaf(int64(5)) {
 		test.Errorf("IsLeaf should return false but\n%v", tr.IsLeaf(int64(5)))
 	}
