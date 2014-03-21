@@ -58,6 +58,9 @@ func Test_Parent(test *testing.T) {
 	if tr.Parent(int64(1)).Value != 2 {
 		test.Errorf("Parent should be 2 but\n%v", tr.Parent(int64(1)).Value)
 	}
+	if tr.Parent(int64(5)) != nil {
+		test.Errorf("Parent should be nil but\n%v", tr.Parent(int64(5)))
+	}
 }
 
 func Test_IsLeaf(test *testing.T) {
@@ -70,6 +73,9 @@ func Test_IsLeaf(test *testing.T) {
 	tr.Insert(int64(1))
 	tr.Insert(int64(6))
 	tr.Insert(int64(3))
+	if tr.IsLeaf(int64(5)) {
+		test.Errorf("IsLeaf should return false but\n%v", tr.IsLeaf(int64(5)))
+	}
 	if !tr.IsLeaf(int64(1)) {
 		test.Errorf("IsLeaf should return true but\n%v", tr.IsLeaf(int64(1)))
 	}

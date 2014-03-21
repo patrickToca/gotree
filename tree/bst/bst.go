@@ -68,6 +68,10 @@ func (T *Tree) Find(val int64) *Tree {
 
 // Parent returns the parental Tree(node) of input value.
 func (T *Tree) Parent(val int64) *Tree {
+	// if the input value is nil
+	if val == T.Value {
+		return nil
+	}
 	if T == nil {
 		return &Tree{nil, val, nil, int64(1)}
 	}
@@ -103,6 +107,17 @@ func (T *Tree) IsLeaf(val int64) bool {
 		return true
 	} else {
 		return false
+	}
+}
+
+// Delete deletes the node of input value.
+func (T *Tree) Delete(val int64) *Tree {
+	if T.IsLeaf(val) {
+		T = nil
+		T.Size -= 1
+		return T
+	} else {
+		return T
 	}
 }
 
