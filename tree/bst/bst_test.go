@@ -71,6 +71,46 @@ func Test_Parent(test *testing.T) {
 	}
 }
 
+func Test_IsLeaf(test *testing.T) {
+	tr := NewTree(5)
+	tr.Inserts(7, 8, 5, 4, 2, 1, 6, 3)
+	if tr.IsLeaf(int64(5)) {
+		test.Errorf("IsLeaf should return false but\n%v", tr.IsLeaf(int64(5)))
+	}
+	if !tr.IsLeaf(int64(1)) {
+		test.Errorf("IsLeaf should return true but\n%v", tr.IsLeaf(int64(1)))
+	}
+	if !tr.IsLeaf(int64(3)) {
+		test.Errorf("IsLeaf should return true but\n%v", tr.IsLeaf(int64(3)))
+	}
+	if !tr.IsLeaf(int64(6)) {
+		test.Errorf("IsLeaf should return true but\n%v", tr.IsLeaf(int64(6)))
+	}
+	if !tr.IsLeaf(int64(8)) {
+		test.Errorf("IsLeaf should return true but\n%v", tr.IsLeaf(int64(8)))
+	}
+}
+
+func Test_IsRoot(test *testing.T) {
+	tr := NewTree(5)
+	tr.Inserts(7, 8, 5, 4, 2, 1, 6, 3)
+	if !tr.IsRoot(int64(5)) {
+		test.Errorf("IsRoot should return true but\n%v", tr.IsRoot(int64(5)))
+	}
+	if tr.IsRoot(int64(1)) {
+		test.Errorf("IsRoot should return false but\n%v", tr.IsRoot(int64(1)))
+	}
+	if tr.IsRoot(int64(3)) {
+		test.Errorf("IsRoot should return false but\n%v", tr.IsRoot(int64(3)))
+	}
+	if tr.IsRoot(int64(6)) {
+		test.Errorf("IsRoot should return false but\n%v", tr.IsRoot(int64(6)))
+	}
+	if tr.IsRoot(int64(8)) {
+		test.Errorf("IsRoot should return false but\n%v", tr.IsRoot(int64(8)))
+	}
+}
+
 func Test_Delete1(test *testing.T) {
 	tr := NewTree(5)
 	tr.Inserts(7, 8, 5, 4, 2, 1, 6, 3)
@@ -102,26 +142,6 @@ func Test_FindMinMax(test *testing.T) {
 	}
 	if tr.FindMax() != 8 {
 		test.Errorf("Should be 8 but\n%v", tr.FindMax())
-	}
-}
-
-func Test_IsLeaf(test *testing.T) {
-	tr := NewTree(5)
-	tr.Inserts(7, 8, 5, 4, 2, 1, 6, 3)
-	if tr.IsLeaf(int64(5)) {
-		test.Errorf("IsLeaf should return false but\n%v", tr.IsLeaf(int64(5)))
-	}
-	if !tr.IsLeaf(int64(1)) {
-		test.Errorf("IsLeaf should return true but\n%v", tr.IsLeaf(int64(1)))
-	}
-	if !tr.IsLeaf(int64(3)) {
-		test.Errorf("IsLeaf should return true but\n%v", tr.IsLeaf(int64(3)))
-	}
-	if !tr.IsLeaf(int64(6)) {
-		test.Errorf("IsLeaf should return true but\n%v", tr.IsLeaf(int64(6)))
-	}
-	if !tr.IsLeaf(int64(8)) {
-		test.Errorf("IsLeaf should return true but\n%v", tr.IsLeaf(int64(8)))
 	}
 }
 

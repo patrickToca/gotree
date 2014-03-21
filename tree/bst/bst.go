@@ -105,6 +105,15 @@ func (T *Tree) Parent(val int64) *Tree {
 	return T
 }
 
+// IsParent returns true if the Node(tree) is a root of the tree.
+func (T *Tree) IsRoot(val int64) bool {
+	if T.Parent(val) == nil {
+		return true
+	} else {
+		return false
+	}
+}
+
 // IsLeaf returns true if the Node(tree) is a leaf.
 func (T *Tree) IsLeaf(val int64) bool {
 	nd := T.Find(val)
@@ -174,6 +183,7 @@ func (T *Tree) Delete(val int64) {
 		}
 		// Then delete the node itself
 		VT = nil
+		T.Size -= 1
 		return
 	}
 
@@ -191,6 +201,7 @@ func (T *Tree) Delete(val int64) {
 		}
 		// Then delete the node itself
 		VT = nil
+		T.Size -= 1
 		return
 	}
 
