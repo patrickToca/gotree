@@ -38,3 +38,20 @@ func Test_Show2(test *testing.T) {
 	fmt.Println(slice)
 	// Show(tr, "tree2.dot")
 }
+
+func Test_Show3(test *testing.T) {
+	tr := bst.NewTree(5)
+	tr.Insert(int64(7))
+	tr.Insert(int64(8))
+	tr.Insert(int64(5))
+	tr.Insert(int64(4))
+	tr.Insert(int64(2))
+	tr.Insert(int64(1))
+	tr.Insert(int64(6))
+	tr.Insert(int64(3))
+	tr.Delete(int64(6))
+	slice := []string{}
+	Scan(tr, &slice)
+	fmt.Println(slice)
+	// Show(tr, "tree3.dot")
+}
