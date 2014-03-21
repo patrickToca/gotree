@@ -1,2 +1,2 @@
-// Package tree is for tree data structure.
+// Package tree contains several tree data structure implementations.
 package tree
