@@ -34,7 +34,6 @@ func Test_Find(test *testing.T) {
 			test.Errorf("Should exist but %+v", tr.Find(int64(i)))
 		}
 	}
-
 	tt := NewTree(5)
 	tt.Insert(int64(7))
 	tt.Insert(int64(8))
@@ -44,7 +43,6 @@ func Test_Find(test *testing.T) {
 	tt.Insert(int64(1))
 	tt.Insert(int64(6))
 	tt.Insert(int64(3))
-
 	fr := tt.Find(4)
 	if fr.Left.Value != int64(2) {
 		test.Errorf("Should exist but %+v", tt.Find(int64(4)))
@@ -75,6 +73,27 @@ func Test_Parent(test *testing.T) {
 	}
 	if tr.Parent(int64(5)) != nil {
 		test.Errorf("Parent should be nil but\n%v", tr.Parent(int64(5)))
+	}
+}
+
+func Test_Delete(test *testing.T) {
+	tr := NewTree(5)
+	tr.Insert(int64(7))
+	tr.Insert(int64(8))
+	tr.Insert(int64(5))
+	tr.Insert(int64(4))
+	tr.Insert(int64(2))
+	tr.Insert(int64(1))
+	tr.Insert(int64(6))
+	tr.Insert(int64(3))
+
+	tr.Delete(int64(6))
+	st := tr.Find(int64(7))
+	if st.Left != nil {
+		test.Errorf("Left should be nil but %+v", st.Left)
+	}
+	if st.Right.Value != 8 {
+		test.Errorf("Parent should be %+v", st)
 	}
 }
 
@@ -128,12 +147,10 @@ func Test_Same(test *testing.T) {
 	for i := 0; i < 10; i++ {
 		tr = tr.Insert(int64(i))
 	}
-
 	t2 := NewTree(5)
 	for i := 0; i < 10; i++ {
 		t2 = t2.Insert(int64(i))
 	}
-
 	if !Same(tr, t2) {
 		test.Errorf("Should be same but %v, %v", tr, t2)
 	}
@@ -144,7 +161,6 @@ func Test_StringInOrder(test *testing.T) {
 	for i := 0; i < 10; i++ {
 		tr = tr.Insert(int64(i))
 	}
-
 	sc1 := "0 1 2 3 4 5 6 7 8 9 "
 	ch1 := make(chan int64)
 	s1 := StringInOrder(tr, ch1)
@@ -159,7 +175,6 @@ func Test_StringPreOrder(test *testing.T) {
 	for i := 0; i < 10; i++ {
 		tr = tr.Insert(int64(i))
 	}
-
 	sc1 := "5 0 1 2 3 4 6 7 8 9 "
 	ch1 := make(chan int64)
 	s1 := StringPreOrder(tr, ch1)
@@ -174,7 +189,6 @@ func Test_StringPostOrder(test *testing.T) {
 	for i := 0; i < 10; i++ {
 		tr = tr.Insert(int64(i))
 	}
-
 	sc1 := "4 3 2 1 0 9 8 7 6 5 "
 	ch1 := make(chan int64)
 	s1 := StringPostOrder(tr, ch1)
@@ -189,7 +203,6 @@ func Test_StringLevelOrder(test *testing.T) {
 	for i := 0; i < 10; i++ {
 		tr = tr.Insert(int64(i))
 	}
-
 	sc1 := "5 0 6 1 7 2 8 3 9 4 "
 	s1 := StringLevelOrder(tr)
 

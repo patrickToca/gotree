@@ -110,17 +110,6 @@ func (T *Tree) IsLeaf(val int64) bool {
 	}
 }
 
-// Delete deletes the node of input value.
-func (T *Tree) Delete(val int64) *Tree {
-	if T.IsLeaf(val) {
-		T = nil
-		T.Size -= 1
-		return T
-	} else {
-		return T
-	}
-}
-
 // FindMin returns the minimum(left-most) value of the tree.
 func (T *Tree) FindMin() int64 {
 	curT := T.Copy()
@@ -137,6 +126,46 @@ func (T *Tree) FindMax() int64 {
 		curT = curT.Right
 	}
 	return curT.Value
+}
+
+// Delete deletes the node of input value.
+func (T *Tree) Delete(val int64) {
+	// Deleting a leaf (node with no children)
+	if T.IsLeaf(val) {
+		Parent := T.Parent(val)
+		// Left Node
+		if val < Parent.Value {
+			Parent.Left = nil
+		} else if val > Parent.Value {
+			// Right Node
+			Parent.Right = nil
+		}
+		// Be careful with order
+		// nil must be at the end
+		T.Size -= 1
+		T = nil
+		return
+	}
+
+	// TODO
+	// Deleting a node with one child:
+	// Remove the node and replace it with its child.
+	// (1) only Left child
+	if T.Left != nil && T.Right == nil {
+		Parent := T.Parent(val)
+		Parent.Left = T.Left
+		T = nil
+		return
+	}
+
+	// (2) only Right child
+	if T.Left == nil && T.Right != nil {
+		Parent := T.Parent(val)
+		Parent.Right = T.Right
+		T = nil
+		return
+	}
+
 }
 
 // TreePrint prints out the tree.
