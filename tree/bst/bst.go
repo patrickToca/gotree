@@ -17,19 +17,20 @@ type Tree struct {
 // NewTree returns a new tree of input Value.
 func NewTree(val int64) *Tree {
 	return &Tree{
-		Left:  new(Tree),
+		Left:  nil, // (X) Left: new(Tree),
 		Value: val,
-		Right: new(Tree),
+		Right: nil, // (X) Right: new(Tree),
 		Size:  1,
 	}
 }
 
-// insert inserts a new value(node) to the tree.
+// Insert inserts a new value(node) to the tree.
 func (T *Tree) Insert(val int64) *Tree {
 	T.Size += 1
 	return T.insert(val)
 }
 
+// insert inserts a new value to the tree.
 func (T *Tree) insert(val int64) *Tree {
 	// To end recursion
 	// set terminal node's left and right to nil
@@ -38,7 +39,7 @@ func (T *Tree) insert(val int64) *Tree {
 	}
 	if val < T.Value {
 		T.Left = T.Left.insert(val)
-	} else {
+	} else if val > T.Value {
 		T.Right = T.Right.insert(val)
 	}
 	return T
@@ -238,7 +239,6 @@ func WalkLevelOrder(T *Tree) *list.List {
 			result.PushBack(tn.Left)
 			queue.PushBack(tn.Left)
 		}
-
 		if tn.Right != nil {
 			result.PushBack(tn.Right)
 			queue.PushBack(tn.Right)

@@ -41,11 +41,43 @@ example/	# Example Code
 viz/		# Tree Visualization (Graphviz)
 ```
 
-Example
+Example (Binary Search Tree)
 ==========
 ```go
+func Test_Show1(test *testing.T) {
+	tr := bst.NewTree(5)
+	for i := 0; i < 10; i++ {
+		if i != 5 {
+			tr = tr.Insert(int64(i))
+		}
+	}
+	slice := []string{}
+	Scan(tr, &slice)
+	fmt.Println(slice)
+	Show(tr, "tree1.dot")
+}
 
+func Test_Show2(test *testing.T) {
+	tr := bst.NewTree(5)
+	tr.Insert(int64(7))
+	tr.Insert(int64(8))
+	tr.Insert(int64(5))
+	tr.Insert(int64(4))
+	tr.Insert(int64(2))
+	tr.Insert(int64(1))
+	tr.Insert(int64(6))
+	tr.Insert(int64(3))
+	slice := []string{}
+	Scan(tr, &slice)
+	fmt.Println(slice)
+	Show(tr, "tree2.dot")
+}
 ```
+
+<img src="./files/tree01.png" alt="tree01" width="350px" height="450px"/>
+
+<img src="./files/tree02.png" alt="tree02" width="350px" height="450px"/>
+
 
 To-Do-List
 ==========

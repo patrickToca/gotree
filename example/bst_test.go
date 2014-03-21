@@ -6,12 +6,12 @@ import (
 	"fmt"
 	"testing"
 	// go test -v github.com/gyuho/gotree/example
-	// go test -v /Users/gyuho/go/src/github.com/gyuho/gotree/example/bsti_test.go
-	"github.com/gyuho/gotree/tree/bsti"
+	// go test -v /Users/gyuho/go/src/github.com/gyuho/gotree/example/bst_test.go
+	"github.com/gyuho/gotree/tree/bst"
 )
 
-func Test_bsti(test *testing.T) {
-	t1 := bsti.NewTree(5)
+func Test_bst(test *testing.T) {
+	t1 := bst.NewTree(5)
 	// Perm returns, as a slice of n ints
 	// , a pseudo-random permutation of the integers [0,n).
 	// func (r *Rand) Perm(n int) []int
@@ -24,20 +24,20 @@ func Test_bsti(test *testing.T) {
 	// 0 is nil
 
 	ch1 := make(chan int64)
-	fmt.Println(bsti.StringInOrder(t1, ch1))
+	fmt.Println(bst.StringInOrder(t1, ch1))
 	// 0 0 1 2 3 4 5 0 5 6 7 8 9
 
 	println()
 	ch2 := make(chan int64)
-	fmt.Println(bsti.StringPreOrder(t1, ch2))
+	fmt.Println(bst.StringPreOrder(t1, ch2))
 	// 5 0 0 1 2 3 4 0 5 6 7 8 9
 
 	println()
 	ch3 := make(chan int64)
-	fmt.Println(bsti.StringPostOrder(t1, ch3))
+	fmt.Println(bst.StringPostOrder(t1, ch3))
 	// 4 3 2 1 0 0 9 8 7 6 5 0 5
 
 	println()
-	fmt.Println(bsti.StringLevelOrder(t1))
+	fmt.Println(bst.StringLevelOrder(t1))
 	// 5 0 0 0 5 1 6 2 7 3 8 4 9
 }
