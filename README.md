@@ -58,7 +58,7 @@ func Test_Show1(test *testing.T) {
 }
 ```
 
-<img src="./files/tree01.png" alt="tree01" width="180px" height="320px"/>
+<img src="./files/tree01.png" alt="tree01" width="160px" height="320px"/>
 
 <hr>
 
