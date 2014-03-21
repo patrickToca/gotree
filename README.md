@@ -74,9 +74,9 @@ func Test_Show2(test *testing.T) {
 }
 ```
 
-<img src="./files/tree01.png" alt="tree01" width="350px" height="450px"/>
+<img src="./files/tree01.png" alt="tree01" width="230px" height="350px"/>
 
-<img src="./files/tree02.png" alt="tree02" width="350px" height="450px"/>
+<img src="./files/tree02.png" alt="tree02" width="250px" height="320px"/>
 
 
 To-Do-List
