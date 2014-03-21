@@ -121,6 +121,24 @@ func (T *Tree) Delete(val int64) *Tree {
 	}
 }
 
+// FindMin returns the minimum(left-most) value of the tree.
+func (T *Tree) FindMin() int64 {
+	curT := T.Copy()
+	for curT.Left != nil {
+		curT = curT.Left
+	}
+	return curT.Value
+}
+
+// FindMax returns the maximum(right-most) value of the tree.
+func (T *Tree) FindMax() int64 {
+	curT := T.Copy()
+	for curT.Right != nil {
+		curT = curT.Right
+	}
+	return curT.Value
+}
+
 // TreePrint prints out the tree.
 func (T *Tree) TreePrint() string {
 	if T == nil {

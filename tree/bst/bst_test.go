@@ -34,6 +34,21 @@ func Test_Find(test *testing.T) {
 			test.Errorf("Should exist but %+v", tr.Find(int64(i)))
 		}
 	}
+
+	tt := NewTree(5)
+	tt.Insert(int64(7))
+	tt.Insert(int64(8))
+	tt.Insert(int64(5))
+	tt.Insert(int64(4))
+	tt.Insert(int64(2))
+	tt.Insert(int64(1))
+	tt.Insert(int64(6))
+	tt.Insert(int64(3))
+
+	fr := tt.Find(4)
+	if fr.Left.Value != int64(2) {
+		test.Errorf("Should exist but %+v", tt.Find(int64(4)))
+	}
 }
 
 func Test_Parent(test *testing.T) {
@@ -60,6 +75,24 @@ func Test_Parent(test *testing.T) {
 	}
 	if tr.Parent(int64(5)) != nil {
 		test.Errorf("Parent should be nil but\n%v", tr.Parent(int64(5)))
+	}
+}
+
+func Test_FindMinMax(test *testing.T) {
+	tr := NewTree(5)
+	tr.Insert(int64(7))
+	tr.Insert(int64(8))
+	tr.Insert(int64(5))
+	tr.Insert(int64(4))
+	tr.Insert(int64(2))
+	tr.Insert(int64(1))
+	tr.Insert(int64(6))
+	tr.Insert(int64(3))
+	if tr.FindMin() != 1 {
+		test.Errorf("Should be 1 but\n%v", tr.FindMin())
+	}
+	if tr.FindMax() != 8 {
+		test.Errorf("Should be 8 but\n%v", tr.FindMax())
 	}
 }
 
