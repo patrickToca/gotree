@@ -155,12 +155,13 @@ func (T *Tree) Delete(val int64) {
 		return
 	}
 
-	// ** Deleting a node with one child:
-	// Remove the node and replace it with its child.
-	// (1) only Left child
 	// we need to access from the node
 	// not from the root of the Tree
 	VT := T.Find(val)
+
+	// ** Deleting a node with one child:
+	// Remove the node and replace it with its child.
+	// (1) only Left child
 	// if T.Left != nil && T.Right == nil {
 	if VT.Left != nil && VT.Right == nil {
 		// First delete as a child
@@ -176,6 +177,8 @@ func (T *Tree) Delete(val int64) {
 		return
 	}
 
+	// ** Deleting a node with one child:
+	// Remove the node and replace it with its child.
 	// (2) only Right child
 	if VT.Left == nil && VT.Right != nil {
 		// First delete as a child
@@ -191,6 +194,11 @@ func (T *Tree) Delete(val int64) {
 		return
 	}
 
+	// ** Deleting a node with two children
+	// Move up the Left Child
+	if VT.Left != nil && VT.Right != nil {
+
+	}
 }
 
 // TreePrint prints out the tree.
