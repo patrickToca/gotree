@@ -138,7 +138,7 @@ func (T *Tree) FindMax() int64 {
 
 // Delete deletes the node of input value.
 func (T *Tree) Delete(val int64) {
-	// Deleting a leaf (node with no children)
+	// ** Deleting a leaf (node with no children)
 	if T.IsLeaf(val) {
 		// First delete as a child
 		Parent := T.Parent(val)
@@ -155,36 +155,39 @@ func (T *Tree) Delete(val int64) {
 		return
 	}
 
-	// TODO
-	// Deleting a node with one child:
+	// ** Deleting a node with one child:
 	// Remove the node and replace it with its child.
 	// (1) only Left child
-	if T.Left != nil && T.Right == nil {
+	// we need to access from the node
+	// not from the root of the Tree
+	VT := T.Find(val)
+	// if T.Left != nil && T.Right == nil {
+	if VT.Left != nil && VT.Right == nil {
 		// First delete as a child
 		// and replace it with the child of to-be-deleted node
 		Parent := T.Parent(val)
-		if val < Parent.Value { // Left Node
-			Parent.Left = T.Left
-		} else if val > Parent.Value { // Right Node
-			Parent.Right = T.Left
+		if val < Parent.Value { // if it's Left Node
+			Parent.Left = VT.Left
+		} else if val > Parent.Value { // if it's Right Node
+			Parent.Right = VT.Left
 		}
 		// Then delete the node itself
-		T = nil
+		VT = nil
 		return
 	}
 
 	// (2) only Right child
-	if T.Left == nil && T.Right != nil {
+	if VT.Left == nil && VT.Right != nil {
 		// First delete as a child
 		// and replace it with the child of to-be-deleted node
 		Parent := T.Parent(val)
-		if val < Parent.Value { // Left Node
-			Parent.Left = T.Right
-		} else if val > Parent.Value { // Right Node
-			Parent.Right = T.Right
+		if val < Parent.Value { // if it's Left Node
+			Parent.Left = VT.Right
+		} else if val > Parent.Value { // if it's Right Node
+			Parent.Right = VT.Right
 		}
 		// Then delete the node itself
-		T = nil
+		VT = nil
 		return
 	}
 

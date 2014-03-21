@@ -38,3 +38,10 @@ func Test_Show3(test *testing.T) {
 	tr.Delete(int64(6))
 	// Show(tr, "tree3.dot")
 }
+
+func Test_Show4(test *testing.T) {
+	tr := bst.NewTree(5)
+	tr.Inserts(7, 8, 5, 4, 2, 1, 3)
+	tr.Delete(int64(7))
+	// Show(tr, "tree4.dot")
+}

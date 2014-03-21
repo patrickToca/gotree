@@ -71,17 +71,26 @@ func Test_Parent(test *testing.T) {
 	}
 }
 
-func Test_Delete(test *testing.T) {
+func Test_Delete1(test *testing.T) {
 	tr := NewTree(5)
 	tr.Inserts(7, 8, 5, 4, 2, 1, 6, 3)
-
 	tr.Delete(int64(6))
 	st := tr.Find(int64(7))
 	if st.Left != nil {
 		test.Errorf("Left should be nil but %+v", st.Left)
 	}
 	if st.Right.Value != 8 {
-		test.Errorf("Parent should be %+v", st)
+		test.Errorf("Right should be 8 but %+v", st)
+	}
+}
+
+func Test_Delete2(test *testing.T) {
+	tr := NewTree(5)
+	tr.Inserts(7, 8, 5, 4, 2, 1, 3)
+	tr.Delete(int64(7))
+	st := tr.Find(int64(5))
+	if st.Right.Value != 8 {
+		test.Errorf("Right should be 8 but %+v", st.Right)
 	}
 }
 
