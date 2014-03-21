@@ -140,16 +140,16 @@ func (T *Tree) FindMax() int64 {
 func (T *Tree) Delete(val int64) {
 	// Deleting a leaf (node with no children)
 	if T.IsLeaf(val) {
+		// First delete as a child
 		Parent := T.Parent(val)
-		// Left Node
-		if val < Parent.Value {
+		if val < Parent.Value { // Left Node
 			Parent.Left = nil
-		} else if val > Parent.Value {
-			// Right Node
+		} else if val > Parent.Value { // Right Node
 			Parent.Right = nil
 		}
+		// Then delete the node itself
 		// Be careful with order
-		// nil must be at the end
+		// Do nil at the end
 		T.Size -= 1
 		T = nil
 		return
@@ -160,16 +160,30 @@ func (T *Tree) Delete(val int64) {
 	// Remove the node and replace it with its child.
 	// (1) only Left child
 	if T.Left != nil && T.Right == nil {
+		// First delete as a child
+		// and replace it with the child of to-be-deleted node
 		Parent := T.Parent(val)
-		Parent.Left = T.Left
+		if val < Parent.Value { // Left Node
+			Parent.Left = T.Left
+		} else if val > Parent.Value { // Right Node
+			Parent.Right = T.Left
+		}
+		// Then delete the node itself
 		T = nil
 		return
 	}
 
 	// (2) only Right child
 	if T.Left == nil && T.Right != nil {
+		// First delete as a child
+		// and replace it with the child of to-be-deleted node
 		Parent := T.Parent(val)
-		Parent.Right = T.Right
+		if val < Parent.Value { // Left Node
+			Parent.Left = T.Right
+		} else if val > Parent.Value { // Right Node
+			Parent.Right = T.Right
+		}
+		// Then delete the node itself
 		T = nil
 		return
 	}
