@@ -24,6 +24,14 @@ func NewTree(val int64) *Tree {
 	}
 }
 
+// Inserts implements Insert with a variadic function.
+func (T *Tree) Inserts(values ...int64) *Tree {
+	for _, v := range values {
+		T.Insert(v)
+	}
+	return T
+}
+
 // Insert inserts a new value(node) to the tree.
 func (T *Tree) Insert(val int64) *Tree {
 	T.Size += 1

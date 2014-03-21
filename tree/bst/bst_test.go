@@ -14,10 +14,19 @@ func Test_NewTree(test *testing.T) {
 	}
 }
 
+func Test_Inserts(test *testing.T) {
+	tr := NewTree(5)
+	tr.Inserts(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+	if tr.Size != 11 {
+		test.Errorf("Should be size of 11 but %+v", tr.Size)
+	}
+}
+
 func Test_Insert(test *testing.T) {
 	tr := NewTree(5)
 	for i := 0; i < 10; i++ {
-		tr = tr.Insert(int64(i))
+		tr.Insert(int64(i))
+		// tr = tr.Insert(int64(i))
 	}
 	if tr.Size != 11 {
 		test.Errorf("Should be size of 11 but %+v", tr.Size)
