@@ -56,7 +56,13 @@ func Test_Show1(test *testing.T) {
 	fmt.Println(slice)
 	Show(tr, "tree1.dot")
 }
+```
 
+<img src="./files/tree01.png" alt="tree01" width="180px" height="320px"/>
+
+<hr>
+
+```go
 func Test_Show2(test *testing.T) {
 	tr := bst.NewTree(5)
 	tr.Insert(int64(7))
@@ -73,8 +79,6 @@ func Test_Show2(test *testing.T) {
 	Show(tr, "tree2.dot")
 }
 ```
-
-<img src="./files/tree01.png" alt="tree01" width="180px" height="320px"/>
 
 <img src="./files/tree02.png" alt="tree02" width="250px" height="320px"/>
 
