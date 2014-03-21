@@ -29,8 +29,10 @@ func Test_Find(test *testing.T) {
 	for i := 0; i < 10; i++ {
 		t1 = t1.Insert(int64(i))
 	}
-	if t1.Find(7) == nil {
-		test.Errorf("Should exist but %+v", t1.Find(7))
+	for i := 0; i < 10; i++ {
+		if t1.Find(int64(i)) == nil {
+			test.Errorf("Should exist but %+v", t1.Find(int64(i)))
+		}
 	}
 }
 
