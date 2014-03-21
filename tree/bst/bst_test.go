@@ -60,6 +60,30 @@ func Test_Parent(test *testing.T) {
 	}
 }
 
+func Test_IsLeaf(test *testing.T) {
+	tr := NewTree(5)
+	tr.Insert(int64(7))
+	tr.Insert(int64(8))
+	tr.Insert(int64(5))
+	tr.Insert(int64(4))
+	tr.Insert(int64(2))
+	tr.Insert(int64(1))
+	tr.Insert(int64(6))
+	tr.Insert(int64(3))
+	if !tr.IsLeaf(int64(1)) {
+		test.Errorf("IsLeaf should return true but\n%v", tr.IsLeaf(int64(1)))
+	}
+	if !tr.IsLeaf(int64(3)) {
+		test.Errorf("IsLeaf should return true but\n%v", tr.IsLeaf(int64(3)))
+	}
+	if !tr.IsLeaf(int64(6)) {
+		test.Errorf("IsLeaf should return true but\n%v", tr.IsLeaf(int64(6)))
+	}
+	if !tr.IsLeaf(int64(8)) {
+		test.Errorf("IsLeaf should return true but\n%v", tr.IsLeaf(int64(8)))
+	}
+}
+
 func Test_Same(test *testing.T) {
 	tr := NewTree(5)
 	for i := 0; i < 10; i++ {

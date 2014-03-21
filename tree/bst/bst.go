@@ -93,6 +93,19 @@ func (T *Tree) Parent(val int64) *Tree {
 	return T
 }
 
+// IsLeaf returns true if the Node(tree) is a leaf.
+func (T *Tree) IsLeaf(val int64) bool {
+	nd := T.Find(val)
+	if nd == nil {
+		return false
+	}
+	if nd.Left == nil && nd.Right == nil {
+		return true
+	} else {
+		return false
+	}
+}
+
 // TreePrint prints out the tree.
 func (T *Tree) TreePrint() string {
 	if T == nil {
