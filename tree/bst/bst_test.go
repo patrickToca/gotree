@@ -231,7 +231,7 @@ func Test_Construct(test *testing.T) {
 	ss := []int64{7, 3, 2, 1, 4, 6, 8}
 	ch := make(chan int64)
 	vs := ValuePreOrder(tr, ch)
-	if !AreSameSlice(ss, vs) {
+	if !SameSlice(ss, vs) {
 		test.Errorf("Should be true but\n%v", vs)
 	}
 }
