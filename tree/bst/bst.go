@@ -35,7 +35,9 @@ func (T *Tree) Inserts(values ...int64) *Tree {
 // Insert inserts a new value(node) to the tree.
 func (T *Tree) Insert(val int64) *Tree {
 	T.Size += 1
-	return T.insert(val)
+	T.insert(val)
+	T.Find(val).Size += 1
+	return T
 }
 
 // insert inserts a new value to the tree.
@@ -47,8 +49,10 @@ func (T *Tree) insert(val int64) *Tree {
 	}
 	if val < T.Value {
 		T.Left = T.Left.insert(val)
+		T.Left.Size += 1
 	} else if val > T.Value {
 		T.Right = T.Right.insert(val)
+		T.Right.Size += 1
 	}
 	return T
 }

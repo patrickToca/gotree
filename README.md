@@ -230,6 +230,18 @@ then
  6   8
 ```
 
+<hr>
+
+##### Determine which rotation to use
+**`Height(Unbalanced-Node)`** is:
+	- **Positive**: Left-Child (Example Height = 2)
+		- If **`Height(Left-Child)`** is:
+			- Positive: `LL Rotation` (Example Height = 1)
+			- Negative: `LR Rotation` (Example Height = -1)
+	- **Negative**: Right-Child (Example Height = 2)
+		- If **`Height(Right-Child)`** is:
+			- Positive: `RL Rotation` (Example Height = 1)
+			- Negative: `RR Rotation` (Example Height = -1)
 
 
 To-Do-List

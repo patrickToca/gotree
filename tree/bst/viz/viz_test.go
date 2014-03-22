@@ -52,3 +52,15 @@ func Test_Show5(test *testing.T) {
 	tr = tr.Delete(int64(5))
 	// Show(tr, "tree5.dot")
 }
+
+func Test_Show6(test *testing.T) {
+	tr1 := bst.NewTree(10)
+	tr1.Inserts(13, 17, 5, 4, 7, 6, 8, 9)
+	// Show(tr1, "tree6.dot")
+
+	// Rebalanced!
+	tr2 := bst.NewTree(10)
+	tr2.Inserts(13, 17, 7, 5, 8, 4, 6, 9)
+	// Show(tr2, "tree7.dot")
+	fmt.Println(tr2.Find(5).Size)
+}
