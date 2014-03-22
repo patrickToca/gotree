@@ -158,7 +158,7 @@ because the Height(Left) is 0 and Height(Right) is 2
 Unbalanced!
 ```
     4
-	 /
+   /
   3
  /
 2
