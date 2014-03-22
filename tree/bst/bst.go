@@ -450,3 +450,18 @@ func Construct(val int64, slice []int64) *Tree {
 	Tr.Inserts(slice[1:]...)
 	return Tr
 }
+
+// SameSlice returns true if the two int64 slices
+// are equal.
+func SameSlice(s1, s2 []int64) bool {
+	if len(s1) != len(s2) {
+		return false
+	}
+	result := true
+	for k, v := range s2 {
+		if s1[k] != v {
+			result = false
+		}
+	}
+	return result
+}
