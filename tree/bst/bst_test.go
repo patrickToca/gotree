@@ -220,7 +220,7 @@ func Test_ValuePreOrder(test *testing.T) {
 	ss := []int64{5, 3, 2, 1, 4, 7, 6, 8}
 	ch := make(chan int64)
 	slice := ValuePreOrder(tr, ch)
-	if !AreSameSlice(ss, slice) {
+	if !SameSlice(ss, slice) {
 		test.Errorf("Should be true but\n%v", slice)
 	}
 }
