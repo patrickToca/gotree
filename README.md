@@ -5,13 +5,13 @@ gotree provides tree visualizing tools and algorithm implementations.
 
 - [Getting Started](https://github.com/gyuho/gotree#getting-started)
 - [Package Hierarchy](https://github.com/gyuho/gotree#package-hierarchy)
-- [Example : Binary Search Tree](https://github.com/gyuho/gotree#testing-graphs)
+- [Example : Binary Search Tree](https://github.com/gyuho/gotree#example--binary-search-tree)
 - [AVL Tree](https://github.com/gyuho/gotree#avl-tree)
 - [Example : AVL Tree](https://github.com/gyuho/gotree#testing-graphs)
 - [Red Black Tree](https://github.com/gyuho/gotree#avl-tree)
-- [Example : Red Black Tree](https://github.com/gyuho/gotree#testing-graphs)
+- [Example : Red Black Tree](https://github.com/gyuho/gotree#example--red-black-tree)
 - [B-Tree](https://github.com/gyuho/gotree#b-tree)
-- [Example : B-Tree](https://github.com/gyuho/gotree#testing-graphs)
+- [Example : B-Tree](https://github.com/gyuho/gotree#example--b-tree)
 - [To-Do-List](https://github.com/gyuho/gotree#to-do-list)
 
 
@@ -128,11 +128,11 @@ For lookup-intensive applications, AVL trees are faster than red-black trees bec
 
 For example,
 ```
-	1
- /  \
-     2
-    / \
-   3   4
+  1
+ / \
+    2
+   / \
+  3   4
 ```
 The node 2 is balanced, but the node 1 is NOT balanced
 because the Height(Left) is 0 and Height(Right) is 2
