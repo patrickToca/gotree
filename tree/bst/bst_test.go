@@ -213,3 +213,38 @@ func Test_StringLevelOrder(test *testing.T) {
 		test.Errorf("Should be\n%v\n\nbut\n%v", sc1, s1)
 	}
 }
+
+func AreSameSlice(s1, s2 []int64) bool {
+	if len(s1) != len(s2) {
+		return false
+	}
+	result := true
+	for k, v := range s2 {
+		if s1[k] != v {
+			result = false
+		}
+	}
+	return result
+}
+
+func Test_ValuePreOrder(test *testing.T) {
+	tr := NewTree(5)
+	tr.Inserts(7, 8, 3, 4, 2, 1, 6)
+	ss := []int64{5, 3, 2, 1, 4, 7, 6, 8}
+	ch := make(chan int64)
+	slice := ValuePreOrder(tr, ch)
+	if !AreSameSlice(ss, slice) {
+		test.Errorf("Should be true but\n%v", slice)
+	}
+}
+
+func Test_Construct(test *testing.T) {
+	slice := []int64{5, 7, 8, 3, 4, 2, 1, 6}
+	tr := Construct(5, slice)
+	ss := []int64{7, 3, 2, 1, 4, 6, 8}
+	ch := make(chan int64)
+	vs := ValuePreOrder(tr, ch)
+	if !AreSameSlice(ss, vs) {
+		test.Errorf("Should be true but\n%v", vs)
+	}
+}

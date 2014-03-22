@@ -83,6 +83,28 @@ func Test_Show3(test *testing.T) {
 
 <img src="./files/tree03.png" alt="tree03" width="250px" height="320px"/>
 
+<hr>
+
+```go
+tr := bst.NewTree(5)
+tr.Inserts(7, 8, 4, 2, 1, 3)
+tr.Delete(int64(7))
+Show(tr, "tree4.dot")
+```
+
+<img src="./files/tree04.png" alt="tree04" width="250px" height="320px"/>
+
+<hr>
+
+```go
+tr := bst.NewTree(5)
+tr.Inserts(7, 8, 3, 4, 2, 1, 6)
+tr = tr.Delete(int64(5))
+Show(tr, "tree5.dot")
+```
+
+<img src="./files/tree05.png" alt="tree05" width="250px" height="320px"/>
+
 
 To-Do-List
 ==========

@@ -48,6 +48,7 @@ func Test_Show4(test *testing.T) {
 
 func Test_Show5(test *testing.T) {
 	tr := bst.NewTree(5)
-	tr.Inserts(8, 4, 2, 1, 3)
+	tr.Inserts(7, 8, 3, 4, 2, 1, 6)
+	tr = tr.Delete(int64(5))
 	// Show(tr, "tree5.dot")
 }

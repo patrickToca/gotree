@@ -146,7 +146,7 @@ func (T *Tree) FindMax() int64 {
 }
 
 // Delete deletes the node of input value.
-func (T *Tree) Delete(val int64) {
+func (T *Tree) Delete(val int64) *Tree {
 	// ** Deleting a leaf (node with no children)
 	if T.IsLeaf(val) {
 		// First delete as a child
@@ -160,8 +160,10 @@ func (T *Tree) Delete(val int64) {
 		// Be careful with order
 		// Do nil at the end
 		T.Size -= 1
-		T = nil
-		return
+		TT := T.Find(val)
+		_ = TT
+		TT = nil
+		return T
 	}
 
 	// we need to access from the node
@@ -184,7 +186,7 @@ func (T *Tree) Delete(val int64) {
 		// Then delete the node itself
 		VT = nil
 		T.Size -= 1
-		return
+		return T
 	}
 
 	// ** Deleting a node with one child:
@@ -202,14 +204,22 @@ func (T *Tree) Delete(val int64) {
 		// Then delete the node itself
 		VT = nil
 		T.Size -= 1
-		return
+		return T
 	}
 
+	// TODO: Inefficient...
 	// ** Deleting a node with two children
 	// Move up the Left Child
+	// rightmost node in the left subtree,
+	// the inorder predecessor 6, is identified.
+	// Its value is copied into the node being deleted.
 	if VT.Left != nil && VT.Right != nil {
-
+		ch := make(chan int64)
+		is := ValuePreOrder(T, ch)
+		return Construct(val, is)
 	}
+
+	return T
 }
 
 // TreePrint prints out the tree.
@@ -405,4 +415,38 @@ func StringLevelOrder(T *Tree) string {
 		s += fmt.Sprintf("%v ", elem.Value.(*Tree).Value)
 	}
 	return s
+}
+
+// ValuePreOrder returns the traversed integer slice
+// of the tree in the order of Root, Left, Right.
+func ValuePreOrder(T *Tree, ch chan int64) []int64 {
+	go func() {
+		defer close(ch)
+		walkPreOrder(T, ch)
+	}()
+	slice := []int64{}
+	for v := range ch {
+		slice = append(slice, v)
+	}
+	return slice
+}
+
+// Construct creates the Tree out of input slice,
+// except the input value.
+func Construct(val int64, slice []int64) *Tree {
+	// delete the value from slice
+	findIdx := func(val int64, sl []int64) int {
+		for k, v := range sl {
+			if val == v {
+				return k
+			}
+		}
+		return 0
+	}
+	idx := findIdx(val, slice)
+	copy(slice[idx:], slice[idx+1:])
+	slice = slice[:len(slice)-1 : len(slice)-1] // resize
+	Tr := NewTree(slice[0])
+	Tr.Inserts(slice[1:]...)
+	return Tr
 }
