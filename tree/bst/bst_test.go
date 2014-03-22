@@ -214,19 +214,6 @@ func Test_StringLevelOrder(test *testing.T) {
 	}
 }
 
-func AreSameSlice(s1, s2 []int64) bool {
-	if len(s1) != len(s2) {
-		return false
-	}
-	result := true
-	for k, v := range s2 {
-		if s1[k] != v {
-			result = false
-		}
-	}
-	return result
-}
-
 func Test_ValuePreOrder(test *testing.T) {
 	tr := NewTree(5)
 	tr.Inserts(7, 8, 3, 4, 2, 1, 6)
