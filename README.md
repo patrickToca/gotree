@@ -44,15 +44,13 @@ viz/		# Tree Visualization (Graphviz)
 Example (Binary Search Tree)
 ==========
 ```go
-func Test_Show1(test *testing.T) {
-	tr := bst.NewTree(5)
-	for i := 0; i < 10; i++ {
-		if i != 5 {
-			tr = tr.Insert(int64(i))
-		}
+tr := bst.NewTree(5)
+for i := 0; i < 10; i++ {
+	if i != 5 {
+		tr = tr.Insert(int64(i))
 	}
-	Show(tr, "tree1.dot")
 }
+Show(tr, "tree1.dot")
 ```
 
 <img src="./files/tree01.png" alt="tree01" width="140px" height="320px"/>
@@ -60,12 +58,9 @@ func Test_Show1(test *testing.T) {
 <hr>
 
 ```go
-func Test_Show2(test *testing.T) {
-	tr := bst.NewTree(5)
-	tr.Inserts(7, 8, 5, 4, 2, 1, 6, 3)
-	Show(tr, "tree2.dot")
-}
-
+tr := bst.NewTree(5)
+tr.Inserts(7, 8, 5, 4, 2, 1, 6, 3)
+Show(tr, "tree2.dot")
 ```
 
 <img src="./files/tree02.png" alt="tree02" width="250px" height="320px"/>
@@ -73,12 +68,10 @@ func Test_Show2(test *testing.T) {
 <hr>
 
 ```go
-func Test_Show3(test *testing.T) {
-	tr := bst.NewTree(5)
-	tr.Inserts(7, 8, 5, 4, 2, 1, 6, 3)
-	tr.Delete(int64(6))
-	Show(tr, "tree3.dot")
-}
+tr := bst.NewTree(5)
+tr.Inserts(7, 8, 5, 4, 2, 1, 6, 3)
+tr.Delete(int64(6))
+Show(tr, "tree3.dot")
 ```
 
 <img src="./files/tree03.png" alt="tree03" width="250px" height="320px"/>
@@ -105,6 +98,7 @@ Show(tr, "tree5.dot")
 
 <img src="./files/tree05.png" alt="tree05" width="250px" height="320px"/>
 
+<hr>
 
 To-Do-List
 ==========
