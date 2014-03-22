@@ -100,6 +100,125 @@ Show(tr, "tree5.dot")
 
 <hr>
 
+
+<a href="http://en.wikipedia.org/wiki/AVL_tree" target="_blank">AVL Tree</a>
+==========
+AVL tree is a self-balancing binary search tree.
+
+For lookup-intensive applications, AVL trees are faster than red-black trees because they are more rigidly balanced. Similar to red-black trees, AVL trees are height-balanced. Both are in general not weight-balanced
+
+**It is basically a Binary Search Tree (BST) with additional balancing property:**
+
+**`Height of the Left Sub-Tree`** and **`Height of the Right Sub-Tree`** differ by at most 1
+
+**Balance(Tree)** = **Height(Left)** - **Height(Right)** = -1, 0, 1
+
+For example,
+```
+	1
+ /  \
+     2
+    / \
+   3   4
+```
+The node 2 is balanced, but the node 1 is NOT balanced
+because the Height(Left) is 0 and Height(Right) is 2
+
+##### Insertion
+1. Insert into Left-Sub of Left-Child
+2. Insert into Right-Sub of Right-Child
+3. Insert into Left-Sub of Right-Child
+4. Insert into Right-Sub of Left-Child
+
+##### Rotation for Re-balancing
+1. LL Rotation
+2. RR Rotation
+3. LR Rotation
+4. RL Rotation
+
+<hr>
+
+##### Rebalance (Rearrange)
+
+1. LL Rotation
+
+Unbalanced!
+```
+    4
+	 /
+  3
+ /
+2
+```
+
+then
+```
+   3
+  / \
+ 2   4
+```
+
+<hr>
+
+2. RR Rotation
+
+Unbalanced!
+```
+    6
+     \
+      7
+       \
+        8
+```
+
+then
+```
+   7
+  / \
+ 6   8
+```
+
+<hr>
+
+3. LR Rotation
+
+Unbalanced!
+```
+    4
+   /
+  2
+   \
+    3
+```
+
+then
+```
+   3
+  / \
+ 2   4
+```
+<hr>
+
+4. RL Rotation
+
+Unbalanced!
+```
+    6
+     \
+      8
+     /
+    7
+```
+
+then
+```
+   7
+  / \
+ 6   8
+```
+
+
+
 To-Do-List
 ==========
 **Non-Committal on a Timeline**
