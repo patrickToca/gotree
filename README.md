@@ -3,6 +3,18 @@ gotree [![Build Status](https://travis-ci.org/gyuho/gotree.svg?branch=master)](h
 
 gotree provides tree visualizing tools and algorithm implementations.
 
+- [Getting Started](https://github.com/gyuho/gotree#getting-started)
+- [Package Hierarchy](https://github.com/gyuho/gotree#package-hierarchy)
+- [Example : Binary Search Tree](https://github.com/gyuho/gotree#testing-graphs)
+- [AVL Tree](https://github.com/gyuho/gotree#avl-tree)
+- [Example : AVL Tree](https://github.com/gyuho/gotree#testing-graphs)
+- [Red Black Tree](https://github.com/gyuho/gotree#avl-tree)
+- [Example : Red Black Tree](https://github.com/gyuho/gotree#testing-graphs)
+- [B-Tree](https://github.com/gyuho/gotree#b-tree)
+- [Example : B-Tree](https://github.com/gyuho/gotree#testing-graphs)
+- [To-Do-List](https://github.com/gyuho/gotree#to-do-list)
+
+
 Getting Started
 ==========
 - [godoc.org](http://godoc.org/github.com/gyuho/gotree)
@@ -32,16 +44,17 @@ Package Hierarchy
 ```go
 tree/		# Tree Data Structure
 	bst/	# Binary Search Tree
+	avl/	# AVL Tree
 	rbt/	# Red Black Tree
 	bt/		# B-Tree
-	avl/	# AVL Tree
 
 example/	# Example Code
 
 viz/		# Tree Visualization (Graphviz)
 ```
 
-Example (Binary Search Tree)
+
+Example : Binary Search Tree
 ==========
 ```go
 tr := bst.NewTree(5)
