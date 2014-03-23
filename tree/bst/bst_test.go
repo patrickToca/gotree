@@ -60,8 +60,26 @@ func Test_GetSize(test *testing.T) {
 	if tr.GetSize(5) != 8 {
 		test.Errorf("Size should be 8 but %v", tr.GetSize(5))
 	}
+	if tr.GetSize(4) != 4 {
+		test.Errorf("Size should be 4 but %v", tr.GetSize(4))
+	}
 	if tr.GetSize(7) != 3 {
 		test.Errorf("Size should be 3 but %v", tr.GetSize(7))
+	}
+	if tr.GetSize(2) != 3 {
+		test.Errorf("Size should be 3 but %v", tr.GetSize(2))
+	}
+	if tr.GetSize(6) != 1 {
+		test.Errorf("Size should be 1 but %v", tr.GetSize(6))
+	}
+	if tr.GetSize(8) != 1 {
+		test.Errorf("Size should be 1 but %v", tr.GetSize(8))
+	}
+	if tr.GetSize(1) != 1 {
+		test.Errorf("Size should be 1 but %v", tr.GetSize(1))
+	}
+	if tr.GetSize(3) != 1 {
+		test.Errorf("Size should be 1 but %v", tr.GetSize(3))
 	}
 }
 
@@ -70,6 +88,27 @@ func Test_GetHeight(test *testing.T) {
 	tr.Inserts(7, 8, 4, 2, 1, 6, 3)
 	if tr.GetHeight(5) != 3 {
 		test.Errorf("Height should be 3 but %v", tr.GetHeight(5))
+	}
+	if tr.GetHeight(4) != 2 {
+		test.Errorf("Height should be 2 but %v", tr.GetHeight(4))
+	}
+	if tr.GetHeight(7) != 1 {
+		test.Errorf("Height should be 1 but %v", tr.GetHeight(7))
+	}
+	if tr.GetHeight(2) != 1 {
+		test.Errorf("Height should be 1 but %v", tr.GetHeight(2))
+	}
+	if tr.GetHeight(1) != 0 {
+		test.Errorf("Height should be 0 but %v", tr.GetHeight(1))
+	}
+	if tr.GetHeight(3) != 0 {
+		test.Errorf("Height should be 0 but %v", tr.GetHeight(3))
+	}
+	if tr.GetHeight(6) != 0 {
+		test.Errorf("Height should be 0 but %v", tr.GetHeight(6))
+	}
+	if tr.GetHeight(8) != 0 {
+		test.Errorf("Height should be 0 but %v", tr.GetHeight(8))
 	}
 }
 
