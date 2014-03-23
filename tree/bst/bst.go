@@ -46,13 +46,13 @@ func (T *Tree) Insert(val int64) *Tree {
 	if val < T.Value {
 		// Insert into the left tree
 		T.Left = T.Left.Insert(val)
-		// to increase the size of the left sub-tree
-		// T.Left.Size += 1
+		// (X) to increase the size of the left sub-tree
+		// (X) T.Left.Size += 1
 	} else if val > T.Value {
 		// Insert into the right tree
 		T.Right = T.Right.Insert(val)
-		// to increase the size of the right sub-tree
-		// T.Right.Size += 1
+		// (X) to increase the size of the right sub-tree
+		// (X) T.Right.Size += 1
 	}
 	return T
 }
