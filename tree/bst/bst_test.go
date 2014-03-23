@@ -60,6 +60,9 @@ func Test_GetSize(test *testing.T) {
 	if tr.GetSize(5) != 8 {
 		test.Errorf("Size should be 8 but %v", tr.GetSize(5))
 	}
+	if tr.GetSize(7) != 3 {
+		test.Errorf("Size should be 3 but %v", tr.GetSize(7))
+	}
 }
 
 func Test_GetHeight(test *testing.T) {

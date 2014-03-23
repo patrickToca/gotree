@@ -35,30 +35,24 @@ func (T *Tree) Inserts(values ...int64) *Tree {
 
 // Insert inserts a new value(node) to the tree.
 func (T *Tree) Insert(val int64) *Tree {
-	if T.Value != val {
+	if T != nil && T.Value != val {
 		T.Size += 1
 	}
-	T.insert(val)
-	return T
-}
-
-// insert inserts a new value to the tree.
-func (T *Tree) insert(val int64) *Tree {
 	// To end recursion
 	// set terminal node's left and right to nil
 	if T == nil {
 		return &Tree{nil, val, nil, int64(1)}
 	}
 	if val < T.Value {
-		// insert into the left tree
-		T.Left = T.Left.insert(val)
+		// Insert into the left tree
+		T.Left = T.Left.Insert(val)
 		// to increase the size of the left sub-tree
-		T.Left.Size += 1
+		// T.Left.Size += 1
 	} else if val > T.Value {
-		// insert into the right tree
-		T.Right = T.Right.insert(val)
+		// Insert into the right tree
+		T.Right = T.Right.Insert(val)
 		// to increase the size of the right sub-tree
-		T.Right.Size += 1
+		// T.Right.Size += 1
 	}
 	return T
 }
@@ -105,7 +99,6 @@ func (T *Tree) GetHeight(val int64) int64 {
 	float64ToInt64 := func(num float64) int64 {
 		return int64(num)
 	}
-
 	return float64ToInt64(math.Floor(math.Log2(float64(T.GetSize(val)))))
 }
 
