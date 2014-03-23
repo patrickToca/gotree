@@ -4,6 +4,7 @@ package bst
 import (
 	"container/list"
 	"fmt"
+	"math"
 )
 
 // Tree is for binary tree.
@@ -34,9 +35,10 @@ func (T *Tree) Inserts(values ...int64) *Tree {
 
 // Insert inserts a new value(node) to the tree.
 func (T *Tree) Insert(val int64) *Tree {
-	T.Size += 1
+	if T.Value != val {
+		T.Size += 1
+	}
 	T.insert(val)
-	T.Find(val).Size += 1
 	return T
 }
 
@@ -48,10 +50,14 @@ func (T *Tree) insert(val int64) *Tree {
 		return &Tree{nil, val, nil, int64(1)}
 	}
 	if val < T.Value {
+		// insert into the left tree
 		T.Left = T.Left.insert(val)
+		// to increase the size of the left sub-tree
 		T.Left.Size += 1
 	} else if val > T.Value {
+		// insert into the right tree
 		T.Right = T.Right.insert(val)
+		// to increase the size of the right sub-tree
 		T.Right.Size += 1
 	}
 	return T
@@ -76,6 +82,31 @@ func (T *Tree) Find(val int64) *Tree {
 		return T.Right.Find(val)
 	}
 	return T
+}
+
+// GetSize returns the size of the node with the input value
+// which is the number of the children node + 1.
+func (T *Tree) GetSize(val int64) int64 {
+	if T.Value == val {
+		return T.Size
+	}
+	node := T.Find(val)
+	return node.Size
+}
+
+// GetHeight returns the height of the node with the input value.
+func (T *Tree) GetHeight(val int64) int64 {
+	// Height h = ⌊log_2 n⌋
+	// n = 15 (15 nodes), then the height of the root node
+	// is = ⌊log_2 15⌋ = 3
+
+	// in order to truncate
+	// need to make a copy by passing as a parameter
+	float64ToInt64 := func(num float64) int64 {
+		return int64(num)
+	}
+
+	return float64ToInt64(math.Floor(math.Log2(float64(T.GetSize(val)))))
 }
 
 // Parent returns the parental Tree(node) of input value.

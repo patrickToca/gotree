@@ -17,9 +17,9 @@ func Test_NewTree(test *testing.T) {
 func Test_Inserts(test *testing.T) {
 	tr := NewTree(5)
 	tr.Inserts(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
-	//if tr.Size != 11 {
-	//	test.Errorf("Should be size of 11 but %+v", tr.Size)
-	//}
+	if tr.Size != 10 {
+		test.Errorf("Should be size of 10 but %+v", tr.Size)
+	}
 }
 
 func Test_Insert(test *testing.T) {
@@ -28,9 +28,12 @@ func Test_Insert(test *testing.T) {
 		tr.Insert(int64(i))
 		// tr = tr.Insert(int64(i))
 	}
-	//if tr.Size != 11 {
-	//	test.Errorf("Should be size of 11 but %+v", tr.Size)
-	//}
+	if tr.GetSize(5) != 10 {
+		test.Errorf("Should be size of 10 but %+v", tr.GetSize(5))
+	}
+	if tr.Size != 10 {
+		test.Errorf("Should be size of 10 but %+v", tr.Size)
+	}
 }
 
 func Test_Find(test *testing.T) {
@@ -48,6 +51,22 @@ func Test_Find(test *testing.T) {
 	fr := tt.Find(4)
 	if fr.Left.Value != int64(2) {
 		test.Errorf("Should exist but %+v", tt.Find(int64(4)))
+	}
+}
+
+func Test_GetSize(test *testing.T) {
+	tr := NewTree(5)
+	tr.Inserts(7, 8, 4, 2, 1, 6, 3)
+	if tr.GetSize(5) != 8 {
+		test.Errorf("Size should be 8 but %v", tr.GetSize(5))
+	}
+}
+
+func Test_GetHeight(test *testing.T) {
+	tr := NewTree(5)
+	tr.Inserts(7, 8, 4, 2, 1, 6, 3)
+	if tr.GetHeight(5) != 3 {
+		test.Errorf("Height should be 3 but %v", tr.GetHeight(5))
 	}
 }
 
