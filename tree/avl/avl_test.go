@@ -54,6 +54,66 @@ func Test_Find(test *testing.T) {
 	}
 }
 
+func Test_Parent(test *testing.T) {
+	tr := NewTree(5)
+	tr.Inserts(7, 8, 5, 4, 2, 1, 6, 3)
+	if tr.Parent(int64(6)).Value != 7 {
+		test.Errorf("Parent should be 7 but\n%v", tr.Parent(int64(6)).Value)
+	}
+	if tr.Parent(int64(8)).Value != 7 {
+		test.Errorf("Parent should be 7 but\n%v", tr.Parent(int64(8)).Value)
+	}
+	if tr.Parent(int64(7)).Value != 5 {
+		test.Errorf("Parent should be 5 but\n%v", tr.Parent(int64(7)).Value)
+	}
+	if tr.Parent(int64(1)).Value != 2 {
+		test.Errorf("Parent should be 2 but\n%v", tr.Parent(int64(1)).Value)
+	}
+	if tr.Parent(int64(5)) != nil {
+		test.Errorf("Parent should be nil but\n%v", tr.Parent(int64(5)))
+	}
+}
+
+func Test_IsLeaf(test *testing.T) {
+	tr := NewTree(5)
+	tr.Inserts(7, 8, 5, 4, 2, 1, 6, 3)
+	if tr.IsLeaf(int64(5)) {
+		test.Errorf("IsLeaf should return false but\n%v", tr.IsLeaf(int64(5)))
+	}
+	if !tr.IsLeaf(int64(1)) {
+		test.Errorf("IsLeaf should return true but\n%v", tr.IsLeaf(int64(1)))
+	}
+	if !tr.IsLeaf(int64(3)) {
+		test.Errorf("IsLeaf should return true but\n%v", tr.IsLeaf(int64(3)))
+	}
+	if !tr.IsLeaf(int64(6)) {
+		test.Errorf("IsLeaf should return true but\n%v", tr.IsLeaf(int64(6)))
+	}
+	if !tr.IsLeaf(int64(8)) {
+		test.Errorf("IsLeaf should return true but\n%v", tr.IsLeaf(int64(8)))
+	}
+}
+
+func Test_IsRoot(test *testing.T) {
+	tr := NewTree(5)
+	tr.Inserts(7, 8, 5, 4, 2, 1, 6, 3)
+	if !tr.IsRoot(int64(5)) {
+		test.Errorf("IsRoot should return true but\n%v", tr.IsRoot(int64(5)))
+	}
+	if tr.IsRoot(int64(1)) {
+		test.Errorf("IsRoot should return false but\n%v", tr.IsRoot(int64(1)))
+	}
+	if tr.IsRoot(int64(3)) {
+		test.Errorf("IsRoot should return false but\n%v", tr.IsRoot(int64(3)))
+	}
+	if tr.IsRoot(int64(6)) {
+		test.Errorf("IsRoot should return false but\n%v", tr.IsRoot(int64(6)))
+	}
+	if tr.IsRoot(int64(8)) {
+		test.Errorf("IsRoot should return false but\n%v", tr.IsRoot(int64(8)))
+	}
+}
+
 func Test_GetSize(test *testing.T) {
 	tr := NewTree(5)
 	tr.Inserts(7, 8, 4, 2, 1, 6, 3)
@@ -206,66 +266,33 @@ func Test_IsBalanced(test *testing.T) {
 		test.Errorf("IsBalanced should be true but %v", tr3.IsBalanced(5))
 	}
 	if tr3.IsBalanced(4) {
-		test.Errorf("IsBalanced should be false but %v", tr3.Height(4))
+		test.Errorf("IsBalanced should be false but %v", tr3.IsBalanced(4))
+	}
+	if !tr3.IsBalanced(7) {
+		test.Errorf("IsBalanced should be true but %v", tr3.IsBalanced(7))
+	}
+	if !tr3.IsBalanced(8) {
+		test.Errorf("IsBalanced should be true but %v", tr3.IsBalanced(8))
+	}
+	if !tr3.IsBalanced(2) {
+		test.Errorf("IsBalanced should be true but %v", tr3.IsBalanced(2))
+	}
+	if !tr3.IsBalanced(1) {
+		test.Errorf("IsBalanced should be true but %v", tr3.IsBalanced(1))
+	}
+	if !tr3.IsBalanced(3) {
+		test.Errorf("IsBalanced should be true but %v", tr3.IsBalanced(3))
 	}
 }
 
-func Test_Parent(test *testing.T) {
-	tr := NewTree(5)
-	tr.Inserts(7, 8, 5, 4, 2, 1, 6, 3)
-	if tr.Parent(int64(6)).Value != 7 {
-		test.Errorf("Parent should be 7 but\n%v", tr.Parent(int64(6)).Value)
+func Test_BalancingInsert(test *testing.T) {
+	tr1 := NewTree(4)
+	_, tr1_r1 := tr1.BalancingInsert(3)
+	if tr1_r1 != "Balanced" {
+		test.Errorf("BalancingInsert should return Balanced but %v", tr1_r1)
 	}
-	if tr.Parent(int64(8)).Value != 7 {
-		test.Errorf("Parent should be 7 but\n%v", tr.Parent(int64(8)).Value)
-	}
-	if tr.Parent(int64(7)).Value != 5 {
-		test.Errorf("Parent should be 5 but\n%v", tr.Parent(int64(7)).Value)
-	}
-	if tr.Parent(int64(1)).Value != 2 {
-		test.Errorf("Parent should be 2 but\n%v", tr.Parent(int64(1)).Value)
-	}
-	if tr.Parent(int64(5)) != nil {
-		test.Errorf("Parent should be nil but\n%v", tr.Parent(int64(5)))
-	}
-}
-
-func Test_IsLeaf(test *testing.T) {
-	tr := NewTree(5)
-	tr.Inserts(7, 8, 5, 4, 2, 1, 6, 3)
-	if tr.IsLeaf(int64(5)) {
-		test.Errorf("IsLeaf should return false but\n%v", tr.IsLeaf(int64(5)))
-	}
-	if !tr.IsLeaf(int64(1)) {
-		test.Errorf("IsLeaf should return true but\n%v", tr.IsLeaf(int64(1)))
-	}
-	if !tr.IsLeaf(int64(3)) {
-		test.Errorf("IsLeaf should return true but\n%v", tr.IsLeaf(int64(3)))
-	}
-	if !tr.IsLeaf(int64(6)) {
-		test.Errorf("IsLeaf should return true but\n%v", tr.IsLeaf(int64(6)))
-	}
-	if !tr.IsLeaf(int64(8)) {
-		test.Errorf("IsLeaf should return true but\n%v", tr.IsLeaf(int64(8)))
-	}
-}
-
-func Test_IsRoot(test *testing.T) {
-	tr := NewTree(5)
-	tr.Inserts(7, 8, 5, 4, 2, 1, 6, 3)
-	if !tr.IsRoot(int64(5)) {
-		test.Errorf("IsRoot should return true but\n%v", tr.IsRoot(int64(5)))
-	}
-	if tr.IsRoot(int64(1)) {
-		test.Errorf("IsRoot should return false but\n%v", tr.IsRoot(int64(1)))
-	}
-	if tr.IsRoot(int64(3)) {
-		test.Errorf("IsRoot should return false but\n%v", tr.IsRoot(int64(3)))
-	}
-	if tr.IsRoot(int64(6)) {
-		test.Errorf("IsRoot should return false but\n%v", tr.IsRoot(int64(6)))
-	}
-	if tr.IsRoot(int64(8)) {
-		test.Errorf("IsRoot should return false but\n%v", tr.IsRoot(int64(8)))
+	_, tr1_r2 := tr1.BalancingInsert(2)
+	if tr1_r2 != "LL" {
+		test.Errorf("BalancingInsert should return LL but %v", tr1_r2)
 	}
 }

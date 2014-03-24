@@ -21,14 +21,6 @@ func NewTree(val int64) *Tree {
 	}
 }
 
-// BalancingInserts implements Insert with a variadic function.
-func (T *Tree) BalancingInserts(values ...int64) *Tree {
-	for _, v := range values {
-		T.Insert(v)
-	}
-	return T
-}
-
 // Inserts implements Insert with a variadic function.
 func (T *Tree) Inserts(values ...int64) *Tree {
 	for _, v := range values {
@@ -81,6 +73,59 @@ func (T *Tree) Find(val int64) *Tree {
 		return T.Right.Find(val)
 	}
 	return T
+}
+
+// Parent returns the parental Tree(node) of input value.
+func (T *Tree) Parent(val int64) *Tree {
+	// if the input value is nil
+	if val == T.Value {
+		return nil
+	}
+	if T == nil {
+		return &Tree{nil, val, nil, int64(1)}
+	}
+	// we need to check if T.Left is nil or not
+	// otherwise, it panics with the message:
+	// panic: runtime error: invalid memory address
+	// or nil pointer dereference [recovered]
+	if T.Left != nil {
+		if T.Left.Value == val {
+			return T
+		}
+	}
+	if T.Right != nil {
+		if T.Right.Value == val {
+			return T
+		}
+	}
+	if val < T.Value {
+		return T.Left.Parent(val)
+	} else {
+		return T.Right.Parent(val)
+	}
+	return T
+}
+
+// IsRoot returns true if the Node(tree) is a root of the tree.
+func (T *Tree) IsRoot(val int64) bool {
+	if T.Parent(val) == nil {
+		return true
+	} else {
+		return false
+	}
+}
+
+// IsLeaf returns true if the Node(tree) is a leaf.
+func (T *Tree) IsLeaf(val int64) bool {
+	nd := T.Find(val)
+	if nd == nil {
+		return false
+	}
+	if nd.Left == nil && nd.Right == nil {
+		return true
+	} else {
+		return false
+	}
 }
 
 // GetSize returns the size of the node with the input value
@@ -143,55 +188,34 @@ func (T *Tree) IsBalanced(val int64) bool {
 	return -1 <= T.Height(val) && T.Height(val) <= 1
 }
 
-// Parent returns the parental Tree(node) of input value.
-func (T *Tree) Parent(val int64) *Tree {
-	// if the input value is nil
-	if val == T.Value {
-		return nil
-	}
-	if T == nil {
-		return &Tree{nil, val, nil, int64(1)}
-	}
-	// we need to check if T.Left is nil or not
-	// otherwise, it panics with the message:
-	// panic: runtime error: invalid memory address
-	// or nil pointer dereference [recovered]
-	if T.Left != nil {
-		if T.Left.Value == val {
-			return T
-		}
-	}
-	if T.Right != nil {
-		if T.Right.Value == val {
-			return T
-		}
-	}
-	if val < T.Value {
-		return T.Left.Parent(val)
+// BalancingInsert inserts one value to a Tree
+// and tells if the Tree is LL, RR, LR, RL.
+func (T *Tree) BalancingInsert(val int64) (*Tree, string) {
+	T.Insert(val)
+	if T.IsBalanced(T.Value) {
+		return T, "Balanced"
 	} else {
-		return T.Right.Parent(val)
+		switch T.Height(T.Value) {
+		case 2: // LL or LR
+			if T.Left.Left != nil && T.Left.Right == nil {
+				return T, "LL"
+			}
+			if T.Left.Left == nil && T.Left.Right != nil {
+				return T, "LR"
+			}
+		case -2: // RR or RL
+			if T.Right.Right != nil && T.Right.Left == nil {
+				return T, "RR"
+			}
+			if T.Right.Right == nil && T.Right.Left != nil {
+				return T, "LR"
+			}
+		}
 	}
+	return T, "None"
+}
+
+// BalancingInserts implements Insert with a variadic function.
+func (T *Tree) BalancingInserts(values ...int64) *Tree {
 	return T
-}
-
-// IsRoot returns true if the Node(tree) is a root of the tree.
-func (T *Tree) IsRoot(val int64) bool {
-	if T.Parent(val) == nil {
-		return true
-	} else {
-		return false
-	}
-}
-
-// IsLeaf returns true if the Node(tree) is a leaf.
-func (T *Tree) IsLeaf(val int64) bool {
-	nd := T.Find(val)
-	if nd == nil {
-		return false
-	}
-	if nd.Left == nil && nd.Right == nil {
-		return true
-	} else {
-		return false
-	}
 }
