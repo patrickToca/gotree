@@ -267,7 +267,7 @@ func Test_avlviz(test *testing.T) {
 ```
 
 **Before**
-<img src="./files/avl-before.png" alt="avl-before" width="40px" height="90px"/>
+<img src="./files/avl-before.png" alt="avl-before" width="50px" height="100px"/>
 
 **After**
 <img src="./files/avl-after.png" alt="avl-after" width="120px" height="120px"/>
