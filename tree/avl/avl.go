@@ -21,6 +21,14 @@ func NewTree(val int64) *Tree {
 	}
 }
 
+// BalancingInserts implements Insert with a variadic function.
+func (T *Tree) BalancingInserts(values ...int64) *Tree {
+	for _, v := range values {
+		T.Insert(v)
+	}
+	return T
+}
+
 // Inserts implements Insert with a variadic function.
 func (T *Tree) Inserts(values ...int64) *Tree {
 	for _, v := range values {
@@ -96,24 +104,30 @@ func (T *Tree) GetHeight(val int64) int64 {
 	float64ToInt64 := func(num float64) int64 {
 		return int64(num)
 	}
-	return float64ToInt64(math.Floor(math.Log2(float64(T.GetSize(val)))))
+	tree := T.Find(val)
+	return float64ToInt64(math.Floor(math.Log2(float64(tree.GetSize(val)))))
 }
 
-// GetHeightRight returns the height of the right sub-tree of the input value.
+// GetHeightRight returns the height of the right sub-tree
+// of the input value(node).
 func (T *Tree) GetHeightRight(val int64) int64 {
-	if T.Right == nil {
+	tree := T.Find(val)
+	if tree.Right == nil {
 		return 0
 	}
-	h := T.Right.GetHeight(val)
+	// (X) T.GetHeight(tree.Value)
+	h := T.GetHeight(tree.Right.Value)
 	return h + 1
 }
 
-// GetHeightRight returns the height of the right sub-tree of the input value.
+// GetHeightLeft returns the height of the left sub-tree
+// of the input value(node).
 func (T *Tree) GetHeightLeft(val int64) int64 {
-	if T.Left == nil {
+	tree := T.Find(val)
+	if tree.Left == nil {
 		return 0
 	}
-	h := T.Left.GetHeight(val)
+	h := T.GetHeight(tree.Left.Value)
 	return h + 1
 }
 

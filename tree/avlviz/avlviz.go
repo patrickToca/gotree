@@ -1,5 +1,5 @@
-// Package bstviz visualizes bst package.
-package bstviz
+// Package avlviz visualizes avl package.
+package avlviz
 
 import (
 	"log"
@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/gyuho/gotree/tree/bst"
+	"github.com/gyuho/gotree/tree/avl"
 )
 
 // CheckStr returns true if the string exists in the slice.
@@ -22,7 +22,7 @@ func CheckStr(str string, slice []string) bool {
 }
 
 // Scan scans all nodes in the tree recursively.
-func Scan(T *bst.Tree, slice *[]string) {
+func Scan(T *avl.Tree, slice *[]string) {
 	if T == nil {
 		return
 	}
@@ -43,7 +43,7 @@ func Scan(T *bst.Tree, slice *[]string) {
 }
 
 // Convert converts the tree into DOT format.
-func Convert(T *bst.Tree, outputfile string) {
+func Convert(T *avl.Tree, outputfile string) {
 	file, err := os.Create(outputfile)
 	defer file.Close()
 	if err != nil {
@@ -58,7 +58,7 @@ func Convert(T *bst.Tree, outputfile string) {
 }
 
 // Show visualizes the tree in DOT format.
-func Show(T *bst.Tree, outputfile string) {
+func Show(T *avl.Tree, outputfile string) {
 	Convert(T, outputfile)
 	// func Command(name string, arg ...string) *Cmd
 	// Command returns the Cmd struct to execute the named program with the given arguments.

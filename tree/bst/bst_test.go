@@ -55,31 +55,37 @@ func Test_Find(test *testing.T) {
 }
 
 func Test_GetSize(test *testing.T) {
-	tr := NewTree(5)
-	tr.Inserts(7, 8, 4, 2, 1, 6, 3)
-	if tr.GetSize(5) != 8 {
-		test.Errorf("Size should be 8 but %v", tr.GetSize(5))
+	tr1 := NewTree(5)
+	tr1.Inserts(7, 8, 4, 2, 1, 6, 3)
+	if tr1.GetSize(5) != 8 {
+		test.Errorf("Size should be 8 but %v", tr1.GetSize(5))
 	}
-	if tr.GetSize(4) != 4 {
-		test.Errorf("Size should be 4 but %v", tr.GetSize(4))
+	if tr1.GetSize(4) != 4 {
+		test.Errorf("Size should be 4 but %v", tr1.GetSize(4))
 	}
-	if tr.GetSize(7) != 3 {
-		test.Errorf("Size should be 3 but %v", tr.GetSize(7))
+	if tr1.GetSize(7) != 3 {
+		test.Errorf("Size should be 3 but %v", tr1.GetSize(7))
 	}
-	if tr.GetSize(2) != 3 {
-		test.Errorf("Size should be 3 but %v", tr.GetSize(2))
+	if tr1.GetSize(2) != 3 {
+		test.Errorf("Size should be 3 but %v", tr1.GetSize(2))
 	}
-	if tr.GetSize(6) != 1 {
-		test.Errorf("Size should be 1 but %v", tr.GetSize(6))
+	if tr1.GetSize(6) != 1 {
+		test.Errorf("Size should be 1 but %v", tr1.GetSize(6))
 	}
-	if tr.GetSize(8) != 1 {
-		test.Errorf("Size should be 1 but %v", tr.GetSize(8))
+	if tr1.GetSize(8) != 1 {
+		test.Errorf("Size should be 1 but %v", tr1.GetSize(8))
 	}
-	if tr.GetSize(1) != 1 {
-		test.Errorf("Size should be 1 but %v", tr.GetSize(1))
+	if tr1.GetSize(1) != 1 {
+		test.Errorf("Size should be 1 but %v", tr1.GetSize(1))
 	}
-	if tr.GetSize(3) != 1 {
-		test.Errorf("Size should be 1 but %v", tr.GetSize(3))
+	if tr1.GetSize(3) != 1 {
+		test.Errorf("Size should be 1 but %v", tr1.GetSize(3))
+	}
+
+	tr2 := NewTree(5)
+	tr2.Inserts(7, 8, 4, 2, 1, 6, 3)
+	if tr2.Right.Size != 3 {
+		test.Errorf("Height should be 3 but %v", tr2.Right.Size)
 	}
 }
 
