@@ -12,5 +12,5 @@ import (
 func Test_Show1(test *testing.T) {
 	tr := avl.NewTree(4)
 	tr.Inserts(3, 2)
-	Show(tr, "avl01.dot")
+	// Show(tr, "avl01.dot")
 }

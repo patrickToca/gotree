@@ -108,6 +108,17 @@ func (T *Tree) GetHeight(val int64) int64 {
 	return float64ToInt64(math.Floor(math.Log2(float64(tree.GetSize(val)))))
 }
 
+// GetHeightLeft returns the height of the left sub-tree
+// of the input value(node).
+func (T *Tree) GetHeightLeft(val int64) int64 {
+	tree := T.Find(val)
+	if tree.Left == nil {
+		return 0
+	}
+	h := T.GetHeight(tree.Left.Value)
+	return h + 1
+}
+
 // GetHeightRight returns the height of the right sub-tree
 // of the input value(node).
 func (T *Tree) GetHeightRight(val int64) int64 {
@@ -120,15 +131,10 @@ func (T *Tree) GetHeightRight(val int64) int64 {
 	return h + 1
 }
 
-// GetHeightLeft returns the height of the left sub-tree
-// of the input value(node).
-func (T *Tree) GetHeightLeft(val int64) int64 {
-	tree := T.Find(val)
-	if tree.Left == nil {
-		return 0
-	}
-	h := T.GetHeight(tree.Left.Value)
-	return h + 1
+// Height returns the difference between
+// GetHeightLeft and GetHeightRight.
+func (T *Tree) Height(val int64) int64 {
+	return T.GetHeightLeft(val) - T.GetHeightRight(val)
 }
 
 // Parent returns the parental Tree(node) of input value.
@@ -162,7 +168,7 @@ func (T *Tree) Parent(val int64) *Tree {
 	return T
 }
 
-// IsParent returns true if the Node(tree) is a root of the tree.
+// IsRoot returns true if the Node(tree) is a root of the tree.
 func (T *Tree) IsRoot(val int64) bool {
 	if T.Parent(val) == nil {
 		return true

@@ -134,7 +134,7 @@ func (T *Tree) Parent(val int64) *Tree {
 	return T
 }
 
-// IsParent returns true if the Node(tree) is a root of the tree.
+// IsRoot returns true if the Node(tree) is a root of the tree.
 func (T *Tree) IsRoot(val int64) bool {
 	if T.Parent(val) == nil {
 		return true

@@ -176,6 +176,19 @@ func Test_GetHeightRightLeft(test *testing.T) {
 	}
 }
 
+func Test_Height(test *testing.T) {
+	tr1 := NewTree(4)
+	tr1.Inserts(3, 2)
+	if tr1.Height(4) != 2 {
+		test.Errorf("Height should be 2 but %v", tr1.Height(4))
+	}
+
+	tr2 := NewTree(4)
+	tr2.Inserts(5, 6)
+	if tr2.Height(4) != -2 {
+		test.Errorf("Height should be -2 but %v", tr2.Height(4))
+	}
+}
 func Test_Parent(test *testing.T) {
 	tr := NewTree(5)
 	tr.Inserts(7, 8, 5, 4, 2, 1, 6, 3)
