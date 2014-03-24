@@ -46,6 +46,8 @@ func Test_Show6(test *testing.T) {
 	tr := avl.NewTree(4)
 	tr.BalanceInsert(2)
 	tr.BalanceInsert(3)
+	// Show(tr, "avl06.dot")
+
 	tr.BalanceLR(3)
 	// Show(tr, "avl06.dot")
 }
