@@ -210,7 +210,7 @@ func (T *Tree) BalancingInsert(val int64) (*Tree, string) {
 				return T, "RR"
 			}
 			if Parent.Right.Right == nil && Parent.Right.Left != nil {
-				return T, "LR"
+				return T, "RL"
 			}
 		}
 	}
