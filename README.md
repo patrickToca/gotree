@@ -42,15 +42,17 @@ go build
 Package Hierarchy
 ==========
 ```go
-tree/		# Tree Data Structure
-	bst/	# Binary Search Tree
-	avl/	# AVL Tree
-	rbt/	# Red Black Tree
-	bt/		# B-Tree
+tree/	     # Tree Data Structure
+	bst/	   # Binary Search Tree
+  bstviz/  # Binary Search Tree Visualization (Graphviz)
+  avl/     # AVL Tree
+	avlviz/	 # AVL Tree Visualization (Graphviz)
+  rbt/     # Red Black Tree
+	rbtviz/	 # Red Black Tree Visualization (Graphviz)
+  bt/      # B-Tree
+	btviz/	 # B-Tree Visualization (Graphviz)
 
 example/	# Example Code
-
-viz/		# Tree Visualization (Graphviz)
 ```
 
 
