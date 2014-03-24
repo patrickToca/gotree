@@ -1,5 +1,5 @@
-// Package viz visualizes bst package.
-package viz
+// Package bstviz visualizes bst package.
+package bstviz
 
 import (
 	"log"

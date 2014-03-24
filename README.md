@@ -45,16 +45,16 @@ Package Hierarchy
 tree/     # Tree Data Structure
   
   bst/    # Binary Search Tree
-    viz/  # Visualization (Graphviz)
+  bstviz/  # Visualization (Graphviz)
   
   avl/    # AVL Tree
-    viz/  # Visualization (Graphviz)
+  avlviz/  # Visualization (Graphviz)
 
   rbt/    # Red Black Tree
-    viz/  # Visualization (Graphviz)
+  rbtviz/  # Visualization (Graphviz)
   
   bt/     # B-Tree
-    viz/  # Visualization (Graphviz)
+  btviz/  # Visualization (Graphviz)
 
 
 example/  # Example Code
