@@ -339,30 +339,45 @@ func Test_BalanceInsert(test *testing.T) {
 }
 
 func Test_BalanceLL(test *testing.T) {
-	tr1 := NewTree(4)
-	tr1.BalanceInsert(3)
-	tr1.BalanceInsert(2)
-	// Now tr1 is unbalanced
+	tr := NewTree(4)
+	tr.BalanceInsert(3)
+	tr.BalanceInsert(2)
+	// Now tr is unbalanced
 
-	// Now the following line rebalances the tr1
-	tr1.BalanceLL(2)
-	if !tr1.IsBalanced(4) {
-		test.Errorf("BalanceLL should balance the tree but %v", tr1.IsBalanced(4))
+	// Now the following line rebalances the tr
+	tr.BalanceLL(2)
+	if !tr.IsBalanced(4) {
+		test.Errorf("BalanceLL should balance the tree but %v", tr.IsBalanced(4))
 	}
-	if tr1.Find(4).GetSize(4) != 3 {
-		test.Errorf("Should return 3 but %v", tr1.Find(4).GetSize(4))
+	if tr.Find(4).GetSize(4) != 3 {
+		test.Errorf("Should return 3 but %v", tr.Find(4).GetSize(4))
+	}
+	if tr.Find(3).GetSize(3) != 1 {
+		test.Errorf("Should return 1 but %v", tr.Find(3).GetSize(3))
+	}
+	if tr.Find(2).GetSize(2) != 1 {
+		test.Errorf("Should return 1 but %v", tr.Find(2).GetSize(2))
 	}
 }
 
 func Test_BalanceLR(test *testing.T) {
-	tr1 := NewTree(4)
-	tr1.BalanceInsert(2)
-	tr1.BalanceInsert(3)
-	// Now tr1 is unbalanced
+	tr := NewTree(4)
+	tr.BalanceInsert(2)
+	tr.BalanceInsert(3)
+	// Now tr is unbalanced
 
-	// Now the following line rebalances the tr1
-	tr1.BalanceLR(3)
-	if !tr1.IsBalanced(4) {
-		test.Errorf("BalanceLR should balance the tree but %v", tr1.IsBalanced(4))
+	// Now the following line rebalances the tr
+	tr.BalanceLR(3)
+	if !tr.IsBalanced(4) {
+		test.Errorf("BalanceLR should balance the tree but %v", tr.IsBalanced(4))
+	}
+	if tr.Find(4).GetSize(4) != 3 {
+		test.Errorf("Should return 3 but %v", tr.Find(4).GetSize(4))
+	}
+	if tr.Find(3).GetSize(3) != 1 {
+		test.Errorf("Should return 1 but %v", tr.Find(3).GetSize(3))
+	}
+	if tr.Find(2).GetSize(2) != 1 {
+		test.Errorf("Should return 1 but %v", tr.Find(2).GetSize(2))
 	}
 }

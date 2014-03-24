@@ -55,7 +55,7 @@ func (T *Tree) Insert(val int64) *Tree {
 }
 
 // Find does Binary Search to find the value
-// and returns true if the value exists in the Tree.
+// and returns Tree with the value as a root node.
 func (T *Tree) Find(val int64) *Tree {
 	if T == nil {
 		return &Tree{nil, val, nil, int64(1)}
@@ -232,7 +232,7 @@ func (T *Tree) BalanceLL(val int64) *Tree {
 	//     Parent
 	//      /  \
 	//     pt  node
-
+	//
 	node := T.Find(val)
 	pt := T.Parent(val)
 	Parent := T.Parent(pt.Value)
@@ -266,7 +266,7 @@ func (T *Tree) BalanceLR(val int64) *Tree {
 	//     Parent
 	//      /  \
 	//     pt  node
-
+	//
 	node := T.Find(val)
 	pt := T.Parent(val)
 	Parent := T.Parent(pt.Value)
@@ -276,6 +276,72 @@ func (T *Tree) BalanceLR(val int64) *Tree {
 	// 1. Delete as a child
 	pt.Size -= 1
 	pt.Right = nil
+
+	// 2. Delete the moved node itself
+	node = nil
+
+	return T
+}
+
+// BalanceRR balances a RR tree with the val
+// in a leaf node.
+func (T *Tree) BalanceRR(val int64) *Tree {
+	//
+	//     Parent
+	//        \
+	//         pt
+	//          \
+	//          node
+	//
+	// to
+	//
+	//     Parent
+	//      /  \
+	//   node   pt
+	//
+	node := T.Find(val)
+	pt := T.Parent(val)
+	Parent := T.Parent(pt.Value)
+	Parent.Left = node
+
+	// Deletion
+	// 1. Delete as a child
+	pt.Size -= 1
+	pt.Right = nil
+
+	// 2. Delete the moved node itself
+	// (X) T.Size -= 1
+	// we just move the node not deleting from the whole tree
+	node = nil
+
+	return T
+}
+
+// BalanceRL balances a RL tree with the val
+// in a leaf node.
+func (T *Tree) BalanceRL(val int64) *Tree {
+	//
+	//     Parent
+	//         \
+	//          pt
+	//          /
+	//        node
+	//
+	// to
+	//
+	//     Parent
+	//      /  \
+	//   node   pt
+	//
+	node := T.Find(val)
+	pt := T.Parent(val)
+	Parent := T.Parent(pt.Value)
+	Parent.Left = node
+
+	// Deletion
+	// 1. Delete as a child
+	pt.Size -= 1
+	pt.Left = nil
 
 	// 2. Delete the moved node itself
 	node = nil

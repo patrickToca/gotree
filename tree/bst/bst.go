@@ -59,7 +59,7 @@ func (T *Tree) Insert(val int64) *Tree {
 }
 
 // Find does Binary Search to find the value
-// and returns true if the value exists in the Tree.
+// and returns Tree with the value as a root node.
 func (T *Tree) Find(val int64) *Tree {
 	if T == nil {
 		return &Tree{nil, val, nil, int64(1)}
