@@ -52,7 +52,7 @@ tree/     # Tree Data Structure
   bt/     # B-Tree
   btviz/  # B-Tree Visualization (Graphviz)
 
-example/ # Example Code
+example/  # Example Code
 ```
 
 
