@@ -38,6 +38,8 @@ go install
 go build
 ```
 
+[↑ top](https://github.com/gyuho/gotree#gotree---)
+
 
 Package Hierarchy
 ==========
@@ -59,6 +61,8 @@ tree/     # Tree Data Structure
 
 example/  # Example Code
 ```
+
+[↑ top](https://github.com/gyuho/gotree#gotree---)
 
 
 Example : Binary Search Tree
@@ -118,6 +122,9 @@ Show(tr, "tree5.dot")
 
 <img src="./files/tree05.png" alt="tree05" width="180px" height="250px"/>
 
+[↑ top](https://github.com/gyuho/gotree#gotree---)
+
+
 <hr>
 
 
@@ -156,6 +163,8 @@ because the Height(Left) is 0 and Height(Right) is 2
 3. LR Rotation
 4. RL Rotation
 
+[↑ top](https://github.com/gyuho/gotree#gotree---)
+
 <hr>
 
 ##### Rebalance (Rearrange)
@@ -178,6 +187,8 @@ then
  2   4
 ```
 
+[↑ top](https://github.com/gyuho/gotree#gotree---)
+
 <hr>
 
 2. RR Rotation
@@ -198,6 +209,8 @@ then
  6   8
 ```
 
+[↑ top](https://github.com/gyuho/gotree#gotree---)
+
 <hr>
 
 3. LR Rotation
@@ -217,6 +230,9 @@ then
   / \
  2   4
 ```
+
+[↑ top](https://github.com/gyuho/gotree#gotree---)
+
 <hr>
 
 4. RL Rotation
@@ -237,6 +253,8 @@ then
  6   8
 ```
 
+[↑ top](https://github.com/gyuho/gotree#gotree---)
+
 <hr>
 
 ##### Determine which rotation to use
@@ -250,6 +268,7 @@ then
 			- Positive: `RL Rotation` (Example Height = 1)
 			- Negative: `RR Rotation` (Example Height = -1)
 
+[↑ top](https://github.com/gyuho/gotree#gotree---)
 
 
 Example : AVL Tree
@@ -272,9 +291,13 @@ func Test_avlviz(test *testing.T) {
 **After**
 <img src="./files/avl-after.png" alt="avl-after" width="120px" height="120px"/>
 
+[↑ top](https://github.com/gyuho/gotree#gotree---)
+
 
 To-Do-List
 ==========
 **Non-Committal on a Timeline**
 
 - More Tree Data Structures
+
+[↑ top](https://github.com/gyuho/gotree#gotree---)
