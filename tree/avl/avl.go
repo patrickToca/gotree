@@ -137,6 +137,12 @@ func (T *Tree) Height(val int64) int64 {
 	return T.GetHeightLeft(val) - T.GetHeightRight(val)
 }
 
+// IsBalanced returns true if the Height of the Tree
+// with the input value is balanced.
+func (T *Tree) IsBalanced(val int64) bool {
+	return -1 > T.Height(val) || T.Height(val) > 1
+}
+
 // Parent returns the parental Tree(node) of input value.
 func (T *Tree) Parent(val int64) *Tree {
 	// if the input value is nil
