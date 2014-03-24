@@ -83,7 +83,7 @@ tr.Inserts(7, 8, 5, 4, 2, 1, 6, 3)
 Show(tr, "tree2.dot")
 ```
 
-<img src="./files/tree02.png" alt="tree02" width="230px" height="300px"/>
+<img src="./files/tree02.png" alt="tree02" width="180px" height="250px"/>
 
 <hr>
 
@@ -94,7 +94,7 @@ tr.Delete(int64(6))
 Show(tr, "tree3.dot")
 ```
 
-<img src="./files/tree03.png" alt="tree03" width="230px" height="300px"/>
+<img src="./files/tree03.png" alt="tree03" width="180px" height="250px"/>
 
 <hr>
 
@@ -105,7 +105,7 @@ tr.Delete(int64(7))
 Show(tr, "tree4.dot")
 ```
 
-<img src="./files/tree04.png" alt="tree04" width="230px" height="300px"/>
+<img src="./files/tree04.png" alt="tree04" width="180px" height="250px"/>
 
 <hr>
 
@@ -116,7 +116,7 @@ tr = tr.Delete(int64(5))
 Show(tr, "tree5.dot")
 ```
 
-<img src="./files/tree05.png" alt="tree05" width="230px" height="300px"/>
+<img src="./files/tree05.png" alt="tree05" width="180px" height="250px"/>
 
 <hr>
 
@@ -267,10 +267,10 @@ func Test_avlviz(test *testing.T) {
 ```
 
 **Before**
-<img src="./files/avl-before.png" alt="avl-before" width="140px" height="140px"/>
+<img src="./files/avl-before.png" alt="avl-before" width="120px" height="80px"/>
 
 **After**
-<img src="./files/avl-after.png" alt="avl-after" width="140px" height="140px"/>
+<img src="./files/avl-after.png" alt="avl-after" width="120px" height="120px"/>
 
 
 To-Do-List
