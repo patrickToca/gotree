@@ -285,64 +285,67 @@ func Test_IsBalanced(test *testing.T) {
 	}
 }
 
-func Test_BalancingInsert(test *testing.T) {
+func Test_BalanceInsert(test *testing.T) {
 	tr1 := NewTree(4)
-	_, tr1_r1 := tr1.BalancingInsert(3)
+	_, tr1_r1 := tr1.BalanceInsert(3)
 	if tr1_r1 != "Balanced" {
-		test.Errorf("BalancingInsert should return Balanced but %v", tr1_r1)
+		test.Errorf("BalanceInsert should return Balanced but %v", tr1_r1)
 	}
-	_, tr1_r2 := tr1.BalancingInsert(2)
+	_, tr1_r2 := tr1.BalanceInsert(2)
 	if tr1_r2 != "LL" {
-		test.Errorf("BalancingInsert should return LL but %v", tr1_r2)
+		test.Errorf("BalanceInsert should return LL but %v", tr1_r2)
 	}
 
 	tr2 := NewTree(4)
-	_, tr2_r1 := tr2.BalancingInsert(5)
+	_, tr2_r1 := tr2.BalanceInsert(5)
 	if tr2_r1 != "Balanced" {
-		test.Errorf("BalancingInsert should return Balanced but %v", tr2_r1)
+		test.Errorf("BalanceInsert should return Balanced but %v", tr2_r1)
 	}
-	_, tr2_r2 := tr2.BalancingInsert(6)
+	_, tr2_r2 := tr2.BalanceInsert(6)
 	if tr2_r2 != "RR" {
-		test.Errorf("BalancingInsert should return LL but %v", tr2_r2)
+		test.Errorf("BalanceInsert should return LL but %v", tr2_r2)
 	}
 
 	tr3 := NewTree(4)
-	_, tr3_r1 := tr3.BalancingInsert(1)
+	_, tr3_r1 := tr3.BalanceInsert(1)
 	if tr3_r1 != "Balanced" {
-		test.Errorf("BalancingInsert should return Balanced but %v", tr3_r1)
+		test.Errorf("BalanceInsert should return Balanced but %v", tr3_r1)
 	}
-	_, tr3_r2 := tr3.BalancingInsert(3)
+	_, tr3_r2 := tr3.BalanceInsert(3)
 	if tr3_r2 != "LR" {
-		test.Errorf("BalancingInsert should return LR but %v", tr3_r2)
+		test.Errorf("BalanceInsert should return LR but %v", tr3_r2)
 	}
 
 	tr4 := NewTree(4)
-	_, tr4_r1 := tr4.BalancingInsert(7)
+	_, tr4_r1 := tr4.BalanceInsert(7)
 	if tr4_r1 != "Balanced" {
-		test.Errorf("BalancingInsert should return Balanced but %v", tr4_r1)
+		test.Errorf("BalanceInsert should return Balanced but %v", tr4_r1)
 	}
-	_, tr4_r2 := tr4.BalancingInsert(5)
+	_, tr4_r2 := tr4.BalanceInsert(5)
 	if tr4_r2 != "RL" {
-		test.Errorf("BalancingInsert should return RL but %v", tr4_r2)
+		test.Errorf("BalanceInsert should return RL but %v", tr4_r2)
 	}
 
 	tr5 := NewTree(5)
 	tr5.Inserts(7, 8, 4, 2, 1, 6, 3)
-	_, tr5_r1 := tr5.BalancingInsert(9)
+	_, tr5_r1 := tr5.BalanceInsert(9)
 	if tr5_r1 != "Balanced" {
-		test.Errorf("BalancingInsert should return Balanced but %v", tr5_r1)
+		test.Errorf("BalanceInsert should return Balanced but %v", tr5_r1)
 	}
-	_, tr5_r2 := tr5.BalancingInsert(10)
+	_, tr5_r2 := tr5.BalanceInsert(10)
 	if tr5_r2 != "RR" {
-		test.Errorf("BalancingInsert should return RR but %v", tr5_r2)
+		test.Errorf("BalanceInsert should return RR but %v", tr5_r2)
 	}
 }
 
-func Test_RebalanceLL(test *testing.T) {
+func Test_BalanceLL(test *testing.T) {
 	tr1 := NewTree(4)
-	tr1.BalancingInsert(3)
-	tr1.BalancingInsert(2)
-	tr1.RebalanceLL(2)
+	tr1.BalanceInsert(3)
+	tr1.BalanceInsert(2)
+	// Now tr1 is unbalanced
+
+	// Now the following line rebalances the tr1
+	tr1.BalanceLL(2)
 	if !tr1.IsBalanced(4) {
 		test.Errorf("RebalanceLL should balance the tree but %v", tr1.IsBalanced(4))
 	}
