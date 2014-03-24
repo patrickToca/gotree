@@ -337,3 +337,10 @@ func Test_BalancingInsert(test *testing.T) {
 		test.Errorf("BalancingInsert should return RR but %v", tr5_r2)
 	}
 }
+
+func Test_RebalanceLL(test *testing.T) {
+	tr1 := NewTree(4)
+	tr1.BalancingInsert(3)
+	tr1.BalancingInsert(2)
+	tr1.RebalanceLL(2)
+}

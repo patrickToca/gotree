@@ -33,3 +33,11 @@ func Test_Show4(test *testing.T) {
 	tr.BalancingInsert(5)
 	// Show(tr, "avl04.dot")
 }
+
+func Test_Show5(test *testing.T) {
+	tr := avl.NewTree(4)
+	tr.BalancingInsert(3)
+	tr.BalancingInsert(2)
+	tr.RebalanceLL(2)
+	// Show(tr, "avl05.dot")
+}

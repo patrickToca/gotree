@@ -217,6 +217,37 @@ func (T *Tree) BalancingInsert(val int64) (*Tree, string) {
 	return T, "None"
 }
 
+// RebalanceLL rebalances a LL tree with the val
+// in a leaf node.
+func (T *Tree) RebalanceLL(val int64) *Tree {
+	node := T.Find(val)
+	pt := T.Parent(val)
+	Parent := T.Parent(pt.Value)
+	// this tree
+	//     Parent
+	//      /
+	//     pt
+	//    /
+	//   node
+	//
+	// to
+	//     Parent
+	//      /  \
+	//     pt  node
+	Parent.Right = node
+
+	// Deletion
+	// 1. Delete as a child
+	pt.Size -= 1
+	pt.Left = nil
+
+	// 2. Delete the moved node itself
+	T.Size -= 1
+	node = nil
+
+	return T
+}
+
 // BalancingInserts implements Insert with a variadic function.
 func (T *Tree) BalancingInserts(values ...int64) *Tree {
 	return T
