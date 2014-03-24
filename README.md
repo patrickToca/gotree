@@ -7,7 +7,7 @@ gotree provides tree visualizing tools and algorithm implementations.
 - [Package Hierarchy](https://github.com/gyuho/gotree#package-hierarchy)
 - [Example : Binary Search Tree](https://github.com/gyuho/gotree#example--binary-search-tree)
 - [AVL Tree](https://github.com/gyuho/gotree#avl-tree)
-- [Example : AVL Tree](https://github.com/gyuho/gotree#example--avl-tree))
+- [Example : AVL Tree](https://github.com/gyuho/gotree#example--avl-tree)
 - [Red Black Tree](https://github.com/gyuho/gotree#avl-tree)
 - [Example : Red Black Tree](https://github.com/gyuho/gotree#example--red-black-tree)
 - [B-Tree](https://github.com/gyuho/gotree#b-tree)
