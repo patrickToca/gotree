@@ -29,15 +29,23 @@ func Test_Show3(test *testing.T) {
 
 func Test_Show4(test *testing.T) {
 	tr := avl.NewTree(4)
-	tr.BalancingInsert(7)
-	tr.BalancingInsert(5)
+	tr.BalanceInsert(7)
+	tr.BalanceInsert(5)
 	// Show(tr, "avl04.dot")
 }
 
 func Test_Show5(test *testing.T) {
 	tr := avl.NewTree(4)
-	tr.BalancingInsert(3)
-	tr.BalancingInsert(2)
-	tr.RebalanceLL(2)
+	tr.BalanceInsert(3)
+	tr.BalanceInsert(2)
+	tr.BalanceLL(2)
 	// Show(tr, "avl05.dot")
+}
+
+func Test_Show6(test *testing.T) {
+	tr := avl.NewTree(4)
+	tr.BalanceInsert(2)
+	tr.BalanceInsert(3)
+	tr.BalanceLR(3)
+	// Show(tr, "avl06.dot")
 }
