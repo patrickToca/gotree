@@ -349,6 +349,9 @@ func Test_BalanceLL(test *testing.T) {
 	if !tr1.IsBalanced(4) {
 		test.Errorf("BalanceLL should balance the tree but %v", tr1.IsBalanced(4))
 	}
+	if tr1.Find(4).GetSize(4) != 3 {
+		test.Errorf("Should return 3 but %v", tr1.Find(4).GetSize(4))
+	}
 }
 
 func Test_BalanceLR(test *testing.T) {

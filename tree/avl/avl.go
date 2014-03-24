@@ -244,7 +244,8 @@ func (T *Tree) BalanceLL(val int64) *Tree {
 	pt.Left = nil
 
 	// 2. Delete the moved node itself
-	T.Size -= 1
+	// (X) T.Size -= 1
+	// we just move the node not deleting from the whole tree
 	node = nil
 
 	return T
@@ -277,7 +278,6 @@ func (T *Tree) BalanceLR(val int64) *Tree {
 	pt.Right = nil
 
 	// 2. Delete the moved node itself
-	T.Size -= 1
 	node = nil
 
 	return T
