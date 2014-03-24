@@ -7,7 +7,7 @@ gotree provides tree visualizing tools and algorithm implementations.
 - [Package Hierarchy](https://github.com/gyuho/gotree#package-hierarchy)
 - [Example : Binary Search Tree](https://github.com/gyuho/gotree#example--binary-search-tree)
 - [AVL Tree](https://github.com/gyuho/gotree#avl-tree)
-- [Example : AVL Tree](https://github.com/gyuho/gotree#testing-graphs)
+- [Example : AVL Tree](https://github.com/gyuho/gotree#example--avl-tree))
 - [Red Black Tree](https://github.com/gyuho/gotree#avl-tree)
 - [Example : Red Black Tree](https://github.com/gyuho/gotree#example--red-black-tree)
 - [B-Tree](https://github.com/gyuho/gotree#b-tree)
@@ -249,6 +249,28 @@ then
 		- If **`Height(Right-Child)`** is:
 			- Positive: `RL Rotation` (Example Height = 1)
 			- Negative: `RR Rotation` (Example Height = -1)
+
+
+
+Example : AVL Tree
+==========
+```go
+func Test_avlviz(test *testing.T) {
+  tr := avl.NewTree(4)
+  tr.BalanceInsert(6)
+  tr.BalanceInsert(5)
+  avlviz.Show(tr, "avl-before.dot")
+
+  tr.BalanceRL(5)
+  avlviz.Show(tr, "avl-after.dot")
+}
+```
+
+**Before**
+<img src="./files/avl-before.png" alt="avl-before" width="140px" height="320px"/>
+
+**After**
+<img src="./files/avl-after.png" alt="avl-after" width="140px" height="320px"/>
 
 
 To-Do-List

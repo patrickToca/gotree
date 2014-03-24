@@ -381,3 +381,47 @@ func Test_BalanceLR(test *testing.T) {
 		test.Errorf("Should return 1 but %v", tr.Find(2).GetSize(2))
 	}
 }
+
+func Test_BalanceRR(test *testing.T) {
+	tr := NewTree(4)
+	tr.BalanceInsert(5)
+	tr.BalanceInsert(6)
+	// Now tr is unbalanced
+
+	// Now the following line rebalances the tr
+	tr.BalanceRR(6)
+	if !tr.IsBalanced(4) {
+		test.Errorf("BalanceRR should balance the tree but %v", tr.IsBalanced(4))
+	}
+	if tr.Find(4).GetSize(4) != 3 {
+		test.Errorf("Should return 3 but %v", tr.Find(4).GetSize(4))
+	}
+	if tr.Find(5).GetSize(5) != 1 {
+		test.Errorf("Should return 1 but %v", tr.Find(5).GetSize(5))
+	}
+	if tr.Find(6).GetSize(6) != 1 {
+		test.Errorf("Should return 1 but %v", tr.Find(6).GetSize(6))
+	}
+}
+
+func Test_BalanceRL(test *testing.T) {
+	tr := NewTree(4)
+	tr.BalanceInsert(6)
+	tr.BalanceInsert(5)
+	// Now tr is unbalanced
+
+	// Now the following line rebalances the tr
+	tr.BalanceRL(5)
+	if !tr.IsBalanced(4) {
+		test.Errorf("BalanceRL should balance the tree but %v", tr.IsBalanced(4))
+	}
+	if tr.Find(4).GetSize(4) != 3 {
+		test.Errorf("Should return 3 but %v", tr.Find(4).GetSize(4))
+	}
+	if tr.Find(5).GetSize(5) != 1 {
+		test.Errorf("Should return 1 but %v", tr.Find(5).GetSize(5))
+	}
+	if tr.Find(6).GetSize(6) != 1 {
+		test.Errorf("Should return 1 but %v", tr.Find(6).GetSize(6))
+	}
+}
