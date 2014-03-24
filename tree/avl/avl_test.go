@@ -295,4 +295,14 @@ func Test_BalancingInsert(test *testing.T) {
 	if tr1_r2 != "LL" {
 		test.Errorf("BalancingInsert should return LL but %v", tr1_r2)
 	}
+
+	tr2 := NewTree(4)
+	_, tr2_r1 := tr2.BalancingInsert(5)
+	if tr2_r1 != "Balanced" {
+		test.Errorf("BalancingInsert should return Balanced but %v", tr2_r1)
+	}
+	_, tr2_r2 := tr2.BalancingInsert(6)
+	if tr2_r2 != "RR" {
+		test.Errorf("BalancingInsert should return LL but %v", tr2_r2)
+	}
 }
