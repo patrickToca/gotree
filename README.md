@@ -169,7 +169,7 @@ because the Height(Left) is 0 and Height(Right) is 2
 
 ##### Rebalance (Rearrange)
 
-1. LL Rotation
+**LL Rotation**
 
 Unbalanced!
 ```
@@ -191,7 +191,7 @@ then
 
 <hr>
 
-2. RR Rotation
+**RR Rotation**
 
 Unbalanced!
 ```
@@ -213,7 +213,7 @@ then
 
 <hr>
 
-3. LR Rotation
+**LR Rotation**
 
 Unbalanced!
 ```
@@ -235,7 +235,7 @@ then
 
 <hr>
 
-4. RL Rotation
+**RL Rotation**
 
 Unbalanced!
 ```
