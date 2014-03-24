@@ -347,6 +347,19 @@ func Test_BalanceLL(test *testing.T) {
 	// Now the following line rebalances the tr1
 	tr1.BalanceLL(2)
 	if !tr1.IsBalanced(4) {
-		test.Errorf("RebalanceLL should balance the tree but %v", tr1.IsBalanced(4))
+		test.Errorf("BalanceLL should balance the tree but %v", tr1.IsBalanced(4))
+	}
+}
+
+func Test_BalanceLR(test *testing.T) {
+	tr1 := NewTree(4)
+	tr1.BalanceInsert(2)
+	tr1.BalanceInsert(3)
+	// Now tr1 is unbalanced
+
+	// Now the following line rebalances the tr1
+	tr1.BalanceLR(3)
+	if !tr1.IsBalanced(4) {
+		test.Errorf("BalanceLR should balance the tree but %v", tr1.IsBalanced(4))
 	}
 }
