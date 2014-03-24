@@ -45,13 +45,13 @@ Package Hierarchy
 tree/     # Tree Data Structure
   
   bst/    # Binary Search Tree
-  bstviz/  # Visualization (Graphviz)
+  bstviz/ # Visualization (Graphviz)
   
   avl/    # AVL Tree
-  avlviz/  # Visualization (Graphviz)
+  avlviz/ # Visualization (Graphviz)
 
   rbt/    # Red Black Tree
-  rbtviz/  # Visualization (Graphviz)
+  rbtviz/ # Visualization (Graphviz)
   
   bt/     # B-Tree
   btviz/  # Visualization (Graphviz)
@@ -73,7 +73,7 @@ for i := 0; i < 10; i++ {
 Show(tr, "tree1.dot")
 ```
 
-<img src="./files/tree01.png" alt="tree01" width="140px" height="320px"/>
+<img src="./files/tree01.png" alt="tree01" width="140px" height="300px"/>
 
 <hr>
 
@@ -83,7 +83,7 @@ tr.Inserts(7, 8, 5, 4, 2, 1, 6, 3)
 Show(tr, "tree2.dot")
 ```
 
-<img src="./files/tree02.png" alt="tree02" width="250px" height="320px"/>
+<img src="./files/tree02.png" alt="tree02" width="230px" height="300px"/>
 
 <hr>
 
@@ -94,7 +94,7 @@ tr.Delete(int64(6))
 Show(tr, "tree3.dot")
 ```
 
-<img src="./files/tree03.png" alt="tree03" width="250px" height="320px"/>
+<img src="./files/tree03.png" alt="tree03" width="230px" height="300px"/>
 
 <hr>
 
@@ -105,7 +105,7 @@ tr.Delete(int64(7))
 Show(tr, "tree4.dot")
 ```
 
-<img src="./files/tree04.png" alt="tree04" width="250px" height="320px"/>
+<img src="./files/tree04.png" alt="tree04" width="230px" height="300px"/>
 
 <hr>
 
@@ -116,7 +116,7 @@ tr = tr.Delete(int64(5))
 Show(tr, "tree5.dot")
 ```
 
-<img src="./files/tree05.png" alt="tree05" width="250px" height="320px"/>
+<img src="./files/tree05.png" alt="tree05" width="230px" height="300px"/>
 
 <hr>
 
@@ -267,10 +267,10 @@ func Test_avlviz(test *testing.T) {
 ```
 
 **Before**
-<img src="./files/avl-before.png" alt="avl-before" width="140px" height="320px"/>
+<img src="./files/avl-before.png" alt="avl-before" width="140px" height="140px"/>
 
 **After**
-<img src="./files/avl-after.png" alt="avl-after" width="140px" height="320px"/>
+<img src="./files/avl-after.png" alt="avl-after" width="140px" height="140px"/>
 
 
 To-Do-List
