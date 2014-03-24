@@ -192,13 +192,21 @@ func Test_Height(test *testing.T) {
 func Test_IsBalanced(test *testing.T) {
 	tr1 := NewTree(4)
 	tr1.Inserts(3, 2)
-	if !tr1.IsBalanced(4) {
-		test.Errorf("IsBalanced should be true but %v", tr1.IsBalanced(4))
+	if tr1.IsBalanced(4) {
+		test.Errorf("IsBalanced should be false but %v", tr1.IsBalanced(4))
 	}
 	tr2 := NewTree(4)
 	tr2.Inserts(5, 6)
-	if !tr2.IsBalanced(4) {
-		test.Errorf("IsBalanced should be true but %v", tr2.IsBalanced(4))
+	if tr2.IsBalanced(4) {
+		test.Errorf("IsBalanced should be false but %v", tr2.IsBalanced(4))
+	}
+	tr3 := NewTree(5)
+	tr3.Inserts(7, 8, 4, 2, 1, 3)
+	if !tr3.IsBalanced(5) {
+		test.Errorf("IsBalanced should be true but %v", tr3.IsBalanced(5))
+	}
+	if tr3.IsBalanced(4) {
+		test.Errorf("IsBalanced should be false but %v", tr3.Height(4))
 	}
 }
 

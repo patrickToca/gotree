@@ -14,3 +14,9 @@ func Test_Show1(test *testing.T) {
 	tr.Inserts(3, 2)
 	// Show(tr, "avl01.dot")
 }
+
+func Test_Show2(test *testing.T) {
+	tr := avl.NewTree(5)
+	tr.Inserts(7, 8, 4, 2, 1, 3)
+	// Show(tr, "avl02.dot")
+}
