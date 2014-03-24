@@ -77,9 +77,9 @@ func (T *Tree) Find(val int64) *Tree {
 
 // Parent returns the parental Tree(node) of input value.
 func (T *Tree) Parent(val int64) *Tree {
-	// if the input value is nil
+	// if the input value is root
 	if val == T.Value {
-		return nil
+		return T
 	}
 	if T == nil {
 		return &Tree{nil, val, nil, int64(1)}
@@ -108,7 +108,7 @@ func (T *Tree) Parent(val int64) *Tree {
 
 // IsRoot returns true if the Node(tree) is a root of the tree.
 func (T *Tree) IsRoot(val int64) bool {
-	if T.Parent(val) == nil {
+	if T.Parent(val).Value == val {
 		return true
 	} else {
 		return false
@@ -192,22 +192,24 @@ func (T *Tree) IsBalanced(val int64) bool {
 // and tells if the Tree is LL, RR, LR, RL.
 func (T *Tree) BalancingInsert(val int64) (*Tree, string) {
 	T.Insert(val)
-	if T.IsBalanced(T.Value) {
+	pt := T.Parent(val)
+	Parent := T.Parent(pt.Value)
+	if T.IsBalanced(Parent.Value) {
 		return T, "Balanced"
 	} else {
-		switch T.Height(T.Value) {
+		switch T.Height(Parent.Value) {
 		case 2: // LL or LR
-			if T.Left.Left != nil && T.Left.Right == nil {
+			if Parent.Left.Left != nil && Parent.Left.Right == nil {
 				return T, "LL"
 			}
-			if T.Left.Left == nil && T.Left.Right != nil {
+			if Parent.Left.Left == nil && Parent.Left.Right != nil {
 				return T, "LR"
 			}
 		case -2: // RR or RL
-			if T.Right.Right != nil && T.Right.Left == nil {
+			if Parent.Right.Right != nil && Parent.Right.Left == nil {
 				return T, "RR"
 			}
-			if T.Right.Right == nil && T.Right.Left != nil {
+			if Parent.Right.Right == nil && Parent.Right.Left != nil {
 				return T, "LR"
 			}
 		}

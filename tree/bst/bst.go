@@ -105,9 +105,9 @@ func (T *Tree) GetHeight(val int64) int64 {
 
 // Parent returns the parental Tree(node) of input value.
 func (T *Tree) Parent(val int64) *Tree {
-	// if the input value is nil
+	// if the input value is root
 	if val == T.Value {
-		return nil
+		return T
 	}
 	if T == nil {
 		return &Tree{nil, val, nil, int64(1)}
@@ -136,7 +136,7 @@ func (T *Tree) Parent(val int64) *Tree {
 
 // IsRoot returns true if the Node(tree) is a root of the tree.
 func (T *Tree) IsRoot(val int64) bool {
-	if T.Parent(val) == nil {
+	if T.Parent(val).Value == val {
 		return true
 	} else {
 		return false

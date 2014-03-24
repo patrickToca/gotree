@@ -133,8 +133,8 @@ func Test_Parent(test *testing.T) {
 	if tr.Parent(int64(1)).Value != 2 {
 		test.Errorf("Parent should be 2 but\n%v", tr.Parent(int64(1)).Value)
 	}
-	if tr.Parent(int64(5)) != nil {
-		test.Errorf("Parent should be nil but\n%v", tr.Parent(int64(5)))
+	if tr.Parent(int64(5)).Value != 5 {
+		test.Errorf("Parent should be 5 but\n%v", tr.Parent(int64(5)).Value)
 	}
 }
 
