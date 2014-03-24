@@ -1,4 +1,4 @@
-package bstviz
+package viz
 
 import (
 	"fmt"

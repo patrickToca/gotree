@@ -6,6 +6,7 @@ import (
 	// go test -v github.com/gyuho/gotree/example
 	// go test -v /Users/gyuho/go/src/github.com/gyuho/gotree/example/bst_viz_test.go
 	"github.com/gyuho/gotree/tree/bst"
+	// "github.com/gyuho/gotree/tree/bst/viz"
 )
 
 func Test_bst_viz(test *testing.T) {

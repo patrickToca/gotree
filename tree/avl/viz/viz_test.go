@@ -1,4 +1,4 @@
-package avlviz
+package viz
 
 import (
 	"testing"

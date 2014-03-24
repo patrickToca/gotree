@@ -1,5 +1,5 @@
-// Package avlviz visualizes avl package.
-package avlviz
+// Package viz visualizes avl package.
+package viz
 
 import (
 	"log"
