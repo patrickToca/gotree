@@ -188,7 +188,13 @@ func (T *Tree) IsBalanced(val int64) bool {
 	return -1 <= Tree.Height(val) && Tree.Height(val) <= 1
 }
 
-// RotateRight
+// Copy makes a copy of the Tree.
+func (T *Tree) Copy() *Tree {
+	return &Tree{T.Left, T.Value, T.Right, T.Size}
+}
+
+// RotateRight does right rotation on the Tree
+// rooted with the value val.
 func (T *Tree) RotateRight(val int64) *Tree {
 	/*
 	       y                               x
@@ -197,6 +203,81 @@ func (T *Tree) RotateRight(val int64) *Tree {
 	    / \       < - - - - - - -            / \
 	   T1  T2     Left Rotation            T2  T3
 	*/
+
+	y := T.Find(val)
+	yVal := y.Value
+
+	x := y.Left
+	xVal := x.Value
+
+	T3 := y.Right
+	T3Val := T3.Value
+
+	T1 := x.Left
+	T1Val := T1.Value
+
+	T2 := x.Right
+	T2Val := T2.Value
+
+	// Update Tree
+	T3.Right = T1
+	T3.Left = T2
+	T3.Size = 3
+	x.Right = nil
+	x.Left = nil
+	x.Size = 1
+
+	// Update Values
+	y.SetValue(xVal)
+	x.SetValue(T1Val)
+	T3.SetValue(yVal)
+	T3.Left.SetValue(T2Val)
+	T3.Right.SetValue(T3Val)
+
+	return T
+}
+
+// RotateLeft does left rotation on the Tree
+// rooted with the value val.
+func (T *Tree) RotateLeft(val int64) *Tree {
+	/*
+	       y                               x
+	      / \     Right Rotation          /  \
+	     x   T3   – - – - – - – >        T1   y
+	    / \       < - - - - - - -            / \
+	   T1  T2     Left Rotation            T2  T3
+	*/
+
+	x := T.Find(val)
+	xVal := x.Value
+
+	T1 := x.Left
+	T1Val := T1.Value
+
+	y := x.Right
+	yVal := y.Value
+
+	T2 := y.Left
+	T2Val := T2.Value
+
+	T3 := y.Right
+	T3Val := T3.Value
+
+	// Update Tree
+	T1.Right = T2
+	T1.Left = T3
+	T1.Size = 3
+	y.Right = nil
+	y.Left = nil
+	y.Size = 1
+
+	// Update Values
+	x.SetValue(yVal)
+	y.SetValue(T3Val)
+	T1.SetValue(xVal)
+	T1.Left.SetValue(T1Val)
+	T1.Right.SetValue(T2Val)
+
 	return T
 }
 

@@ -81,3 +81,29 @@ func Test_Show10(test *testing.T) {
 	tr.Inserts(5, 17, 4, 10)
 	// Show(tr, "avl10.dot")
 }
+
+func Test_Show11(test *testing.T) {
+	tr := avl.NewTree(13)
+	tr.Inserts(5, 17, 4, 10)
+	// Show(tr, "avl11.dot")
+}
+
+func Test_Show12(test *testing.T) {
+	tr := avl.NewTree(13)
+	tr.Inserts(5, 17, 4, 10)
+	tr.RotateRight(13)
+	// Show(tr, "avl12.dot")
+}
+
+func Test_Show13(test *testing.T) {
+	tr := avl.NewTree(5)
+	tr.Inserts(4, 13, 10, 17)
+	// Show(tr, "avl13.dot")
+}
+
+func Test_Show14(test *testing.T) {
+	tr := avl.NewTree(5)
+	tr.Inserts(4, 13, 10, 17)
+	tr.RotateLeft(5)
+	// Show(tr, "avl14.dot")
+}
