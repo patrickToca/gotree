@@ -1,5 +1,5 @@
 // Pacakge avl implements an AVL tree.
-package avltemp
+package avl
 
 import (
 	"math"
@@ -67,6 +67,11 @@ func (T *Tree) Find(val int64) *Tree {
 		return T.Right.Find(val)
 	}
 	return T
+}
+
+// SetValue updates the Value of the Tree.
+func (T *Tree) SetValue(val int64) {
+	T.Value = val
 }
 
 // Parent returns the parental Tree(node) of input value.
@@ -176,6 +181,29 @@ func (T *Tree) Height(val int64) int64 {
 	return T.GetHeightLeft(val) - T.GetHeightRight(val)
 }
 
+// IsBalanced returns true if the Height of the Tree
+// with the input value is balanced.
+func (T *Tree) IsBalanced(val int64) bool {
+	Tree := T.Find(val)
+	return -1 <= Tree.Height(val) && Tree.Height(val) <= 1
+}
+
+func (T *Tree) RotateRight(val int64) *Tree {
+
+}
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+// TODO
+
 // Detect returns the Height and detects the balancing status.
 func (T *Tree) Detect(val int64) (int64, string) {
 	num := T.Height(val)
@@ -202,13 +230,6 @@ func (T *Tree) Detect(val int64) (int64, string) {
 		}
 	}
 	return num, result
-}
-
-// IsBalanced returns true if the Height of the Tree
-// with the input value is balanced.
-func (T *Tree) IsBalanced(val int64) bool {
-	Tree := T.Find(val)
-	return -1 <= Tree.Height(val) && Tree.Height(val) <= 1
 }
 
 // BalanceInsert inserts one value to a Tree
@@ -257,11 +278,6 @@ func int64Sort(v1, v2, v3 int64) []int64 {
 	slice := []int64{v1, v2, v3}
 	sort.Sort(Int64Slice(slice))
 	return slice
-}
-
-// SetValue updates the Value of the Tree.
-func (T *Tree) SetValue(val int64) {
-	T.Value = val
 }
 
 // BalanceLL balances a LL tree with the val of a leaf node.
@@ -412,50 +428,6 @@ func (T *Tree) BalanceRL(val int64) *Tree {
 	//          pt
 	//          /
 	//        node
-	//
-	// to
-	//
-	//     Parent
-	//      /  \
-	//   node   pt
-	//
-	node := T.Find(val)
-	pt := T.Parent(val)
-	Parent := T.Parent(pt.Value)
-	// Now balanced!
-	Parent.Left = node
-
-	// Update values (Balance)
-	slice := int64Sort(node.Value, pt.Value, Parent.Value)
-
-	// 2nd Biggest should be Parent(Root)
-	Parent.SetValue(slice[1])
-
-	// Biggest should be Right
-	Parent.Right.SetValue(slice[2])
-
-	// Smallest Should be Left
-	Parent.Left.SetValue(slice[0])
-
-	// Deletion
-	// 1. Delete as a child
-	pt.Size -= 1
-	pt.Left = nil
-
-	// 2. Delete the moved node itself
-	node = nil
-
-	return T
-}
-
-// RotateLeft rotates the Tree in the counter clockwise direction.
-func (T *Tree) RotateLeft(val int64) *Tree {
-	//
-	//      P
-	//     /  \
-	//    A    Q
-	//        / \
-	//       B   C
 	//
 	// to
 	//

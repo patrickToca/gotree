@@ -1,4 +1,4 @@
-package avlr
+package avltemp
 
 import (
 	"fmt"

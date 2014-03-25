@@ -1,4 +1,4 @@
-package avlr
+package avl
 
 import (
 	"fmt"
@@ -51,6 +51,15 @@ func Test_Find(test *testing.T) {
 	fr := tt.Find(4)
 	if fr.Left.Value != int64(2) {
 		test.Errorf("Should exist but %+v", tt.Find(int64(4)))
+	}
+}
+
+func Test_SetValue(test *testing.T) {
+	tr := NewTree(5)
+	tr.Inserts(1, 2, 3)
+	tr.Find(5).SetValue(10)
+	if tr.Value != 10 {
+		test.Errorf("Should be updated but %+v", tr)
 	}
 }
 
@@ -249,14 +258,6 @@ func Test_Height(test *testing.T) {
 	}
 }
 
-func Test_Detect(test *testing.T) {
-	tr := NewTree(10)
-	// tr.BalanceInserts(13, 17, 5, 4, 7, 6, 8, 9)
-	tr.BalanceInserts(13, 17, 5, 4, 7)
-	fmt.Println(tr.Detect(5))
-	fmt.Println(tr.Detect(13))
-}
-
 func Test_IsBalanced(test *testing.T) {
 	tr1 := NewTree(4)
 	tr1.Inserts(3, 2)
@@ -293,171 +294,11 @@ func Test_IsBalanced(test *testing.T) {
 	}
 }
 
-func Test_BalanceInsert(test *testing.T) {
-	tr1 := NewTree(4)
-	_, tr1_r1 := tr1.BalanceInsert(3)
-	if tr1_r1 != "Balanced" {
-		test.Errorf("BalanceInsert should return Balanced but %v", tr1_r1)
-	}
-	_, tr1_r2 := tr1.BalanceInsert(2)
-	if tr1_r2 != "LL" {
-		test.Errorf("BalanceInsert should return LL but %v", tr1_r2)
-	}
-
-	tr2 := NewTree(4)
-	_, tr2_r1 := tr2.BalanceInsert(5)
-	if tr2_r1 != "Balanced" {
-		test.Errorf("BalanceInsert should return Balanced but %v", tr2_r1)
-	}
-	_, tr2_r2 := tr2.BalanceInsert(6)
-	if tr2_r2 != "RR" {
-		test.Errorf("BalanceInsert should return LL but %v", tr2_r2)
-	}
-
-	tr3 := NewTree(4)
-	_, tr3_r1 := tr3.BalanceInsert(1)
-	if tr3_r1 != "Balanced" {
-		test.Errorf("BalanceInsert should return Balanced but %v", tr3_r1)
-	}
-	_, tr3_r2 := tr3.BalanceInsert(3)
-	if tr3_r2 != "LR" {
-		test.Errorf("BalanceInsert should return LR but %v", tr3_r2)
-	}
-
-	tr4 := NewTree(4)
-	_, tr4_r1 := tr4.BalanceInsert(7)
-	if tr4_r1 != "Balanced" {
-		test.Errorf("BalanceInsert should return Balanced but %v", tr4_r1)
-	}
-	_, tr4_r2 := tr4.BalanceInsert(5)
-	if tr4_r2 != "RL" {
-		test.Errorf("BalanceInsert should return RL but %v", tr4_r2)
-	}
-
-	tr5 := NewTree(5)
-	tr5.Inserts(7, 8, 4, 2, 1, 6, 3)
-	_, tr5_r1 := tr5.BalanceInsert(9)
-	if tr5_r1 != "Balanced" {
-		test.Errorf("BalanceInsert should return Balanced but %v", tr5_r1)
-	}
-	_, tr5_r2 := tr5.BalanceInsert(10)
-	if tr5_r2 != "RR" {
-		test.Errorf("BalanceInsert should return RR but %v", tr5_r2)
-	}
+func Test_Detect(test *testing.T) {
+	tr := NewTree(10)
+	// tr.Inserts(13, 17, 5, 4, 7)
+	// tr.BalanceInserts(13, 17, 5, 4, 7, 6, 8, 9)
+	tr.BalanceInserts(13, 17, 5, 4, 7)
+	fmt.Println(tr.Detect(5))
+	fmt.Println(tr.Detect(13))
 }
-
-func Test_BalanceLL(test *testing.T) {
-	tr := NewTree(4)
-	tr.BalanceInsert(3)
-	tr.BalanceInsert(2)
-	// Now tr is unbalanced
-
-	// Now the following line rebalances the tr
-	tr.BalanceLL(2)
-	if !tr.IsBalanced(4) {
-		test.Errorf("BalanceLL should balance the tree but %v", tr.IsBalanced(4))
-	}
-	if tr.Find(4).GetSize(4) != 1 {
-		test.Errorf("Should return 1 but %v", tr.Find(4).GetSize(4))
-	}
-	if tr.Find(3).GetSize(3) != 3 {
-		test.Errorf("Should return 3 but %v", tr.Find(3).GetSize(3))
-	}
-	if tr.Find(2).GetSize(2) != 1 {
-		test.Errorf("Should return 1 but %v", tr.Find(2).GetSize(2))
-	}
-}
-
-func Test_BalanceLR(test *testing.T) {
-	tr := NewTree(4)
-	tr.BalanceInsert(2)
-	tr.BalanceInsert(3)
-	// Now tr is unbalanced
-
-	// Now the following line rebalances the tr
-	tr.BalanceLR(3)
-	if !tr.IsBalanced(4) {
-		test.Errorf("BalanceLR should balance the tree but %v", tr.IsBalanced(4))
-	}
-	if tr.Find(4).GetSize(4) != 1 {
-		test.Errorf("Should return 1 but %v", tr.Find(4).GetSize(4))
-	}
-	if tr.Find(3).GetSize(3) != 3 {
-		test.Errorf("Should return 3 but %v", tr.Find(3).GetSize(3))
-	}
-	if tr.Find(2).GetSize(2) != 1 {
-		test.Errorf("Should return 1 but %v", tr.Find(2).GetSize(2))
-	}
-}
-
-func Test_BalanceRR(test *testing.T) {
-	tr := NewTree(4)
-	tr.BalanceInsert(5)
-	tr.BalanceInsert(6)
-	// Now tr is unbalanced
-
-	// Now the following line rebalances the tr
-	tr.BalanceRR(6)
-	if !tr.IsBalanced(4) {
-		test.Errorf("BalanceRR should balance the tree but %v", tr.IsBalanced(4))
-	}
-	if tr.Find(4).GetSize(4) != 1 {
-		test.Errorf("Should return 1 but %v", tr.Find(4).GetSize(4))
-	}
-	if tr.Find(5).GetSize(5) != 3 {
-		test.Errorf("Should return 3 but %v", tr.Find(5).GetSize(5))
-	}
-	if tr.Find(6).GetSize(6) != 1 {
-		test.Errorf("Should return 1 but %v", tr.Find(6).GetSize(6))
-	}
-}
-
-func Test_BalanceRL(test *testing.T) {
-	tr := NewTree(4)
-	tr.BalanceInsert(6)
-	tr.BalanceInsert(5)
-	// Now tr is unbalanced
-
-	// Now the following line rebalances the tr
-	tr.BalanceRL(5)
-	if !tr.IsBalanced(4) {
-		test.Errorf("BalanceRL should balance the tree but %v", tr.IsBalanced(4))
-	}
-	if tr.Find(4).GetSize(4) != 1 {
-		test.Errorf("Should return 1 but %v", tr.Find(4).GetSize(4))
-	}
-	if tr.Find(5).GetSize(5) != 3 {
-		test.Errorf("Should return 3 but %v", tr.Find(5).GetSize(5))
-	}
-	if tr.Find(6).GetSize(6) != 1 {
-		test.Errorf("Should return 1 but %v", tr.Find(6).GetSize(6))
-	}
-}
-
-/*
-func Test_BalanceInserts(test *testing.T) {
-	tr := NewTree(4)
-	tr.BalanceInserts(6, 5)
-	if !tr.IsBalanced(4) {
-		test.Errorf("BalanceRL should balance the tree but %v", tr.IsBalanced(4))
-	}
-	if tr.Find(4).GetSize(4) != 1 {
-		test.Errorf("Should return 1 but %v", tr.Find(4).GetSize(4))
-	}
-	if tr.Find(5).GetSize(5) != 3 {
-		test.Errorf("Should return 3 but %v", tr.Find(5).GetSize(5))
-	}
-	if tr.Find(6).GetSize(6) != 1 {
-		test.Errorf("Should return 1 but %v", tr.Find(6).GetSize(6))
-	}
-
-	tr1 := NewTree(10)
-	tr1.BalanceInserts(13, 17, 5, 4, 7, 6, 8, 9)
-	nodes := []int64{10, 13, 17, 5, 4, 7, 6, 8, 9}
-	for _, v := range nodes {
-		if !tr1.IsBalanced(v) {
-			test.Errorf("Should be balanced but %v: IsBalanced %v", v, tr1.IsBalanced(v))
-		}
-	}
-}
-*/
