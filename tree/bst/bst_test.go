@@ -15,10 +15,42 @@ func Test_NewTree(test *testing.T) {
 }
 
 func Test_Inserts(test *testing.T) {
+	tr0 := NewTree(5)
+	for i := 0; i < 10; i++ {
+		if i != 5 {
+			tr0 = tr0.Insert(int64(i))
+		}
+	}
+	check := []int64{5, 4, 3, 2, 1, 10, 4, 3, 2, 1}
+	for i := 0; i < 10; i++ {
+		if check[i] != tr0.GetSize(int64(i)) {
+			test.Errorf("Should return true but %v, %v", i, tr0.GetSize(int64(i)))
+		}
+	}
+
 	tr := NewTree(5)
 	tr.Inserts(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 	if tr.Size != 10 {
 		test.Errorf("Should be size of 10 but %+v", tr.Size)
+	}
+
+	tr1 := NewTree(10)
+	tr1.Inserts(13, 17, 5, 4)
+
+	if tr1.GetSize(10) != 5 {
+		test.Errorf("Should return 5 but %+v", tr1.GetSize(5))
+	}
+	if tr1.GetSize(13) != 2 {
+		test.Errorf("Should return 2 but %+v", tr1.GetSize(2))
+	}
+	if tr1.GetSize(17) != 1 {
+		test.Errorf("Should return 1 but %+v", tr1.GetSize(1))
+	}
+	if tr1.GetSize(5) != 2 {
+		test.Errorf("Should return 2 but %+v", tr1.GetSize(2))
+	}
+	if tr1.GetSize(4) != 1 {
+		test.Errorf("Should return 1 but %+v", tr1.GetSize(1))
 	}
 }
 

@@ -35,13 +35,13 @@ func (T *Tree) Inserts(values ...int64) *Tree {
 
 // Insert inserts a new value(node) to the tree.
 func (T *Tree) Insert(val int64) *Tree {
-	if T != nil && T.Value != val {
-		T.Size += 1
-	}
 	// To end recursion
 	// set terminal node's left and right to nil
 	if T == nil {
 		return &Tree{nil, val, nil, int64(1)}
+	}
+	if T != nil && T.Value != val {
+		T.Size += 1
 	}
 	if val < T.Value {
 		// Insert into the left tree
