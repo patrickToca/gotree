@@ -65,9 +65,7 @@ func Test_Show7(test *testing.T) {
 
 func Test_Show8(test *testing.T) {
 	tr := avl.NewTree(10)
-	// tr.BalanceInserts(13, 17, 5, 4, 7, 6, 8, 9)
 	tr.BalanceInserts(13, 17, 5, 4, 7)
-	fmt.Println(tr.Detect(5))
 	// Show(tr, "avl08.dot")
 }
 
@@ -76,4 +74,10 @@ func Test_Show9(test *testing.T) {
 	tr.BalanceInserts(13, 17)
 	fmt.Println(tr.Right.Value)
 	// Show(tr, "avl09.dot")
+}
+
+func Test_Show10(test *testing.T) {
+	tr := avl.NewTree(13)
+	tr.Inserts(5, 17, 4, 10)
+	// Show(tr, "avl10.dot")
 }

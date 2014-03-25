@@ -188,8 +188,16 @@ func (T *Tree) IsBalanced(val int64) bool {
 	return -1 <= Tree.Height(val) && Tree.Height(val) <= 1
 }
 
+// RotateRight
 func (T *Tree) RotateRight(val int64) *Tree {
-
+	/*
+	       y                               x
+	      / \     Right Rotation          /  \
+	     x   T3   – - – - – - – >        T1   y
+	    / \       < - - - - - - -            / \
+	   T1  T2     Left Rotation            T2  T3
+	*/
+	return T
 }
 
 //
