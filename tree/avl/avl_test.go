@@ -294,11 +294,59 @@ func Test_IsBalanced(test *testing.T) {
 	}
 }
 
-func Test_Detect(test *testing.T) {
-	tr := NewTree(10)
-	// tr.Inserts(13, 17, 5, 4, 7)
-	// tr.BalanceInserts(13, 17, 5, 4, 7, 6, 8, 9)
-	tr.BalanceInserts(13, 17, 5, 4, 7)
-	fmt.Println(tr.Detect(5))
-	fmt.Println(tr.Detect(13))
+func SameInt64Slice(s1, s2 []int64) bool {
+	if len(s1) != len(s2) {
+		return false
+	}
+	for k, v := range s1 {
+		if v != s2[k] {
+			return false
+		}
+	}
+	return true
+}
+
+func Test_WalkPreOrder(test *testing.T) {
+	tr := NewTree(7)
+	tr.Inserts(4, 12, 9, 15, 8, 10)
+	ch := make(chan int64)
+	go WalkPreOrder(tr, ch)
+	result := []int64{}
+	for v := range ch {
+		result = append(result, v)
+	}
+	rc := []int64{7, 4, 12, 9, 8, 10, 15}
+	if !SameInt64Slice(result, rc) {
+		test.Errorf("Should return true but\n%v", result)
+	}
+}
+
+func Test_WalkInOrder(test *testing.T) {
+	tr := NewTree(7)
+	tr.Inserts(4, 12, 9, 15, 8, 10)
+	ch := make(chan int64)
+	go WalkInOrder(tr, ch)
+	result := []int64{}
+	for v := range ch {
+		result = append(result, v)
+	}
+	rc := []int64{4, 7, 8, 9, 10, 12, 15}
+	if !SameInt64Slice(result, rc) {
+		test.Errorf("Should return true but\n%v", result)
+	}
+}
+
+func Test_WalkPostOrder(test *testing.T) {
+	tr := NewTree(7)
+	tr.Inserts(4, 12, 9, 15, 8, 10)
+	ch := make(chan int64)
+	go WalkPostOrder(tr, ch)
+	result := []int64{}
+	for v := range ch {
+		result = append(result, v)
+	}
+	rc := []int64{4, 8, 10, 9, 15, 12, 7}
+	if !SameInt64Slice(result, rc) {
+		test.Errorf("Should return true but\n%v", result)
+	}
 }

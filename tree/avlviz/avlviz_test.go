@@ -107,3 +107,50 @@ func Test_Show14(test *testing.T) {
 	tr.RotateLeft(5)
 	// Show(tr, "avl14.dot")
 }
+
+func Test_Show15(test *testing.T) {
+	tr := avl.NewTree(13)
+	tr.Inserts(5, 17, 3, 10, 4, 2)
+	// Show(tr, "avl15.dot")
+}
+
+func Test_Show16(test *testing.T) {
+	tr := avl.NewTree(13)
+	tr.Inserts(5, 17, 3, 10, 4, 2)
+	tr.RotateRight(13)
+	// Show(tr, "avl16.dot")
+}
+
+func Test_Show17(test *testing.T) {
+	tr := avl.NewTree(7)
+	tr.Inserts(4, 12, 8, 15, 17, 13)
+	// Show(tr, "avl17.dot")
+}
+
+func Test_Show18(test *testing.T) {
+	tr := avl.NewTree(7)
+	tr.Inserts(4, 12, 8, 15, 17, 13)
+	tr.RotateLeft(7)
+	// Show(tr, "avl18.dot")
+}
+
+func Test_Show19(test *testing.T) {
+	tr := avl.NewTree(7)
+	tr.Inserts(4, 12, 9, 15, 8, 10)
+	// Show(tr, "avl19.dot")
+}
+
+func Test_Show20(test *testing.T) {
+	tr := avl.NewTree(7)
+	tr.Inserts(4, 12, 9, 15, 8, 10)
+	tr.RotateRight(12)
+	// Show(tr, "avl20.dot")
+}
+
+func Test_Show21(test *testing.T) {
+	tr := avl.NewTree(7)
+	tr.Inserts(4, 12, 9, 15, 8, 10)
+	tr.RotateRight(12)
+	tr.RotateLeft(7)
+	// Show(tr, "avl21.dot")
+}

@@ -188,139 +188,6 @@ func (T *Tree) IsBalanced(val int64) bool {
 	return -1 <= Tree.Height(val) && Tree.Height(val) <= 1
 }
 
-// Copy makes a copy of the Tree.
-func (T *Tree) Copy() *Tree {
-	return &Tree{T.Left, T.Value, T.Right, T.Size}
-}
-
-// RotateRight does right rotation on the Tree
-// rooted with the value val.
-func (T *Tree) RotateRight(val int64) *Tree {
-	/*
-	       y                               x
-	      / \     Right Rotation          /  \
-	     x   T3   – - – - – - – >        T1   y
-	    / \       < - - - - - - -            / \
-	   T1  T2     Left Rotation            T2  T3
-	*/
-
-	y := T.Find(val)
-	yVal := y.Value
-
-	x := y.Left
-	xVal := x.Value
-
-	T3 := y.Right
-	T3Val := T3.Value
-
-	T1 := x.Left
-	T1Val := T1.Value
-
-	T2 := x.Right
-	T2Val := T2.Value
-
-	// Update Tree
-	T3.Right = T1
-	T3.Left = T2
-	T3.Size = 3
-	x.Right = nil
-	x.Left = nil
-	x.Size = 1
-
-	// Update Values
-	y.SetValue(xVal)
-	x.SetValue(T1Val)
-	T3.SetValue(yVal)
-	T3.Left.SetValue(T2Val)
-	T3.Right.SetValue(T3Val)
-
-	return T
-}
-
-// RotateLeft does left rotation on the Tree
-// rooted with the value val.
-func (T *Tree) RotateLeft(val int64) *Tree {
-	/*
-	       y                               x
-	      / \     Right Rotation          /  \
-	     x   T3   – - – - – - – >        T1   y
-	    / \       < - - - - - - -            / \
-	   T1  T2     Left Rotation            T2  T3
-	*/
-
-	x := T.Find(val)
-	xVal := x.Value
-
-	T1 := x.Left
-	T1Val := T1.Value
-
-	y := x.Right
-	yVal := y.Value
-
-	T2 := y.Left
-	T2Val := T2.Value
-
-	T3 := y.Right
-	T3Val := T3.Value
-
-	// Update Tree
-	T1.Right = T2
-	T1.Left = T3
-	T1.Size = 3
-	y.Right = nil
-	y.Left = nil
-	y.Size = 1
-
-	// Update Values
-	x.SetValue(yVal)
-	y.SetValue(T3Val)
-	T1.SetValue(xVal)
-	T1.Left.SetValue(T1Val)
-	T1.Right.SetValue(T2Val)
-
-	return T
-}
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-// TODO
-
-// Detect returns the Height and detects the balancing status.
-func (T *Tree) Detect(val int64) (int64, string) {
-	num := T.Height(val)
-	Tr := T.Find(val)
-	result := ""
-	if T.IsBalanced(val) {
-		result = "Balanced"
-	} else {
-		switch T.Height(Tr.Value) {
-		case 2: // LL or LR
-			if Tr.Left.Left != nil && Tr.Left.Right == nil {
-				result = "LL"
-			}
-			if Tr.Left.Left == nil && Tr.Left.Right != nil {
-				result = "LR"
-			}
-		case -2: // RR or RL
-			if Tr.Right.Right != nil && Tr.Right.Left == nil {
-				result = "RR"
-			}
-			if Tr.Right.Right == nil && Tr.Right.Left != nil {
-				result = "RL"
-			}
-		}
-	}
-	return num, result
-}
-
 // BalanceInsert inserts one value to a Tree
 // and tells if the Tree is LL, RR, LR, RL.
 func (T *Tree) BalanceInsert(val int64) (*Tree, string) {
@@ -575,4 +442,186 @@ func (T *Tree) BalanceInserts(values ...int64) *Tree {
 		}
 	}
 	return T
+}
+
+// RotateRight does right rotation on the Tree
+// rooted with the value val.
+func (T *Tree) RotateRight(val int64) *Tree {
+	/*
+	       y                               x
+	      / \     Right Rotation          /  \
+	     x   T3   – - – - – - – >        T1   y
+	    / \       < - - - - - - -            / \
+	   T1  T2     Left Rotation            T2  T3
+	*/
+
+	y := T.Find(val)
+	yVal := y.Value
+
+	x := y.Left
+	xVal := x.Value
+
+	T3 := y.Right
+	T3Val := T3.Value
+
+	T1 := x.Left
+	T1Val := T1.Value
+
+	T2 := x.Right
+	T2Val := T2.Value
+
+	// Update Tree
+	T3.Right = &Tree{nil, 0, nil, 1}
+	T3.Left = T2
+	T3.Size = T3.Size + 2
+	x.Right = nil
+	//x.Left = nil
+	x.Size = x.Size - 2
+
+	// Update Values
+	y.SetValue(xVal)
+	x.SetValue(T1Val)
+	T3.SetValue(yVal)
+	T3.Left.SetValue(T2Val)
+	T3.Right.SetValue(T3Val)
+
+	return T
+}
+
+// RotateLeft does left rotation on the Tree
+// rooted with the value val.
+func (T *Tree) RotateLeft(val int64) *Tree {
+	/*
+	       y                               x
+	      / \     Right Rotation          /  \
+	     x   T3   – - – - – - – >        T1   y
+	    / \       < - - - - - - -            / \
+	   T1  T2     Left Rotation            T2  T3
+	*/
+
+	x := T.Find(val)
+	xVal := x.Value
+
+	T1 := x.Left
+	T1Val := T1.Value
+
+	y := x.Right
+	yVal := y.Value
+
+	T2 := y.Left
+	T2Val := T2.Value
+
+	T3 := y.Right
+	T3Val := T3.Value
+
+	// Update Tree
+	T1.Right = T2
+	T1.Left = &Tree{nil, 0, nil, 1}
+	T1.Size = T1.Size + 2
+	// y.Right = nil
+	y.Left = nil
+	y.Size = y.Size - 2
+
+	// Update Values
+	x.SetValue(yVal)
+	y.SetValue(T3Val)
+	T1.SetValue(xVal)
+	T1.Left.SetValue(T1Val)
+	T1.Right.SetValue(T2Val)
+
+	return T
+}
+
+// walkPreOrder traverses the tree in the order of
+// Root, Left, Right.
+func walkPreOrder(T *Tree, ch chan int64) {
+	ch <- T.Value
+
+	if T.Left != nil {
+		walkPreOrder(T.Left, ch)
+	}
+
+	if T.Right != nil {
+		walkPreOrder(T.Right, ch)
+	}
+}
+
+// WalkPreOrder traverses the tree in the order of
+// Root, Left, Right.
+func WalkPreOrder(T *Tree, ch chan int64) {
+	walkPreOrder(T, ch)
+	close(ch)
+}
+
+// walkInOrder traverses the tree in the order of
+// Left, Root, Right.
+func walkInOrder(T *Tree, ch chan int64) {
+	// if left sub-tree does exist
+	// recursively traverse the left sub-tree
+	if T.Left != nil {
+		walkInOrder(T.Left, ch)
+	}
+
+	// send the value of the present root node
+	ch <- T.Value
+
+	if T.Right != nil {
+		walkInOrder(T.Right, ch)
+	}
+}
+
+// WalkInOrder traverses the tree in the order of
+// Left, Root, Right.
+func WalkInOrder(T *Tree, ch chan int64) {
+	walkInOrder(T, ch)
+	close(ch)
+}
+
+// walkPostOrder traverses the tree in the order of
+// Left, Right, Root.
+func walkPostOrder(T *Tree, ch chan int64) {
+	if T.Left != nil {
+		walkPostOrder(T.Left, ch)
+	}
+
+	if T.Right != nil {
+		walkPostOrder(T.Right, ch)
+	}
+
+	ch <- T.Value
+}
+
+// WalkPostOrder traverses the tree in the order of
+// Left, Right, Root.
+func WalkPostOrder(T *Tree, ch chan int64) {
+	walkPostOrder(T, ch)
+	close(ch)
+}
+
+// Detect returns the Height and detects the balancing status.
+func (T *Tree) Detect(val int64) (int64, string) {
+	num := T.Height(val)
+	Tr := T.Find(val)
+	result := ""
+	if T.IsBalanced(val) {
+		result = "Balanced"
+	} else {
+		switch T.Height(Tr.Value) {
+		case 2: // LL or LR
+			if Tr.Left.Left != nil && Tr.Left.Right == nil {
+				result = "LL"
+			}
+			if Tr.Left.Left == nil && Tr.Left.Right != nil {
+				result = "LR"
+			}
+		case -2: // RR or RL
+			if Tr.Right.Right != nil && Tr.Right.Left == nil {
+				result = "RR"
+			}
+			if Tr.Right.Right == nil && Tr.Right.Left != nil {
+				result = "RL"
+			}
+		}
+	}
+	return num, result
 }
