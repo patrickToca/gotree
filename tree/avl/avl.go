@@ -127,6 +127,32 @@ func (T *Tree) IsLeaf(val int64) bool {
 	}
 }
 
+// Copy returns a copy of the tree.
+func (T *Tree) Copy() *Tree {
+	t := NewTree(T.Value)
+	t.Left = T.Left
+	t.Right = T.Right
+	return t
+}
+
+// FindMin returns the minimum(left-most) value of the tree.
+func (T *Tree) FindMin() int64 {
+	curT := T.Copy()
+	for curT.Left != nil {
+		curT = curT.Left
+	}
+	return curT.Value
+}
+
+// FindMax returns the maximum(right-most) value of the tree.
+func (T *Tree) FindMax() int64 {
+	curT := T.Copy()
+	for curT.Right != nil {
+		curT = curT.Right
+	}
+	return curT.Value
+}
+
 // GetSize returns the size of the node with the input value
 // which is the number of the children node + 1.
 func (T *Tree) GetSize(val int64) int64 {
