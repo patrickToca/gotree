@@ -198,20 +198,20 @@ func Test_Show25(test *testing.T) {
 	// Left Left Case
 	tr1 := avl.NewTree(13)
 	tr1.TreeInserts(5, 17, 3, 10, 4, 2)
-	Show(tr1, "avl_balanced_25.dot")
+	// Show(tr1, "avl_balanced_25.dot")
 
 	// Left Right Case
 	tr2 := avl.NewTree(13)
 	tr2.TreeInserts(5, 17, 3, 10, 12, 9)
-	Show(tr2, "avl_balanced_26.dot")
+	// Show(tr2, "avl_balanced_26.dot")
 
 	// Right Right Case
 	tr3 := avl.NewTree(7)
 	tr3.TreeInserts(4, 12, 8, 15, 17, 13)
-	Show(tr3, "avl_balanced_27.dot")
+	// Show(tr3, "avl_balanced_27.dot")
 
 	// Right Left Case
 	tr4 := avl.NewTree(7)
 	tr4.TreeInserts(4, 12, 9, 15, 8, 10)
-	Show(tr4, "avl_balanced_28.dot")
+	// Show(tr4, "avl_balanced_28.dot")
 }
