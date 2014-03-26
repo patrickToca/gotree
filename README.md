@@ -330,13 +330,10 @@ To-Do-List
 
 Other
 ==========
-
+- <a href="https://code.google.com/p/go-wiki/wiki/Projects?ts=1395809107&updated=Projects#Data_Structures" target="_blank">Data Structure Projects</a>
 - <a href="https://github.com/petar/GoLLRB" target="_blank">GoLLRB</a> by Petar Maymounkov (Left-Leaning Red-Black Tree)
 - <a href="https://github.com/timtadh/file-structures" target="_blank">File Structures (B+Tree, BTree)</a> by Tim Henderson
 - <a href="https://github.com/psankar/btree-go" target="_blank">btree-go</a> by Sankar (B-Tree)
-
-
-
 
 [↑ top](https://github.com/gyuho/gotree#gotree---)
 
