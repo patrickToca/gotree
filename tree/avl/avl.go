@@ -214,6 +214,29 @@ func (T *Tree) IsBalanced(val int64) bool {
 	return -1 <= Tree.Height(val) && Tree.Height(val) <= 1
 }
 
+// CheckTreeBalance returns true if all nodes in the Tree
+// is balanced. Otherwise, it returns false and the unbalanced
+// nodes.
+func (T *Tree) CheckTreeBalance() (bool, []int64) {
+	ch := make(chan int64)
+	go WalkInOrder(T, ch)
+	result := []int64{}
+	for v := range ch {
+		result = append(result, v)
+	}
+	nbs := []int64{}
+	for _, v := range result {
+		if !T.IsBalanced(v) {
+			nbs = append(nbs, v)
+		}
+	}
+	if len(nbs) != 0 {
+		return false, nbs
+	} else {
+		return true, nbs
+	}
+}
+
 // BalanceInsert inserts one value to a Tree
 // and tells if the Tree is LL, RR, LR, RL.
 func (T *Tree) BalanceInsert(val int64) (*Tree, string) {
@@ -652,6 +675,18 @@ func Same(T1, T2 *Tree) bool {
 		}
 	}
 	return true
+}
+
+func (T *Tree) TreeInserts(values ...int64) *Tree {
+	// First insert with BalanceInserts
+	T.BalanceInserts(values...)
+
+	// And check the balancing status
+	rb, sl := T.CheckTreeBalance()
+	if rb && len(sl) != 1 {
+		return T
+	}
+	return T
 }
 
 // Detect returns the Height and detects the balancing status.

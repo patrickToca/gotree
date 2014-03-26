@@ -273,35 +273,46 @@ func Test_IsBalanced(test *testing.T) {
 	tr1 := NewTree(4)
 	tr1.Inserts(3, 2)
 	if tr1.IsBalanced(4) {
-		test.Errorf("IsBalanced should be false but %v", tr1.IsBalanced(4))
+		test.Errorf("IsBalanced should return false but %v", tr1.IsBalanced(4))
 	}
 	tr2 := NewTree(4)
 	tr2.Inserts(5, 6)
 	if tr2.IsBalanced(4) {
-		test.Errorf("IsBalanced should be false but %v", tr2.IsBalanced(4))
+		test.Errorf("IsBalanced should return false but %v", tr2.IsBalanced(4))
 	}
 	tr3 := NewTree(5)
 	tr3.Inserts(7, 8, 4, 2, 1, 3)
 	if !tr3.IsBalanced(5) {
-		test.Errorf("IsBalanced should be true but %v", tr3.IsBalanced(5))
+		test.Errorf("IsBalanced should return true but %v", tr3.IsBalanced(5))
 	}
 	if tr3.IsBalanced(4) {
-		test.Errorf("IsBalanced should be false but %v", tr3.IsBalanced(4))
+		test.Errorf("IsBalanced should return false but %v", tr3.IsBalanced(4))
 	}
 	if !tr3.IsBalanced(7) {
-		test.Errorf("IsBalanced should be true but %v", tr3.IsBalanced(7))
+		test.Errorf("IsBalanced should return true but %v", tr3.IsBalanced(7))
 	}
 	if !tr3.IsBalanced(8) {
-		test.Errorf("IsBalanced should be true but %v", tr3.IsBalanced(8))
+		test.Errorf("IsBalanced should return true but %v", tr3.IsBalanced(8))
 	}
 	if !tr3.IsBalanced(2) {
-		test.Errorf("IsBalanced should be true but %v", tr3.IsBalanced(2))
+		test.Errorf("IsBalanced should return true but %v", tr3.IsBalanced(2))
 	}
 	if !tr3.IsBalanced(1) {
-		test.Errorf("IsBalanced should be true but %v", tr3.IsBalanced(1))
+		test.Errorf("IsBalanced should return true but %v", tr3.IsBalanced(1))
 	}
 	if !tr3.IsBalanced(3) {
-		test.Errorf("IsBalanced should be true but %v", tr3.IsBalanced(3))
+		test.Errorf("IsBalanced should return true but %v", tr3.IsBalanced(3))
+	}
+}
+
+func Test_CheckTreeBalance(test *testing.T) {
+	tr := NewTree(7)
+	tr.Inserts(4, 12, 9, 15, 8, 10)
+	rb, sl := tr.CheckTreeBalance()
+	// fmt.Println(tr.Height(7))
+	// -2
+	if rb && len(sl) != 1 {
+		test.Errorf("CheckTreeBalance should return false but %v, %v", rb, sl)
 	}
 }
 

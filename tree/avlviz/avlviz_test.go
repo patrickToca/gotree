@@ -1,7 +1,6 @@
 package avlviz
 
 import (
-	"fmt"
 	"testing"
 
 	"github.com/gyuho/gotree/tree/avl"
@@ -72,7 +71,8 @@ func Test_Show8(test *testing.T) {
 func Test_Show9(test *testing.T) {
 	tr := avl.NewTree(10)
 	tr.BalanceInserts(13, 17)
-	fmt.Println(tr.Right.Value)
+	// fmt.Println(tr.Right.Value)
+	// 17
 	// Show(tr, "avl09.dot")
 }
 
@@ -108,12 +108,16 @@ func Test_Show14(test *testing.T) {
 	// Show(tr, "avl14.dot")
 }
 
+// Left Left Case
 func Test_Show15(test *testing.T) {
 	tr := avl.NewTree(13)
 	tr.Inserts(5, 17, 3, 10, 4, 2)
+	// fmt.Println(tr.Height(13))
+	// 2
 	// Show(tr, "avl15.dot")
 }
 
+// Left Left Case
 func Test_Show16(test *testing.T) {
 	tr := avl.NewTree(13)
 	tr.Inserts(5, 17, 3, 10, 4, 2)
@@ -121,36 +125,71 @@ func Test_Show16(test *testing.T) {
 	// Show(tr, "avl16.dot")
 }
 
+// Left Right Case
 func Test_Show17(test *testing.T) {
-	tr := avl.NewTree(7)
-	tr.Inserts(4, 12, 8, 15, 17, 13)
+	tr := avl.NewTree(13)
+	tr.Inserts(5, 17, 3, 10, 12, 9)
+	// fmt.Println(tr.Height(13))
+	// 2
 	// Show(tr, "avl17.dot")
 }
 
+// Left Right Case
 func Test_Show18(test *testing.T) {
-	tr := avl.NewTree(7)
-	tr.Inserts(4, 12, 8, 15, 17, 13)
-	tr.RotateLeft(7)
+	tr := avl.NewTree(13)
+	tr.Inserts(5, 17, 3, 10, 12, 9)
+	tr.RotateLeft(5)
 	// Show(tr, "avl18.dot")
 }
 
+// Left Right Case
 func Test_Show19(test *testing.T) {
-	tr := avl.NewTree(7)
-	tr.Inserts(4, 12, 9, 15, 8, 10)
+	tr := avl.NewTree(13)
+	tr.Inserts(5, 17, 3, 10, 12, 9)
+	tr.RotateLeft(5)
+	tr.RotateRight(13)
 	// Show(tr, "avl19.dot")
 }
 
+// Right Right Case
 func Test_Show20(test *testing.T) {
 	tr := avl.NewTree(7)
-	tr.Inserts(4, 12, 9, 15, 8, 10)
-	tr.RotateRight(12)
+	tr.Inserts(4, 12, 8, 15, 17, 13)
+	// fmt.Println(tr.Height(7))
+	// -2
 	// Show(tr, "avl20.dot")
 }
 
+// Right Right Case
 func Test_Show21(test *testing.T) {
+	tr := avl.NewTree(7)
+	tr.Inserts(4, 12, 8, 15, 17, 13)
+	tr.RotateLeft(7)
+	// Show(tr, "avl21.dot")
+}
+
+// Right Left Case
+func Test_Show22(test *testing.T) {
+	tr := avl.NewTree(7)
+	tr.Inserts(4, 12, 9, 15, 8, 10)
+	// fmt.Println(tr.Height(7))
+	// -2
+	// Show(tr, "avl22.dot")
+}
+
+// Right Left Case
+func Test_Show23(test *testing.T) {
+	tr := avl.NewTree(7)
+	tr.Inserts(4, 12, 9, 15, 8, 10)
+	tr.RotateRight(12)
+	// Show(tr, "avl23.dot")
+}
+
+// Right Left Case
+func Test_Show24(test *testing.T) {
 	tr := avl.NewTree(7)
 	tr.Inserts(4, 12, 9, 15, 8, 10)
 	tr.RotateRight(12)
 	tr.RotateLeft(7)
-	// Show(tr, "avl21.dot")
+	// Show(tr, "avl24.dot")
 }
