@@ -9,6 +9,7 @@ gotree provides tree visualizing tools and algorithm implementations.
 - [AVL Tree](https://github.com/gyuho/gotree#avl-tree)
 - [Example : AVL Tree](https://github.com/gyuho/gotree#example--avl-tree)
 - [To-Do-List](https://github.com/gyuho/gotree#to-do-list)
+- [Other](https://github.com/gyuho/gotree#other)
 
 
 Getting Started
@@ -325,3 +326,18 @@ To-Do-List
 - More Tree Data Structures
 
 [↑ top](https://github.com/gyuho/gotree#gotree---)
+
+
+Other
+==========
+
+- <a href="https://github.com/petar/GoLLRB" target="_blank">GoLLRB</a> by Petar Maymounkov (Left-Leaning Red-Black Tree)
+- <a href="https://github.com/timtadh/file-structures" target="_blank">File Structures (B+Tree, BTree)</a> by Tim Henderson
+- <a href="https://github.com/psankar/btree-go" target="_blank">btree-go</a> by Sankar (B-Tree)
+
+
+
+
+[↑ top](https://github.com/gyuho/gotree#gotree---)
+
+
