@@ -293,6 +293,40 @@ func Test_avlviz(test *testing.T) {
 
 [↑ top](https://github.com/gyuho/gotree#gotree---)
 
+<hr>
+
+```go
+func Test_Show25(test *testing.T) {
+  // Left Left Case
+  tr1 := avl.NewTree(13)
+  tr1.TreeInserts(5, 17, 3, 10, 4, 2)
+  Show(tr1, "avl_balanced_25.dot")
+
+  // Left Right Case
+  tr2 := avl.NewTree(13)
+  tr2.TreeInserts(5, 17, 3, 10, 12, 9)
+  Show(tr2, "avl_balanced_26.dot")
+
+  // Right Right Case
+  tr3 := avl.NewTree(7)
+  tr3.TreeInserts(4, 12, 8, 15, 17, 13)
+  Show(tr3, "avl_balanced_27.dot")
+
+  // Right Left Case
+  tr4 := avl.NewTree(7)
+  tr4.TreeInserts(4, 12, 9, 15, 8, 10)
+  Show(tr4, "avl_balanced_28.dot")
+}
+```
+
+<img src="./files/avl_balanced_25.png" alt="avl_balanced_25" width="120px" height="120px"/>
+<img src="./files/avl_balanced_26.png" alt="avl_balanced_26" width="120px" height="120px"/>
+<img src="./files/avl_balanced_27.png" alt="avl_balanced_27" width="120px" height="120px"/>
+<img src="./files/avl_balanced_28.png" alt="avl_balanced_28" width="120px" height="120px"/>
+
+[↑ top](https://github.com/gyuho/gotree#gotree---)
+
+
 
 To-Do-List
 ==========

@@ -686,33 +686,47 @@ func (T *Tree) TreeInserts(values ...int64) *Tree {
 	if rb && len(sl) != 1 {
 		return T
 	}
-	return T
-}
 
-// Detect returns the Height and detects the balancing status.
-func (T *Tree) Detect(val int64) (int64, string) {
-	num := T.Height(val)
-	Tr := T.Find(val)
-	result := ""
-	if T.IsBalanced(val) {
-		result = "Balanced"
-	} else {
-		switch T.Height(Tr.Value) {
-		case 2: // LL or LR
-			if Tr.Left.Left != nil && Tr.Left.Right == nil {
-				result = "LL"
+	// Rebalance the unbalanced nodes
+	for _, val := range sl {
+		switch T.Height(val) {
+		case 2: // Left Left or Left Right case
+			NT := T.Find(val)
+			NTLC := NT.Left // Left Child
+			// Left Left case
+			if NT.Right.Right == nil &&
+				NT.Right.Left == nil &&
+				NTLC.Right.Left == nil &&
+				NTLC.Right.Right == nil &&
+				NTLC.Left.Left != nil &&
+				NTLC.Left.Right != nil {
+				T.RotateRight(NT.Value)
+			} else {
+				// Left Right case
+				// Rotate Left on Left Child
+				T.RotateLeft(NTLC.Value)
+				// Rotate Right on Root
+				T.RotateRight(NT.Value)
 			}
-			if Tr.Left.Left == nil && Tr.Left.Right != nil {
-				result = "LR"
-			}
-		case -2: // RR or RL
-			if Tr.Right.Right != nil && Tr.Right.Left == nil {
-				result = "RR"
-			}
-			if Tr.Right.Right == nil && Tr.Right.Left != nil {
-				result = "RL"
+		case -2: // Right Right or Right Left
+			NT := T.Find(val)
+			NTRC := NT.Right // Right Child
+			// Right Right case
+			if NT.Left.Left == nil &&
+				NT.Left.Right == nil &&
+				NTRC.Left.Left == nil &&
+				NTRC.Left.Right == nil &&
+				NTRC.Right.Left != nil &&
+				NTRC.Right.Right != nil {
+				T.RotateLeft(NT.Value)
+			} else {
+				// Left Right case
+				// Rotate Left on Left Child
+				T.RotateRight(NTRC.Value)
+				// Rotate Right on Root
+				T.RotateLeft(NT.Value)
 			}
 		}
 	}
-	return num, result
+	return T
 }
