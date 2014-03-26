@@ -332,6 +332,7 @@ To-Do-List
 ==========
 **Non-Committal on a Timeline**
 
+- Tree Deletion
 - More Tree Data Structures
 
 [↑ top](https://github.com/gyuho/gotree#gotree---)
