@@ -8,10 +8,6 @@ gotree provides tree visualizing tools and algorithm implementations.
 - [Example : Binary Search Tree](https://github.com/gyuho/gotree#example--binary-search-tree)
 - [AVL Tree](https://github.com/gyuho/gotree#avl-tree)
 - [Example : AVL Tree](https://github.com/gyuho/gotree#example--avl-tree)
-- [Red Black Tree](https://github.com/gyuho/gotree#avl-tree)
-- [Example : Red Black Tree](https://github.com/gyuho/gotree#example--red-black-tree)
-- [B-Tree](https://github.com/gyuho/gotree#b-tree)
-- [Example : B-Tree](https://github.com/gyuho/gotree#example--b-tree)
 - [To-Do-List](https://github.com/gyuho/gotree#to-do-list)
 
 
@@ -51,12 +47,6 @@ tree/     # Tree Data Structure
   
   avl/    # AVL Tree
   avlviz/ # Visualization (Graphviz)
-
-  rbt/    # Red Black Tree
-  rbtviz/ # Visualization (Graphviz)
-  
-  bt/     # B-Tree
-  btviz/  # Visualization (Graphviz)
 
 
 example/  # Example Code
@@ -325,7 +315,6 @@ func Test_Show25(test *testing.T) {
 <img src="./files/avl_balanced_28.png" alt="avl_balanced_28" width="240px" height="240px"/>
 
 [↑ top](https://github.com/gyuho/gotree#gotree---)
-
 
 
 To-Do-List
