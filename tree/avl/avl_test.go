@@ -350,3 +350,13 @@ func Test_WalkPostOrder(test *testing.T) {
 		test.Errorf("Should return true but\n%v", result)
 	}
 }
+
+func Test_Same(test *testing.T) {
+	tr1 := NewTree(7)
+	tr1.Inserts(4, 12, 9, 15, 8, 10)
+	tr2 := NewTree(7)
+	tr2.Inserts(4, 12, 9, 15, 8, 10)
+	if !Same(tr1, tr2) {
+		test.Errorf("Should return true but\n%v", Same(tr1, tr2))
+	}
+}

@@ -598,6 +598,36 @@ func WalkPostOrder(T *Tree, ch chan int64) {
 	close(ch)
 }
 
+// Same returns true if the two trees are same.
+func Same(T1, T2 *Tree) bool {
+	ch1, ch2 := make(chan int64), make(chan int64)
+	go WalkInOrder(T1, ch1)
+	go WalkInOrder(T2, ch2)
+
+	for {
+		// if the two trees are the same
+		// all values that are sent to channel
+		// 				should be equal
+		// and the time that the channel gets closed
+		// 				should also be equal
+		v1, ok1 := <-ch1
+		v2, ok2 := <-ch2
+
+		// TRUE when TWO trees are different
+		if v1 != v2 || ok1 != ok2 {
+			return false
+		}
+
+		// TRUE here only when TWO trees are SAME
+		// if one tree gets closed first
+		// break and return true
+		if !ok1 {
+			break
+		}
+	}
+	return true
+}
+
 // Detect returns the Height and detects the balancing status.
 func (T *Tree) Detect(val int64) (int64, string) {
 	num := T.Height(val)
