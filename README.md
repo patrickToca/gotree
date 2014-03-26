@@ -5,6 +5,7 @@ gotree provides tree visualizing tools and algorithm implementations.
 
 - [Getting Started](https://github.com/gyuho/gotree#getting-started)
 - [Package Hierarchy](https://github.com/gyuho/gotree#package-hierarchy)
+- [What is Tree? (YouTube Clips)](https://github.com/gyuho/gotree#what-is-tree-youtube-clips)
 - [Example : Binary Search Tree](https://github.com/gyuho/gotree#example--binary-search-tree)
 - [AVL Tree](https://github.com/gyuho/gotree#avl-tree)
 - [Example : AVL Tree](https://github.com/gyuho/gotree#example--avl-tree)
@@ -52,6 +53,17 @@ tree/     # Tree Data Structure
 
 example/  # Example Code
 ```
+
+[↑ top](https://github.com/gyuho/gotree#gotree---)
+
+
+What is Tree? (YouTube Clips)
+========
+
+<a href="https://www.youtube.com/watch?v=NdfIfxTsVDo" target="_blank"><img src="http://img.youtube.com/vi/NdfIfxTsVDo/0.jpg"></a>
+<ul>
+  <li class="special"><a href="http://www.youtube.com/watch?v=NdfIfxTsVDo&list=PLT6aABhFfinvsSn1H195JLuHaXNS6UVhf" target="_blank">Tree, Heap, Graph (Playlist)</a></li>
+</ul>
 
 [↑ top](https://github.com/gyuho/gotree#gotree---)
 
