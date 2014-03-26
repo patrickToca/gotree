@@ -319,10 +319,10 @@ func Test_Show25(test *testing.T) {
 }
 ```
 
-<img src="./files/avl_balanced_25.png" alt="avl_balanced_25" width="120px" height="120px"/>
-<img src="./files/avl_balanced_26.png" alt="avl_balanced_26" width="120px" height="120px"/>
-<img src="./files/avl_balanced_27.png" alt="avl_balanced_27" width="120px" height="120px"/>
-<img src="./files/avl_balanced_28.png" alt="avl_balanced_28" width="120px" height="120px"/>
+<img src="./files/avl_balanced_25.png" alt="avl_balanced_25" width="240px" height="240px"/>
+<img src="./files/avl_balanced_26.png" alt="avl_balanced_26" width="240px" height="240px"/>
+<img src="./files/avl_balanced_27.png" alt="avl_balanced_27" width="240px" height="240px"/>
+<img src="./files/avl_balanced_28.png" alt="avl_balanced_28" width="240px" height="240px"/>
 
 [↑ top](https://github.com/gyuho/gotree#gotree---)
 
