@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Gotree : tree visualization, algorithms" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Gotree</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/gyuho/gotree">View on GitHub</a>
+
+          <h1 id="project_title">Gotree</h1>
+          <h2 id="project_tagline">tree visualization, algorithms</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/gyuho/gotree/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/gyuho/gotree/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="gotree---" class="anchor" href="#gotree---"><span class="octicon octicon-link"></span></a>gotree <a href="https://travis-ci.org/gyuho/gotree"><img src="https://travis-ci.org/gyuho/gotree.svg?branch=master" alt="Build Status"></a> <a href="http://godoc.org/github.com/gyuho/gotree"><img src="https://godoc.org/github.com/gyuho/gotree?status.png" alt="GoDoc"></a> <a href="http://www.ohloh.net/p/714469"><img src="http://www.ohloh.net/p/714469/widgets/project_thin_badge.gif" alt="Project Stats"></a>
+</h1>
+
+<p>gotree provides tree visualizing tools and algorithm implementations.</p>
+
+<ul>
+<li><a href="https://github.com/gyuho/gotree#getting-started">Getting Started</a></li>
+<li><a href="https://github.com/gyuho/gotree#package-hierarchy">Package Hierarchy</a></li>
+<li><a href="https://github.com/gyuho/gotree#what-is-tree-youtube-clips">What is Tree? (YouTube Clips)</a></li>
+<li><a href="https://github.com/gyuho/gotree#example--binary-search-tree">Example : Binary Search Tree</a></li>
+<li><a href="https://github.com/gyuho/gotree#avl-tree">AVL Tree</a></li>
+<li><a href="https://github.com/gyuho/gotree#example--avl-tree">Example : AVL Tree</a></li>
+<li><a href="https://github.com/gyuho/gotree#to-do-list">To-Do-List</a></li>
+<li><a href="https://github.com/gyuho/gotree#other">Other</a></li>
+</ul><h1>
+<a name="getting-started" class="anchor" href="#getting-started"><span class="octicon octicon-link"></span></a>Getting Started</h1>
+
+<ul>
+<li><a href="http://godoc.org/github.com/gyuho/gotree">godoc.org</a></li>
+<li><a href="http://gowalker.org/github.com/gyuho/gotree#_index">gowalker.org</a></li>
+</ul><div class="highlight highlight-go"><pre><span class="c1">// to install, in the command line</span>
+<span class="nx">mkdir</span> <span class="err">$</span><span class="nx">HOME</span><span class="o">/</span><span class="k">go</span>
+<span class="nx">export</span> <span class="nx">GOPATH</span><span class="p">=</span><span class="err">$</span><span class="nx">HOME</span><span class="o">/</span><span class="k">go</span>
+<span class="k">go</span> <span class="nx">get</span> <span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">gyuho</span><span class="o">/</span><span class="nx">gotree</span>
+
+<span class="c1">// to include, in the code</span>
+<span class="kn">import</span> <span class="s">"github.com/gyuho/gotree"</span>
+
+<span class="c1">// to call the function, in the code</span>
+<span class="p">[</span><span class="nx">package_name</span><span class="p">].[</span><span class="nx">function</span><span class="p">]</span>
+
+<span class="c1">// to execute</span>
+<span class="k">go</span> <span class="nx">install</span>
+<span class="c1">// or</span>
+<span class="k">go</span> <span class="nx">build</span>
+</pre></div>
+
+<p><a href="https://github.com/gyuho/gotree#gotree---">↑ top</a></p>
+
+<h1>
+<a name="package-hierarchy" class="anchor" href="#package-hierarchy"><span class="octicon octicon-link"></span></a>Package Hierarchy</h1>
+
+<div class="highlight highlight-go"><pre><span class="nx">tree</span><span class="o">/</span>     <span class="err">#</span> <span class="nx">Tree</span> <span class="nx">Data</span> <span class="nx">Structure</span>
+
+  <span class="nx">bst</span><span class="o">/</span>    <span class="err">#</span> <span class="nx">Binary</span> <span class="nx">Search</span> <span class="nx">Tree</span>
+  <span class="nx">bstviz</span><span class="o">/</span> <span class="err">#</span> <span class="nx">Visualization</span> <span class="p">(</span><span class="nx">Graphviz</span><span class="p">)</span>
+
+  <span class="nx">avl</span><span class="o">/</span>    <span class="err">#</span> <span class="nx">AVL</span> <span class="nx">Tree</span>
+  <span class="nx">avlviz</span><span class="o">/</span> <span class="err">#</span> <span class="nx">Visualization</span> <span class="p">(</span><span class="nx">Graphviz</span><span class="p">)</span>
+
+
+<span class="nx">example</span><span class="o">/</span>  <span class="err">#</span> <span class="nx">Example</span> <span class="nx">Code</span>
+</pre></div>
+
+<p><a href="https://github.com/gyuho/gotree#gotree---">↑ top</a></p>
+
+<h1>
+<a name="what-is-tree-youtube-clips" class="anchor" href="#what-is-tree-youtube-clips"><span class="octicon octicon-link"></span></a>What is Tree? (YouTube Clips)</h1>
+
+<p><a href="https://www.youtube.com/watch?v=NdfIfxTsVDo" target="_blank"><img src="http://img.youtube.com/vi/NdfIfxTsVDo/0.jpg"></a></p>
+
+<ul>
+<li><a href="http://www.youtube.com/watch?v=NdfIfxTsVDo&amp;list=PLT6aABhFfinvsSn1H195JLuHaXNS6UVhf" target="_blank">Tree, Heap, Graph (Playlist)</a></li>
+</ul><p><a href="https://github.com/gyuho/gotree#gotree---">↑ top</a></p>
+
+<h1>
+<a name="example--binary-search-tree" class="anchor" href="#example--binary-search-tree"><span class="octicon octicon-link"></span></a>Example : Binary Search Tree</h1>
+
+<div class="highlight highlight-go"><pre><span class="nx">tr</span> <span class="o">:=</span> <span class="nx">bst</span><span class="p">.</span><span class="nx">NewTree</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="nx">i</span> <span class="o">!=</span> <span class="mi">5</span> <span class="p">{</span>
+        <span class="nx">tr</span> <span class="p">=</span> <span class="nx">tr</span><span class="p">.</span><span class="nx">Insert</span><span class="p">(</span><span class="nb">int64</span><span class="p">(</span><span class="nx">i</span><span class="p">))</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="nx">Show</span><span class="p">(</span><span class="nx">tr</span><span class="p">,</span> <span class="s">"tree1.dot"</span><span class="p">)</span>
+</pre></div>
+
+<p><img src="./files/tree01.png" alt="tree01" width="140px" height="300px"></p>
+
+<hr><div class="highlight highlight-go"><pre><span class="nx">tr</span> <span class="o">:=</span> <span class="nx">bst</span><span class="p">.</span><span class="nx">NewTree</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="nx">tr</span><span class="p">.</span><span class="nx">Inserts</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nx">Show</span><span class="p">(</span><span class="nx">tr</span><span class="p">,</span> <span class="s">"tree2.dot"</span><span class="p">)</span>
+</pre></div>
+
+<p><img src="./files/tree02.png" alt="tree02" width="180px" height="250px"></p>
+
+<hr><div class="highlight highlight-go"><pre><span class="nx">tr</span> <span class="o">:=</span> <span class="nx">bst</span><span class="p">.</span><span class="nx">NewTree</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="nx">tr</span><span class="p">.</span><span class="nx">Inserts</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nx">tr</span><span class="p">.</span><span class="nx">Delete</span><span class="p">(</span><span class="nb">int64</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
+<span class="nx">Show</span><span class="p">(</span><span class="nx">tr</span><span class="p">,</span> <span class="s">"tree3.dot"</span><span class="p">)</span>
+</pre></div>
+
+<p><img src="./files/tree03.png" alt="tree03" width="180px" height="250px"></p>
+
+<hr><div class="highlight highlight-go"><pre><span class="nx">tr</span> <span class="o">:=</span> <span class="nx">bst</span><span class="p">.</span><span class="nx">NewTree</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="nx">tr</span><span class="p">.</span><span class="nx">Inserts</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nx">tr</span><span class="p">.</span><span class="nx">Delete</span><span class="p">(</span><span class="nb">int64</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span>
+<span class="nx">Show</span><span class="p">(</span><span class="nx">tr</span><span class="p">,</span> <span class="s">"tree4.dot"</span><span class="p">)</span>
+</pre></div>
+
+<p><img src="./files/tree04.png" alt="tree04" width="180px" height="250px"></p>
+
+<hr><div class="highlight highlight-go"><pre><span class="nx">tr</span> <span class="o">:=</span> <span class="nx">bst</span><span class="p">.</span><span class="nx">NewTree</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="nx">tr</span><span class="p">.</span><span class="nx">Inserts</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="nx">tr</span> <span class="p">=</span> <span class="nx">tr</span><span class="p">.</span><span class="nx">Delete</span><span class="p">(</span><span class="nb">int64</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="nx">Show</span><span class="p">(</span><span class="nx">tr</span><span class="p">,</span> <span class="s">"tree5.dot"</span><span class="p">)</span>
+</pre></div>
+
+<p><img src="./files/tree05.png" alt="tree05" width="180px" height="250px"></p>
+
+<p><a href="https://github.com/gyuho/gotree#gotree---">↑ top</a></p>
+
+<hr><h1>
+<a name="avl-tree" class="anchor" href="#avl-tree"><span class="octicon octicon-link"></span></a><a href="http://en.wikipedia.org/wiki/AVL_tree" target="_blank">AVL Tree</a>
+</h1>
+
+<p>AVL tree is a self-balancing binary search tree.</p>
+
+<p>For lookup-intensive applications, AVL trees are faster than red-black trees because they are more rigidly balanced. Similar to red-black trees, AVL trees are height-balanced. Both are in general not weight-balanced</p>
+
+<p><strong>It is basically a Binary Search Tree (BST) with additional balancing property:</strong></p>
+
+<p><strong><code>Height of the Left Sub-Tree</code></strong> and <strong><code>Height of the Right Sub-Tree</code></strong> differ by at most 1</p>
+
+<p><strong>Balance(Tree)</strong> = <strong>Height(Left)</strong> - <strong>Height(Right)</strong> = -1, 0, 1</p>
+
+<p>For example,</p>
+
+<pre><code>  1
+ / \
+    2
+   / \
+  3   4
+</code></pre>
+
+<p>The node 2 is balanced, but the node 1 is NOT balanced
+because the Height(Left) is 0 and Height(Right) is 2</p>
+
+<h5>
+<a name="insertion" class="anchor" href="#insertion"><span class="octicon octicon-link"></span></a>Insertion</h5>
+
+<ol>
+<li>Insert into Left-Sub of Left-Child</li>
+<li>Insert into Right-Sub of Right-Child</li>
+<li>Insert into Left-Sub of Right-Child</li>
+<li>Insert into Right-Sub of Left-Child</li>
+</ol><h5>
+<a name="rotation-for-re-balancing" class="anchor" href="#rotation-for-re-balancing"><span class="octicon octicon-link"></span></a>Rotation for Re-balancing</h5>
+
+<ol>
+<li>LL Rotation</li>
+<li>RR Rotation</li>
+<li>LR Rotation</li>
+<li>RL Rotation</li>
+</ol><p><a href="https://github.com/gyuho/gotree#gotree---">↑ top</a></p>
+
+<hr><h5>
+<a name="rebalance-rearrange" class="anchor" href="#rebalance-rearrange"><span class="octicon octicon-link"></span></a>Rebalance (Rearrange)</h5>
+
+<p><strong>LL Rotation</strong></p>
+
+<p>Unbalanced!</p>
+
+<pre><code>    4
+   /
+  3
+ /
+2
+</code></pre>
+
+<p>then</p>
+
+<pre><code>   3
+  / \
+ 2   4
+</code></pre>
+
+<p><a href="https://github.com/gyuho/gotree#gotree---">↑ top</a></p>
+
+<hr><p><strong>RR Rotation</strong></p>
+
+<p>Unbalanced!</p>
+
+<pre><code>    6
+     \
+      7
+       \
+        8
+</code></pre>
+
+<p>then</p>
+
+<pre><code>   7
+  / \
+ 6   8
+</code></pre>
+
+<p><a href="https://github.com/gyuho/gotree#gotree---">↑ top</a></p>
+
+<hr><p><strong>LR Rotation</strong></p>
+
+<p>Unbalanced!</p>
+
+<pre><code>    4
+   /
+  2
+   \
+    3
+</code></pre>
+
+<p>then</p>
+
+<pre><code>   3
+  / \
+ 2   4
+</code></pre>
+
+<p><a href="https://github.com/gyuho/gotree#gotree---">↑ top</a></p>
+
+<hr><p><strong>RL Rotation</strong></p>
+
+<p>Unbalanced!</p>
+
+<pre><code>    6
+     \
+      8
+     /
+    7
+</code></pre>
+
+<p>then</p>
+
+<pre><code>   7
+  / \
+ 6   8
+</code></pre>
+
+<p><a href="https://github.com/gyuho/gotree#gotree---">↑ top</a></p>
+
+<hr><h5>
+<a name="determine-which-rotation-to-use" class="anchor" href="#determine-which-rotation-to-use"><span class="octicon octicon-link"></span></a>Determine which rotation to use</h5>
+
+<ul>
+<li>
+<strong><code>Height(Unbalanced-Node)</code></strong> is:
+
+<ul>
+<li>
+<strong>Positive</strong>: Left-Child (Example Height = 2)
+
+<ul>
+<li>If <strong><code>Height(Left-Child)</code></strong> is:
+
+<ul>
+<li>Positive: <code>LL Rotation</code> (Example Height = 1)</li>
+<li>Negative: <code>LR Rotation</code> (Example Height = -1)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<strong>Negative</strong>: Right-Child (Example Height = 2)
+
+<ul>
+<li>If <strong><code>Height(Right-Child)</code></strong> is:
+
+<ul>
+<li>Positive: <code>RL Rotation</code> (Example Height = 1)</li>
+<li>Negative: <code>RR Rotation</code> (Example Height = -1)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul><p><a href="https://github.com/gyuho/gotree#gotree---">↑ top</a></p>
+
+<h1>
+<a name="example--avl-tree" class="anchor" href="#example--avl-tree"><span class="octicon octicon-link"></span></a>Example : AVL Tree</h1>
+
+<div class="highlight highlight-go"><pre><span class="kd">func</span> <span class="nx">Test_avlviz</span><span class="p">(</span><span class="nx">test</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">tr</span> <span class="o">:=</span> <span class="nx">avl</span><span class="p">.</span><span class="nx">NewTree</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+  <span class="nx">tr</span><span class="p">.</span><span class="nx">BalanceInsert</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+  <span class="nx">tr</span><span class="p">.</span><span class="nx">BalanceInsert</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+  <span class="nx">avlviz</span><span class="p">.</span><span class="nx">Show</span><span class="p">(</span><span class="nx">tr</span><span class="p">,</span> <span class="s">"avl-before.dot"</span><span class="p">)</span>
+
+  <span class="nx">tr</span><span class="p">.</span><span class="nx">BalanceRL</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+  <span class="nx">avlviz</span><span class="p">.</span><span class="nx">Show</span><span class="p">(</span><span class="nx">tr</span><span class="p">,</span> <span class="s">"avl-after.dot"</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+<p><strong>Before</strong>
+<img src="./files/avl-before.png" alt="avl-before" width="50px" height="100px"></p>
+
+<p><strong>After</strong>
+<img src="./files/avl-after.png" alt="avl-after" width="120px" height="120px"></p>
+
+<p><a href="https://github.com/gyuho/gotree#gotree---">↑ top</a></p>
+
+<hr><div class="highlight highlight-go"><pre><span class="kd">func</span> <span class="nx">Test_Show25</span><span class="p">(</span><span class="nx">test</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Left Left Case</span>
+  <span class="nx">tr1</span> <span class="o">:=</span> <span class="nx">avl</span><span class="p">.</span><span class="nx">NewTree</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span>
+  <span class="nx">tr1</span><span class="p">.</span><span class="nx">TreeInserts</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+  <span class="nx">Show</span><span class="p">(</span><span class="nx">tr1</span><span class="p">,</span> <span class="s">"avl_balanced_25.dot"</span><span class="p">)</span>
+
+  <span class="c1">// Left Right Case</span>
+  <span class="nx">tr2</span> <span class="o">:=</span> <span class="nx">avl</span><span class="p">.</span><span class="nx">NewTree</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span>
+  <span class="nx">tr2</span><span class="p">.</span><span class="nx">TreeInserts</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+  <span class="nx">Show</span><span class="p">(</span><span class="nx">tr2</span><span class="p">,</span> <span class="s">"avl_balanced_26.dot"</span><span class="p">)</span>
+
+  <span class="c1">// Right Right Case</span>
+  <span class="nx">tr3</span> <span class="o">:=</span> <span class="nx">avl</span><span class="p">.</span><span class="nx">NewTree</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+  <span class="nx">tr3</span><span class="p">.</span><span class="nx">TreeInserts</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span>
+  <span class="nx">Show</span><span class="p">(</span><span class="nx">tr3</span><span class="p">,</span> <span class="s">"avl_balanced_27.dot"</span><span class="p">)</span>
+
+  <span class="c1">// Right Left Case</span>
+  <span class="nx">tr4</span> <span class="o">:=</span> <span class="nx">avl</span><span class="p">.</span><span class="nx">NewTree</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+  <span class="nx">tr4</span><span class="p">.</span><span class="nx">TreeInserts</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+  <span class="nx">Show</span><span class="p">(</span><span class="nx">tr4</span><span class="p">,</span> <span class="s">"avl_balanced_28.dot"</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+<p><img src="./files/avl_balanced_25.png" alt="avl_balanced_25" width="240px" height="240px"><img src="./files/avl_balanced_26.png" alt="avl_balanced_26" width="240px" height="240px"><img src="./files/avl_balanced_27.png" alt="avl_balanced_27" width="240px" height="240px"><img src="./files/avl_balanced_28.png" alt="avl_balanced_28" width="240px" height="240px"></p>
+
+<p><a href="https://github.com/gyuho/gotree#gotree---">↑ top</a></p>
+
+<h1>
+<a name="to-do-list" class="anchor" href="#to-do-list"><span class="octicon octicon-link"></span></a>To-Do-List</h1>
+
+<p><strong>Non-Committal on a Timeline</strong></p>
+
+<ul>
+<li>Tree Deletion</li>
+<li>More Tree Data Structures</li>
+</ul><p><a href="https://github.com/gyuho/gotree#gotree---">↑ top</a></p>
+
+<h1>
+<a name="other" class="anchor" href="#other"><span class="octicon octicon-link"></span></a>Other</h1>
+
+<ul>
+<li><a href="https://code.google.com/p/go-wiki/wiki/Projects?ts=1395809107&amp;updated=Projects#Data_Structures" target="_blank">Data Structure Projects</a></li>
+<li>
+<a href="https://github.com/petar/GoLLRB" target="_blank">GoLLRB</a> by Petar Maymounkov (Left-Leaning Red-Black Tree)</li>
+<li>
+<a href="https://github.com/timtadh/file-structures" target="_blank">File Structures (B+Tree, BTree)</a> by Tim Henderson</li>
+<li>
+<a href="https://github.com/psankar/btree-go" target="_blank">btree-go</a> by Sankar (B-Tree)</li>
+</ul><p><a href="https://github.com/gyuho/gotree#gotree---">↑ top</a></p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Gotree maintained by <a href="https://github.com/gyuho">gyuho</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
